@@ -1,0 +1,181 @@
+/* formulario_jornada.css - Colores, fuentes, bordes, efectos del formulario */
+
+/* Contenedor del formulario (ya no es flotante) */
+#fishingForm,
+#concursoForm {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Título del formulario */
+#contenedor-fishingForm h3 {
+  color: #1e6b6b;
+  font-size: 1.3rem;
+
+  border-bottom: 2px solid #46b5a5;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+/* Secciones del formulario */
+.form-section {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+legend {
+  font-weight: bold;
+  color: #1e6b6b;
+  padding: 0 5px;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #1e5f5f;
+}
+
+/* Campos de entrada */
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #46b5a5;
+  box-shadow: 0 0 0 2px rgba(70, 181, 165, 0.2);
+}
+
+/* Botones del formulario */
+button {
+  background-color: #1e5799;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #2e6b9e;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Botón añadir captura */
+#addCatchBtn {
+  background-color: #46b5a5;
+  margin-top: 10px;
+}
+
+#addCatchBtn:hover {
+  background-color: #35967f;
+}
+
+/* Botón eliminar captura */
+.delete-catch {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 10px;
+  width: auto;
+  display: inline-block;
+}
+
+.delete-catch:hover {
+  background-color: #c82333;
+}
+
+/* Resumen (details/summary) */
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+details {
+  margin-top: 10px;
+}
+
+/* Estado de coordenada */
+#estadoCoordenada {
+  background-color: #fff3cd;
+  border-radius: 4px;
+  color: #856404;
+  font-size: 12px;
+  padding: 8px;
+  margin: 10px 0;
+  position: sticky;
+  bottom: 0;
+  background-color: #fff3cd;
+  z-index: 10;
+}
+
+/* Lista de capturas */
+.catches-list {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.catches-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.catches-list li {
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botón de reset */
+button[type="reset"] {
+  background-color: #6c757d;
+  margin-top: 5px;
+}
+
+button[type="reset"]:hover {
+  background-color: #5a6268;
+}
