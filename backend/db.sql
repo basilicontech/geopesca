@@ -253,7 +253,7 @@ INSERT INTO
     password_hash
   )
 VALUES
-  ('Alfonso Manzano', 'alfonso@gmail.com', '123');
+  ('Alfonso Manzano', 'alfonso@gmail.com', 'yfgFOk_Gh8GT535');
 
 -- ============================================
 -- 2. INSERT PESCADOR
