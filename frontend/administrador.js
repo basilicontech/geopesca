@@ -56,7 +56,9 @@ async function cargarConcursos(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando concursos...</div>';
 
-    const response = await fetch("https://azaharlimpieza.es/api/concursos/list");
+    const response = await fetch(
+      "https://azaharlimpieza.es/api/concursos/list",
+    );
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -155,9 +157,12 @@ async function eliminarConcurso(id) {
   }
 
   try {
-    const response = await fetch(`https://azaharlimpieza.es/api/concursos/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://azaharlimpieza.es/api/concursos/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data = await response.json();
 
@@ -183,7 +188,9 @@ async function cargarAdministradores(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando administradores...</div>';
 
-    const response = await fetch("https://azaharlimpieza.es/api/administradores/list");
+    const response = await fetch(
+      "https://azaharlimpieza.es/api/administradores/list",
+    );
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -235,8 +242,8 @@ async function cargarAdministradores(centro) {
                     <td>
                         <button class="btn-eliminar-admin"
                                 onclick="eliminarAdministrador(${admin.id_administrador})"
-                                title="${esUltimo ? 'No se puede eliminar el último administrador' : 'Eliminar administrador'}"
-                                ${esUltimo ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''}>
+                                title="${esUltimo ? "No se puede eliminar el último administrador" : "Eliminar administrador"}"
+                                ${esUltimo ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ""}>
                             🗑️
                         </button>
                     </td>
@@ -267,17 +274,18 @@ async function cargarAdministradores(centro) {
 // ============================================================
 async function eliminarAdministrador(id) {
   if (
-    !confirm(
-      "⚠️ ¿Estás seguro de que quieres eliminar este administrador?"
-    )
+    !confirm("⚠️ ¿Estás seguro de que quieres eliminar este administrador?")
   ) {
     return;
   }
 
   try {
-    const response = await fetch(`https://azaharlimpieza.es/api/administradores/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://azaharlimpieza.es/api/administradores/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data = await response.json();
 
@@ -303,7 +311,9 @@ async function cargarPescadores(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando pescadores...</div>';
 
-    const response = await fetch("https://azaharlimpieza.es/api/pescadores/list");
+    const response = await fetch(
+      "https://azaharlimpieza.es/api/pescadores/list",
+    );
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -390,9 +400,12 @@ async function eliminarPescador(id) {
   }
 
   try {
-    const response = await fetch(`https://azaharlimpieza.es/api/pescadores/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://azaharlimpieza.es/api/pescadores/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data = await response.json();
 
@@ -515,9 +528,12 @@ async function eliminarJornada(id) {
   }
 
   try {
-    const response = await fetch(`https://azaharlimpieza.es/api/jornadas/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://azaharlimpieza.es/api/jornadas/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data = await response.json();
 
@@ -690,3 +706,4 @@ async function eliminarClub(id) {
     console.error("Error eliminando club:", error);
     alert("❌ Error: " + error.message);
   }
+}
