@@ -233,8 +233,8 @@ async function cargarAdministradores(centro) {
                     <td>${admin.email_administrador || "-"}</td>
                     <td>${fechaRegistro}</td>
                     <td>
-                        <button class="btn-eliminar-admin" 
-                                onclick="eliminarAdministrador(${admin.id_administrador})" 
+                        <button class="btn-eliminar-admin"
+                                onclick="eliminarAdministrador(${admin.id_administrador})"
                                 title="${esUltimo ? 'No se puede eliminar el último administrador' : 'Eliminar administrador'}"
                                 ${esUltimo ? 'disabled style="opacity:0.3; cursor:not-allowed;"' : ''}>
                             🗑️
@@ -690,4 +690,3 @@ async function eliminarClub(id) {
     console.error("Error eliminando club:", error);
     alert("❌ Error: " + error.message);
   }
-}
