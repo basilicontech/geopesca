@@ -1,6 +1,6 @@
 // puntosControl.js - Módulo para controlar los puntos en el mapa
 // Responsabilidades: Gestión de capas de puntos de pescadores y concursos
-// Dependencias: Leaflet (L), API REST en http://localhost:3000
+// Dependencias: Leaflet (L), API REST en https://azaharlimpieza.es
 
 // ============================================================
 // VARIABLES GLOBALES DEL MÓDULO
@@ -75,11 +75,10 @@ const estilosPuntos = {
 
 async function cargarPuntosPescadores(map, onPointClick) {
   try {
-    const response = await fetch("http://localhost:3000/api/jornadas");
+    const response = await fetch("https://azaharlimpieza.es/api/jornadas");
     const geojson = await response.json();
 
     if (!geojson.features) return;
-
     // Si ya existe una capa, eliminarla
     if (capaPescadores) {
       map.removeLayer(capaPescadores);
@@ -115,7 +114,7 @@ async function cargarPuntosPescadores(map, onPointClick) {
 
 async function cargarPuntosConcursos(map, onConcursoClick) {
   try {
-    const response = await fetch("http://localhost:3000/api/concursos/list");
+    const response = await fetch("https://azaharlimpieza.es/api/concursos/list");
     const data = await response.json();
 
     if (!data || data.length === 0) return;

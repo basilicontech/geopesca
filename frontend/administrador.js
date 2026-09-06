@@ -56,7 +56,7 @@ async function cargarConcursos(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando concursos...</div>';
 
-    const response = await fetch("http://localhost:3000/api/concursos/list");
+    const response = await fetch("https://azaharlimpieza.es/api/concursos/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -155,7 +155,7 @@ async function eliminarConcurso(id) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/concursos/${id}`, {
+    const response = await fetch(`https://azaharlimpieza.es/api/concursos/${id}`, {
       method: "DELETE",
     });
 
@@ -183,7 +183,7 @@ async function cargarAdministradores(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando administradores...</div>';
 
-    const response = await fetch("http://localhost:3000/api/administradores/list");
+    const response = await fetch("https://azaharlimpieza.es/api/administradores/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -275,7 +275,7 @@ async function eliminarAdministrador(id) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/administradores/${id}`, {
+    const response = await fetch(`https://azaharlimpieza.es/api/administradores/${id}`, {
       method: "DELETE",
     });
 
@@ -303,7 +303,7 @@ async function cargarPescadores(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando pescadores...</div>';
 
-    const response = await fetch("http://localhost:3000/api/pescadores/list");
+    const response = await fetch("https://azaharlimpieza.es/api/pescadores/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -390,7 +390,7 @@ async function eliminarPescador(id) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/pescadores/${id}`, {
+    const response = await fetch(`https://azaharlimpieza.es/api/pescadores/${id}`, {
       method: "DELETE",
     });
 
@@ -418,7 +418,7 @@ async function cargarJornadas(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando jornadas...</div>';
 
-    const response = await fetch("http://localhost:3000/api/jornadas/list");
+    const response = await fetch("https://azaharlimpieza.es/api/jornadas/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -515,7 +515,7 @@ async function eliminarJornada(id) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/jornadas/${id}`, {
+    const response = await fetch(`https://azaharlimpieza.es/api/jornadas/${id}`, {
       method: "DELETE",
     });
 
@@ -543,7 +543,7 @@ async function cargarClubs(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando clubs...</div>';
 
-    const response = await fetch("http://localhost:3000/api/clubs/list");
+    const response = await fetch("https://azaharlimpieza.es/api/clubs/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -632,7 +632,7 @@ async function cargarClubs(centro) {
 async function validarClub(id) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/clubs/${id}/validar`,
+      `https://azaharlimpieza.es/api/clubs/${id}/validar`,
       {
         method: "PUT",
       },
@@ -667,7 +667,7 @@ async function eliminarClub(id) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/clubs/${id}`, {
+    const response = await fetch(`https://azaharlimpieza.es/api/clubs/${id}`, {
       method: "DELETE",
     });
 
