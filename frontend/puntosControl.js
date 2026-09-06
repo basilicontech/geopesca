@@ -79,7 +79,6 @@ async function cargarPuntosPescadores(map, onPointClick) {
     const geojson = await response.json();
 
     if (!geojson.features) return;
-
     // Si ya existe una capa, eliminarla
     if (capaPescadores) {
       map.removeLayer(capaPescadores);
