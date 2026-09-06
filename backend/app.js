@@ -16,6 +16,9 @@ const administradoresRoutes = require("./routes/administradores");
 app.use(cors());
 app.use(express.json());
 
+// Servir archivos estáticos del frontend
+app.use(express.static("/home/ubuntu/proyectos/pesca-deportiva/frontend"));
+
 // Registrar rutas
 app.use("/api/jornadas", jornadasRoutes);
 app.use("/api/catalogs", catalogsRoutes);
@@ -29,6 +32,14 @@ app.use("/api/administradores", administradoresRoutes);
 // Health check
 app.get("/api/health", (req, res) => {
   res.json({ status: "OK", message: "API Pesca Deportiva funcionando" });
+});
+
+// ============================================
+// WEBHOOK DE GITHUB - Actualización automática
+// ============================================
+app.post('/github-webhook', (req, res) => {
+  console.log('📥 Webhook recibido de GitHub');
+  res.status(200).send('OK');
 });
 
 const PORT = 3000;

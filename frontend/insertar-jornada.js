@@ -30,7 +30,7 @@ let insertarJornadaInicializado = false;
 async function loadCatalogs() {
   try {
     const especies = await fetch(
-      "http://localhost:3000/api/catalogs/especies",
+      "https://azaharlimpieza.es/api/catalogs/especies",
     ).then((r) => r.json());
     const especieSelect = document.getElementById("especie");
     especies.forEach((e) => {
@@ -41,7 +41,7 @@ async function loadCatalogs() {
     });
 
     const habitats = await fetch(
-      "http://localhost:3000/api/catalogs/habitats",
+      "https://azaharlimpieza.es/api/catalogs/habitats",
     ).then((r) => r.json());
     const habitatSelect = document.getElementById("habitat");
     habitats.forEach((h) => {
@@ -52,7 +52,7 @@ async function loadCatalogs() {
     });
 
     const lechos = await fetch(
-      "http://localhost:3000/api/catalogs/tipos-lecho",
+      "https://azaharlimpieza.es/api/catalogs/tipos-lecho",
     ).then((r) => r.json());
     const lechoSelect = document.getElementById("tipo_lecho");
     lechos.forEach((l) => {
@@ -63,7 +63,7 @@ async function loadCatalogs() {
     });
 
     const vientos = await fetch(
-      "http://localhost:3000/api/catalogs/direcciones-viento",
+      "https://azaharlimpieza.es/api/catalogs/direcciones-viento",
     ).then((r) => r.json());
     const vientoSelect = document.getElementById("direccion_viento");
     vientos.forEach((v) => {
@@ -74,7 +74,7 @@ async function loadCatalogs() {
     });
 
     const velocidades = await fetch(
-      "http://localhost:3000/api/catalogs/velocidades-viento",
+      "https://azaharlimpieza.es/api/catalogs/velocidades-viento",
     ).then((r) => r.json());
     const velocidadSelect = document.getElementById("velocidad_viento");
     velocidades.forEach((v) => {
@@ -85,7 +85,7 @@ async function loadCatalogs() {
     });
 
     const olas = await fetch(
-      "http://localhost:3000/api/catalogs/alturas-olas",
+      "https://azaharlimpieza.es/api/catalogs/alturas-olas",
     ).then((r) => r.json());
     const olasSelect = document.getElementById("altura_olas");
     olas.forEach((o) => {
@@ -96,7 +96,7 @@ async function loadCatalogs() {
     });
 
     const turbideces = await fetch(
-      "http://localhost:3000/api/catalogs/turbideces",
+      "https://azaharlimpieza.es/api/catalogs/turbideces",
     ).then((r) => r.json());
     const turbidezSelect = document.getElementById("turbidez");
     turbideces.forEach((t) => {
@@ -107,7 +107,7 @@ async function loadCatalogs() {
     });
 
     const tiempos = await fetch(
-      "http://localhost:3000/api/catalogs/tiempos-atmosfericos",
+      "https://azaharlimpieza.es/api/catalogs/tiempos-atmosfericos",
     ).then((r) => r.json());
     const tiempoSelect = document.getElementById("tiempo");
     tiempos.forEach((t) => {
@@ -118,7 +118,7 @@ async function loadCatalogs() {
     });
 
     const pescas = await fetch(
-      "http://localhost:3000/api/catalogs/tipos-pesca",
+      "https://azaharlimpieza.es/api/catalogs/tipos-pesca",
     ).then((r) => r.json());
     const pescaSelect = document.getElementById("tipo_pesca");
     pescas.forEach((p) => {
@@ -129,7 +129,7 @@ async function loadCatalogs() {
     });
 
     const cebosNat = await fetch(
-      "http://localhost:3000/api/catalogs/cebos-naturales",
+      "https://azaharlimpieza.es/api/catalogs/cebos-naturales",
     ).then((r) => r.json());
     const ceboNatSelect = document.getElementById("cebo_natural");
     cebosNat.forEach((c) => {
@@ -140,7 +140,7 @@ async function loadCatalogs() {
     });
 
     const cebosArt = await fetch(
-      "http://localhost:3000/api/catalogs/cebos-artificiales",
+      "https://azaharlimpieza.es/api/catalogs/cebos-artificiales",
     ).then((r) => r.json());
     const ceboArtSelect = document.getElementById("cebo_artificial");
     cebosArt.forEach((c) => {
@@ -321,7 +321,7 @@ async function inicializarInsertarJornada() {
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/jornadas", {
+        const response = await fetch("https://azaharlimpieza.es/api/jornadas", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(datos),
