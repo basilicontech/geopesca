@@ -57,7 +57,7 @@ async function cargarConcursos(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando concursos...</div>';
 
     const response = await fetch(
-      "https://azaharlimpieza.es/api/concursos/list",
+      "https://geopesca.basilicontech.com/api/concursos/list",
     );
 
     if (!response.ok) {
@@ -158,7 +158,7 @@ async function eliminarConcurso(id) {
 
   try {
     const response = await fetch(
-      `https://azaharlimpieza.es/api/concursos/${id}`,
+      `https://geopesca.basilicontech.com/api/concursos/${id}`,
       {
         method: "DELETE",
       },
@@ -189,7 +189,7 @@ async function cargarAdministradores(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando administradores...</div>';
 
     const response = await fetch(
-      "https://azaharlimpieza.es/api/administradores/list",
+      "https://geopesca.basilicontech.com/api/administradores/list",
     );
 
     if (!response.ok) {
@@ -281,7 +281,7 @@ async function eliminarAdministrador(id) {
 
   try {
     const response = await fetch(
-      `https://azaharlimpieza.es/api/administradores/${id}`,
+      `https://geopesca.basilicontech.com/api/administradores/${id}`,
       {
         method: "DELETE",
       },
@@ -312,7 +312,7 @@ async function cargarPescadores(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando pescadores...</div>';
 
     const response = await fetch(
-      "https://azaharlimpieza.es/api/pescadores/list",
+      "https://geopesca.basilicontech.com/api/pescadores/list",
     );
 
     if (!response.ok) {
@@ -401,7 +401,7 @@ async function eliminarPescador(id) {
 
   try {
     const response = await fetch(
-      `https://azaharlimpieza.es/api/pescadores/${id}`,
+      `https://geopesca.basilicontech.com/api/pescadores/${id}`,
       {
         method: "DELETE",
       },
@@ -431,7 +431,7 @@ async function cargarJornadas(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando jornadas...</div>';
 
-    const response = await fetch("https://azaharlimpieza.es/api/jornadas/list");
+    const response = await fetch("https://geopesca.basilicontech.com/api/jornadas/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -529,7 +529,7 @@ async function eliminarJornada(id) {
 
   try {
     const response = await fetch(
-      `https://azaharlimpieza.es/api/jornadas/${id}`,
+      `https://geopesca.basilicontech.com/api/jornadas/${id}`,
       {
         method: "DELETE",
       },
@@ -559,7 +559,7 @@ async function cargarClubs(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando clubs...</div>';
 
-    const response = await fetch("https://azaharlimpieza.es/api/clubs/list");
+    const response = await fetch("https://geopesca.basilicontech.com/api/clubs/list");
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -648,7 +648,7 @@ async function cargarClubs(centro) {
 async function validarClub(id) {
   try {
     const response = await fetch(
-      `https://azaharlimpieza.es/api/clubs/${id}/validar`,
+      `https://geopesca.basilicontech.com/api/clubs/${id}/validar`,
       {
         method: "PUT",
       },
@@ -683,7 +683,7 @@ async function eliminarClub(id) {
   }
 
   try {
-    const response = await fetch(`https://azaharlimpieza.es/api/clubs/${id}`, {
+    const response = await fetch(`https://geopesca.basilicontech.com/api/clubs/${id}`, {
       method: "DELETE",
     });
 

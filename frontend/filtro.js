@@ -29,7 +29,7 @@ class FiltroPesca {
   async cargarPescadores() {
     try {
       const response = await fetch(
-        "https://azaharlimpieza.es/api/catalogs/pescadores",
+        "https://geopesca.basilicontech.com/api/catalogs/pescadores",
       );
       const pescadores = await response.json();
 
@@ -53,7 +53,7 @@ class FiltroPesca {
   async cargarConcursos() {
     try {
       // ✅ Usar la misma lógica que los pescadores pero con clubs
-      const response = await fetch("https://azaharlimpieza.es/api/catalogs/clubs");
+      const response = await fetch("https://geopesca.basilicontech.com/api/catalogs/clubs");
       const clubs = await response.json();
 
       const selector = document.getElementById("selectorConcurso");
