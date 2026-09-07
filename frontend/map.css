@@ -1,22 +1,20 @@
 /* map.css - Estilos exclusivos del mapa y sus elementos */
-
+/* Fuerza una altura mínima para el mapa */
 #map {
-  height: 100% !important;
+  height: 500px !important;
   min-height: 500px !important;
   width: 100% !important;
-  flex: 1;
 }
 
+/* Asegura que la columna central tenga altura */
 .columna-centro {
   min-height: 500px;
 }
-
-/* ===== POPUPS ===== */
+/* Popups de Leaflet */
 .leaflet-popup-content {
   font-size: 12px;
   line-height: 1.4;
   min-width: 200px;
-  max-width: 300px;
 }
 
 .leaflet-popup-content strong {
@@ -27,85 +25,13 @@
   border-radius: 8px;
 }
 
-/* ===== MARCADORES ===== */
+/* Marcadores personalizados (si se usan) */
 .custom-marker {
   border: 2px solid white;
   border-radius: 50%;
 }
 
-/* ===== CONTROLES ===== */
+/* Controles del mapa */
 .leaflet-control-zoom a {
   background-color: white;
-}
-
-/* ============================================ */
-/* ===== RESPONSIVE MAPA ===== */
-/* ============================================ */
-
-/* Tablets */
-@media (max-width: 1024px) and (min-width: 769px) {
-  #map {
-    min-height: 400px !important;
-  }
-
-  .columna-centro {
-    min-height: 400px;
-  }
-
-  .leaflet-popup-content {
-    font-size: 11px;
-    min-width: 160px;
-    max-width: 240px;
-  }
-}
-
-/* Móviles */
-@media (max-width: 768px) {
-  #map {
-    min-height: 350px !important;
-    height: 50vh !important;
-  }
-
-  .columna-centro {
-    min-height: 350px;
-  }
-
-  .leaflet-popup-content {
-    font-size: 11px;
-    min-width: 140px;
-    max-width: 220px;
-  }
-
-  .leaflet-control-zoom {
-    margin-bottom: 10px !important;
-  }
-
-  .leaflet-control-zoom a {
-    width: 30px !important;
-    height: 30px !important;
-    line-height: 30px !important;
-    font-size: 16px !important;
-  }
-}
-
-/* Móviles muy pequeños */
-@media (max-width: 480px) {
-  #map {
-    min-height: 280px !important;
-    height: 40vh !important;
-  }
-
-  .columna-centro {
-    min-height: 280px;
-  }
-
-  .leaflet-popup-content {
-    font-size: 10px;
-    min-width: 120px;
-    max-width: 180px;
-  }
-
-  .leaflet-popup-content-wrapper {
-    padding: 6px 10px !important;
-  }
 }
