@@ -1,0 +1,37 @@
+/* map.css - Estilos exclusivos del mapa y sus elementos */
+/* Fuerza una altura mínima para el mapa */
+#map {
+  height: 500px !important;
+  min-height: 500px !important;
+  width: 100% !important;
+}
+
+/* Asegura que la columna central tenga altura */
+.columna-centro {
+  min-height: 500px;
+}
+/* Popups de Leaflet */
+.leaflet-popup-content {
+  font-size: 12px;
+  line-height: 1.4;
+  min-width: 200px;
+}
+
+.leaflet-popup-content strong {
+  font-weight: bold;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+/* Marcadores personalizados (si se usan) */
+.custom-marker {
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+/* Controles del mapa */
+.leaflet-control-zoom a {
+  background-color: white;
+}

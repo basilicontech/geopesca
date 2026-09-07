@@ -1,10 +1,11 @@
 /* columna-izquierda.css - Estilos para la columna izquierda de filtros */
 
+/* Reset de box-sizing para todos los elementos */
 * {
   box-sizing: border-box;
 }
 
-/* ===== CONTENEDOR DE FILTROS ===== */
+/* Contenedor principal de filtros */
 .filtros-contenedor {
   padding: 20px 15px;
   background: rgba(255, 255, 255, 0.95);
@@ -17,6 +18,7 @@
   overflow-x: hidden;
 }
 
+/* Título de la sección */
 .filtros-contenedor h3 {
   color: #2c5f6e;
   margin-bottom: 20px;
@@ -25,7 +27,7 @@
   font-size: 1.2rem;
 }
 
-/* ===== GRUPOS DE FILTRO ===== */
+/* Grupo de filtros individual */
 .filtro-grupo {
   margin-bottom: 20px;
 }
@@ -56,12 +58,12 @@
   box-shadow: 0 0 0 3px rgba(74, 158, 179, 0.1);
 }
 
-/* ===== BOTONES AÑADIR ===== */
-.btn-agregar-pescador,
-.btn-agregar-concurso {
+/* Botón para añadir pescador */
+.btn-agregar-pescador {
   width: 100%;
   margin-top: 10px;
   padding: 8px 12px;
+  background: #28a745;
   color: white;
   border: none;
   border-radius: 6px;
@@ -71,25 +73,34 @@
   transition: background 0.3s ease;
 }
 
-.btn-agregar-pescador {
-  background: #28a745;
-}
-
 .btn-agregar-pescador:hover {
   background: #19672b;
 }
 
+/* Botón para añadir concurso */
 .btn-agregar-concurso {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
   background: #6f42c1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .btn-agregar-concurso:hover {
   background: #5a32a3;
 }
 
-/* ===== LISTAS DE SELECCIONADOS ===== */
-.pescadores-seleccionados,
-.concursos-seleccionados {
+/* ============================================ */
+/* SECCIÓN DE PESCADORES SELECCIONADOS */
+/* ============================================ */
+
+.pescadores-seleccionados {
   margin-bottom: 20px;
   padding: 12px;
   background: #fafafa;
@@ -97,26 +108,22 @@
   border: 1px solid #e0e0e0;
 }
 
-.pescadores-seleccionados h4,
-.concursos-seleccionados h4 {
+.pescadores-seleccionados h4 {
   color: #555;
   margin-bottom: 8px;
   font-size: 0.85rem;
   font-weight: bold;
 }
 
-.lista-pescadores-filtro,
-.lista-concursos-filtro {
+.lista-pescadores-filtro {
   max-height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
 }
 
-/* ===== TAGS ===== */
-.tag-pescador,
-.tag-concurso,
-.pescador-filtro-item {
+/* Contenedor de cada pescador - La X siempre a la derecha */
+.tag-pescador {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -130,27 +137,12 @@
   box-sizing: border-box;
 }
 
-.tag-pescador:last-child,
-.tag-concurso:last-child,
-.pescador-filtro-item:last-child {
+.tag-pescador:last-child {
   border-bottom: none;
 }
 
-.tag-pescador span,
-.tag-concurso span,
-.pescador-filtro-item span {
-  flex: 1;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
-}
-
-/* ===== BOTONES ELIMINAR ===== */
-.btn-remover-pescador,
-.btn-remover-concurso,
-.btn-eliminar-pescador {
+/* Botón de eliminar pescador (X) */
+.btn-remover-pescador {
   background: none;
   border: none;
   cursor: pointer;
@@ -170,13 +162,140 @@
   border-radius: 0;
 }
 
-.btn-remover-pescador:hover,
-.btn-remover-concurso:hover,
-.btn-eliminar-pescador:hover {
+.btn-remover-pescador:hover {
   color: #c0392b;
 }
 
-/* ===== BOTONES DE FILTRO ===== */
+/* ============================================ */
+/* SECCIÓN DE CONCURSOS SELECCIONADOS */
+/* ============================================ */
+
+.concursos-seleccionados {
+  margin-bottom: 20px;
+  padding: 12px;
+  background: #fafafa;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.concursos-seleccionados h4 {
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.lista-concursos-filtro {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Contenedor de cada concurso - La X siempre a la derecha */
+.tag-concurso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tag-concurso:last-child {
+  border-bottom: none;
+}
+
+/* Botón de eliminar concurso (X) - Mismo estilo que el de pescadores */
+.btn-remover-concurso {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  margin: 0;
+  color: #ff0000;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  width: auto;
+  min-width: 20px;
+  height: auto;
+  border-radius: 0;
+}
+
+.btn-remover-concurso:hover {
+  color: #c0392b;
+}
+
+/* ============================================ */
+/* ESTILOS ADICIONALES (por compatibilidad) */
+/* ============================================ */
+
+/* Elemento individual de pescador - La X siempre a la derecha */
+.pescador-filtro-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pescador-filtro-item:last-child {
+  border-bottom: none;
+}
+
+.pescador-filtro-item span {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.btn-eliminar-pescador {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  margin: 0;
+  color: #999;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  width: auto;
+  min-width: 20px;
+  height: auto;
+  border-radius: 0;
+}
+
+.btn-eliminar-pescador:hover {
+  color: #ff0000;
+}
+
+/* ============================================ */
+/* BOTONES DE FILTRO */
+/* ============================================ */
+
 .botones-filtro {
   display: flex;
   gap: 10px;
@@ -212,7 +331,10 @@
   background: #c0392b;
 }
 
-/* ===== MENSAJES ===== */
+/* ============================================ */
+/* MENSAJE DE FILTRO */
+/* ============================================ */
+
 .mensaje-filtro {
   margin-top: 15px;
   padding: 10px;
@@ -243,7 +365,10 @@
   display: block;
 }
 
-/* ===== SCROLL ===== */
+/* ============================================ */
+/* SCROLL PERSONALIZADO */
+/* ============================================ */
+
 .filtros-contenedor::-webkit-scrollbar {
   width: 8px;
 }
@@ -262,7 +387,9 @@
   background: #3a7e8f;
 }
 
-.empty-message {
+/* Estado vacío */
+.lista-pescadores-filtro .empty-message,
+.lista-concursos-filtro .empty-message {
   color: #999;
   font-size: 0.8rem;
   font-style: italic;
@@ -270,117 +397,17 @@
 }
 
 /* ============================================ */
-/* ===== RESPONSIVE FILTROS ===== */
+/* RESPONSIVE */
 /* ============================================ */
 
-/* Tablets */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .filtros-contenedor {
-    padding: 15px 12px;
-    margin: 10px;
-  }
-
-  .filtro-grupo label {
-    font-size: 0.8rem;
-  }
-
-  .filtro-grupo select,
-  .filtro-grupo input {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
-
-  .botones-filtro {
-    gap: 6px;
-  }
-
-  .botones-filtro button {
-    font-size: 0.75rem;
-    padding: 6px;
-  }
-}
-
-/* Móviles */
 @media (max-width: 768px) {
   .filtros-contenedor {
-    margin: 0;
-    padding: 16px 12px;
-    height: auto;
-    max-height: 70vh;
-    border-radius: 12px;
+    margin: 10px;
+    padding: 15px 10px;
   }
-
-  .filtros-contenedor h3 {
-    font-size: 1rem;
-    margin-bottom: 12px;
-  }
-
-  .filtro-grupo {
-    margin-bottom: 14px;
-  }
-
-  .filtro-grupo label {
-    font-size: 0.8rem;
-    margin-bottom: 4px;
-  }
-
-  .filtro-grupo select,
-  .filtro-grupo input {
-    font-size: 14px !important;
-    padding: 10px 12px !important;
-  }
-
+  
   .botones-filtro {
     flex-direction: column;
     gap: 8px;
-  }
-
-  .botones-filtro button {
-    font-size: 0.85rem;
-    padding: 10px;
-  }
-
-  .btn-agregar-pescador,
-  .btn-agregar-concurso {
-    font-size: 0.8rem;
-    padding: 10px;
-  }
-
-  .lista-pescadores-filtro,
-  .lista-concursos-filtro {
-    max-height: 150px;
-  }
-
-  .tag-pescador,
-  .tag-concurso {
-    font-size: 0.8rem;
-    padding: 5px 0;
-  }
-}
-
-/* Móviles muy pequeños */
-@media (max-width: 480px) {
-  .filtros-contenedor {
-    padding: 12px 8px;
-  }
-
-  .filtros-contenedor h3 {
-    font-size: 0.9rem;
-  }
-
-  .filtro-grupo select,
-  .filtro-grupo input {
-    font-size: 13px !important;
-    padding: 8px 10px !important;
-  }
-
-  .tag-pescador,
-  .tag-concurso {
-    font-size: 0.7rem;
-  }
-
-  .btn-remover-pescador,
-  .btn-remover-concurso {
-    font-size: 0.75rem;
   }
 }

@@ -10,7 +10,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
 .modal-content {
@@ -91,16 +90,17 @@
   padding: 4px 0;
 }
 
-/* ===== SCROLL ===== */
+/* Scroll personalizado */
 .modal-content::-webkit-scrollbar {
   width: 8px;
 }
 
 .modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #e41212;
   border-radius: 4px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
   background: #1e5799;
-  border-radius: 4
+  border-radius: 4px;
+}
