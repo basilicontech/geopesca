@@ -136,5 +136,3 @@ document.addEventListener("DOMContentLoaded", function () {
     btnAcerca.addEventListener("click", abrirAcercaDe);
   }
 });
-
-window.abrirAcercaDe = abrirAcercaDe;

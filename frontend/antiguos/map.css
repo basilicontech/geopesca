@@ -35,28 +35,3 @@
 .leaflet-control-zoom a {
   background-color: white;
 }
-
-/* ============================================ */
-/* RESPONSIVE - Mapa */
-/* ============================================ */
-
-@media (max-width: 1024px) {
-  #map {
-    height: 400px !important;
-    min-height: 400px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  #map {
-    height: 350px !important;
-    min-height: 350px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  #map {
-    height: 300px !important;
-    min-height: 300px !important;
-  }
-}

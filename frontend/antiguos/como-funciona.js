@@ -94,5 +94,3 @@ document.addEventListener("DOMContentLoaded", function () {
     btnComoFunciona.addEventListener("click", abrirComoFunciona);
   }
 });
-
-window.abrirComoFunciona = abrirComoFunciona;

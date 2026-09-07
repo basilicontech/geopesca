@@ -305,190 +305,45 @@
 
 /* Botón de eliminar (papelera) */
 .btn-eliminar-admin {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-  padding: 4px 8px;
-  transition: all 0.2s ease;
-  opacity: 0.6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+    opacity: 0.6;
 }
 
 .btn-eliminar-admin:hover {
-  opacity: 1;
-  transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 /* Botón de validar (Pendiente -> Validado) */
 .badge-validado {
-  background: #28a745;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
 }
 
 /* Botón de pendiente */
 .btn-validar-admin {
-  background: #ffc107;
-  color: #856404;
-  border: none;
-  padding: 4px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 0.75rem;
-  font-weight: bold;
-  transition: all 0.2s ease;
+    background: #ffc107;
+    color: #856404;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
 }
 
 .btn-validar-admin:hover {
-  background: #e0a800;
-  transform: scale(1.05);
-}
-
-/* ============================================ */
-/* RESPONSIVE - Administrador */
-/* ============================================ */
-
-@media (max-width: 1024px) {
-  .admin-izquierda {
-    border-radius: 12px 12px 0 0;
-    margin: 10px 10px 0 10px;
-  }
-
-  .admin-centro {
-    border-radius: 0;
-    margin: 0 10px;
-  }
-
-  .admin-derecha {
-    border-radius: 0 0 12px 12px;
-    margin: 0 10px 10px 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .admin-izquierda {
-    border-radius: 12px 12px 0 0;
-    margin: 8px 8px 0 8px;
-    padding: 12px 10px;
-  }
-
-  .admin-centro {
-    margin: 0 8px;
-    padding: 12px 14px;
-  }
-
-  .admin-derecha {
-    margin: 0 8px 8px 8px;
-    padding: 12px 10px;
-  }
-
-  .admin-botones {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .admin-btn {
-    flex: 1 1 auto;
-    min-width: 80px;
-    text-align: center;
-    font-size: 0.8rem;
-    padding: 8px 12px;
-  }
-
-  .admin-centro h2 {
-    font-size: 1.1rem;
-  }
-
-  .tabla-admin {
-    font-size: 0.8rem;
-  }
-
-  .tabla-admin th,
-  .tabla-admin td {
-    padding: 6px 8px;
-  }
-
-  .admin-card p {
-    font-size: 1.5rem;
-  }
-
-  .admin-card h3 {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .admin-izquierda {
-    margin: 6px 6px 0 6px;
-    padding: 10px 8px;
-  }
-
-  .admin-centro {
-    margin: 0 6px;
-    padding: 10px 10px;
-  }
-
-  .admin-derecha {
-    margin: 0 6px 6px 6px;
-    padding: 10px 8px;
-  }
-
-  .admin-btn {
-    font-size: 0.7rem;
-    padding: 6px 8px;
-    min-width: 60px;
-  }
-
-  .admin-centro h2 {
-    font-size: 1rem;
-  }
-
-  .tabla-admin {
-    font-size: 0.7rem;
-  }
-
-  .tabla-admin th,
-  .tabla-admin td {
-    padding: 4px 6px;
-  }
-
-  .admin-card {
-    padding: 12px;
-  }
-
-  .admin-card p {
-    font-size: 1.2rem;
-  }
-
-  .admin-card h3 {
-    font-size: 0.7rem;
-  }
-
-  .btn-validar-admin {
-    font-size: 0.65rem;
-    padding: 2px 8px;
-  }
-
-  .btn-eliminar-admin {
-    font-size: 0.9rem;
-    padding: 2px 6px;
-  }
-
-  .badge-validado,
-  .badge-pendiente {
-    font-size: 0.65rem;
-    padding: 2px 8px;
-  }
-
-  .admin-izquierda h3 {
-    font-size: 0.9rem;
-  }
-
-  .admin-derecha h3 {
-    font-size: 0.9rem;
-  }
+    background: #e0a800;
+    transform: scale(1.05);
 }

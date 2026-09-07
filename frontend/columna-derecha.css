@@ -13,3 +13,26 @@
 #fishingForm {
   display: none;
 }
+
+/* ============================================ */
+/* RESPONSIVE - Columna derecha */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+  .columna-derecha {
+    padding: 10px 15px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .columna-derecha {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .columna-derecha {
+    padding: 6px 8px;
+  }
+}
