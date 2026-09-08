@@ -654,13 +654,10 @@
   /* FIX: Altura máxima para filtros y formulario */
   /* ============================================ */
 
-  .filtros-contenedor {
-    flex: 1 1 auto;
-    min-height: 0;
-    max-height: 100vh;
-    overflow-y: auto;
-    height: auto;
-  }
+.filtros-contenedor {
+  max-height: 60vh;
+  overflow-y: auto;
+}
 
   .columna-derecha {
     max-height: 60vh;
