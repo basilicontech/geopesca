@@ -579,8 +579,11 @@
   }
 
   .presentacion-foto {
-    max-width: 100%;
+    max-width: 80%;
+    height: auto;
+    border-radius: 50%;
   }
+}
 
   .presentacion-nombre {
     font-size: 1.3rem;
