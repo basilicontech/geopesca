@@ -9,8 +9,8 @@
 html,
 body {
   height: 100%;
-  height: 100dvh; /* ← AÑADE ESTO (dynamic viewport height) */
-  min-height: 100dvh; /* ← Y ESTO */
+  height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -123,42 +123,122 @@ form {
 @media (max-width: 1024px) {
   .contenedor-principal {
     flex-wrap: wrap;
+    overflow-y: auto; /* Permitir scroll si el contenido excede */
   }
 
   .columna-izquierda {
     width: 100%;
     order: 2;
+    max-height: 400px; /* Aumentado para dar más espacio */
+    height: auto;
+    overflow-y: auto;
   }
 
   .columna-centro {
     width: 100%;
     order: 1;
     min-height: 400px;
+    height: 50vh; /* Usar viewport height relativo */
   }
 
   .columna-derecha {
     width: 100%;
     order: 3;
+    max-height: 400px;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  /* Ajustar el contenedor de filtros dentro de la columna */
+  .filtros-contenedor {
+    height: auto !important;
+    max-height: none !important;
+    min-height: auto !important;
+    margin: 10px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .columna-centro {
-    min-height: 350px;
+  .contenedor-principal {
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: auto;
+    flex: 1 1 auto;
   }
 
   .columna-izquierda {
-    max-height: 300px;
+    width: 100%;
+    order: 2;
+    max-height: none; /* Eliminar altura máxima fija */
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .columna-centro {
+    width: 100%;
+    order: 1;
+    min-height: 350px;
+    height: 45vh;
+  }
+
+  .columna-derecha {
+    width: 100%;
+    order: 3;
+    max-height: none;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  /* El contenedor de filtros se adapta al contenido */
+  .filtros-contenedor {
+    height: auto !important;
+    max-height: none !important;
+    min-height: auto !important;
+    margin: 8px !important;
+    overflow-y: visible !important;
+  }
+
+  /* Asegurar que el mapa no se deforme */
+  #map {
+    height: 100% !important;
+    min-height: 350px !important;
+  }
+
+  /* El footer permanece al final sin espacios extra */
+  .footer {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 0;
   }
 }
 
 @media (max-width: 480px) {
   .columna-centro {
     min-height: 300px;
+    height: 40vh;
   }
 
   .columna-izquierda {
-    max-height: 250px;
+    width: 100%;
+    order: 2;
+    max-height: none;
+    height: auto;
+  }
+
+  .columna-derecha {
+    width: 100%;
+    order: 3;
+    max-height: none;
+    height: auto;
+  }
+
+  .filtros-contenedor {
+    margin: 6px !important;
+    padding: 10px 8px !important;
+  }
+
+  #map {
+    min-height: 300px !important;
   }
 }
 
@@ -181,5 +261,14 @@ form {
   .menu-desplegable.abierto {
     position: relative;
     z-index: 100;
+  }
+
+  /* Eliminar alturas fijas que causan espacios */
+  .columna-izquierda,
+  .columna-derecha {
+    flex: 0 0 auto;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
   }
 }
