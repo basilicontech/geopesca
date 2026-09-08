@@ -121,6 +121,7 @@ form {
 @media (max-width: 1024px) {
   .contenedor-principal {
     flex-wrap: wrap;
+    height: 100% !important;
   }
 
   .columna-izquierda {
