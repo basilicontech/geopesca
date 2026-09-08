@@ -615,20 +615,15 @@
     height: auto !important;
     min-height: 0 !important;
     overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
   }
 
   /* Cada columna ocupa su espacio sin forzar alturas excesivas */
   .columna-centro,
   .columna-derecha,
-  .columna-izquierda,
-  .filtros-contenedor {
+  .columna-izquierda {
     min-height: auto !important;
     height: auto !important;
     max-height: none !important;
-    width: 100% !important;
-    flex: 0 1 auto !important;
   }
 
   /* El mapa ocupa el espacio de su columna */
@@ -655,20 +650,18 @@
     flex-shrink: 0 !important;
   }
 
-  /* Eliminar límites de altura para filtros y formulario */
+  /* ============================================ */
+  /* FIX: Altura máxima para filtros y formulario */
+  /* ============================================ */
+
   .filtros-contenedor {
-    max-height: none !important;
-    overflow-y: visible !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
   }
 
   .columna-derecha {
-    max-height: none !important;
-    overflow-y: visible !important;
-  }
-
-  .filtros-contenedor.mostrar,
-  .columna-derecha.mostrar {
-    max-height: none !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
   }
 }
 
