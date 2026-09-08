@@ -15,6 +15,13 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;          /* ✅ Mejor que 100vh para móvil */
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   background: linear-gradient(135deg, #e8f4f8 0%, #d1e9f0 100%);
   color: #1a3c40;
