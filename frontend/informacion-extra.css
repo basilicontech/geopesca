@@ -570,7 +570,8 @@
     width: 100%;
     justify-content: center;
     font-size: 0.85rem;
-    padding: 114px 116px;
+    padding: 16px 20px;
+    min-height: 52px;
   }
 
   .btn-modal-info-small {
