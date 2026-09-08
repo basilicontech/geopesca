@@ -10,7 +10,7 @@ const contenidoAcercaDe = `
     <!-- BLOQUE DE PRESENTACIÓN -->
     <div class="bloque-presentacion">
       <div class="presentacion-foto">
-        <img src="images/tu-foto.jpg" alt="Alfonso Ismael Manano Rodríguez">
+        <img src="images/foto-perfil.jpg" alt="Alfonso Ismael Manano Rodríguez">
       </div>
       <div class="presentacion-texto">
         <div class="presentacion-nombre">Alfonso Ismael Manzano Rodríguez</div>

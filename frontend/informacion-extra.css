@@ -257,8 +257,8 @@
 
 @media (max-width: 600px) {
   .presentacion-foto {
-    max-width: 100%;
-    border-radius: 6px;
+    max-width: 200px;
+    border-radius: 50%;
   }
 
   .presentacion-nombre {
@@ -271,6 +271,10 @@
 }
 
 @media (max-width: 400px) {
+  .presentacion-foto {
+    max-width: 150px;
+  }
+
   .presentacion-nombre {
     font-size: 1.2rem;
   }
@@ -347,9 +351,9 @@
 }
 
 .btn-modal-info {
-  padding: 10px 24px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -358,56 +362,34 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-}
-
-.btn-modal-info-primary {
   background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 100%);
   color: white;
 }
 
-.btn-modal-info-primary:hover {
+.btn-modal-info:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(26, 122, 148, 0.35);
-}
-
-.btn-modal-info-secondary {
-  background: #e8edf0;
-  color: #2d3e50;
-}
-
-.btn-modal-info-secondary:hover {
-  background: #d5dce0;
-  transform: translateY(-2px);
-}
-
-.btn-modal-info-success {
-  background: #2ecc71;
-  color: white;
-}
-
-.btn-modal-info-success:hover {
-  background: #27ae60;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(46, 204, 113, 0.35);
+  box-shadow: 0 4px 12px rgba(26, 122, 148, 0.35);
 }
 
 /* Botón pequeño centrado */
-.btn-modal-info-small {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
+.btn-modal-info {
+  padding: 12px 28px;
   border: none;
-  border-radius: 20px;
-  font-size: 0.85rem;
+  border-radius: 30px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 100%);
   color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
 }
 
-.btn-modal-info-small:hover {
+.btn-modal-info:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(26, 122, 148, 0.35);
 }
@@ -491,9 +473,8 @@
   }
 
   .presentacion-foto {
-    width: 100px;
-    height: 100px;
-    min-width: 100px;
+    width: 80%;
+    height: 80%;
   }
 
   .presentacion-saludo {

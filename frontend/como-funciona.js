@@ -43,7 +43,7 @@ const contenidoComoFunciona = `
     </ul>
   </div>
   <div class="modal-info-footer">
-    <button class="btn-modal-info btn-modal-info-primary" onclick="cerrarComoFunciona(); abrirAcercaDe();">
+    <button class="btn-modal-info btn-modal-info-small" onclick="cerrarComoFunciona(); abrirAcercaDe();">
       ℹ️ Acerca de
     </button>
   </div>
