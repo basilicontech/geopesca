@@ -661,3 +661,68 @@
     width: 100%;
   }
 }
+
+/* ============================================ */
+/* FIX: Ajuste de altura en móvil para eliminar espacio vacío */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  /* Contenedor principal ocupa toda la altura disponible */
+  .contenedor-principal {
+    flex: 1;
+    min-height: calc(100vh - 200px); /* Ajusta según cabecera + footer */
+    height: auto;
+  }
+
+  /* Columnas ocupan toda la altura */
+  .columna-centro,
+  .columna-derecha,
+  .filtros-contenedor {
+    min-height: calc(100vh - 200px);
+    height: auto;
+  }
+
+  /* El mapa ocupa toda la altura disponible */
+  #map {
+    height: calc(100vh - 200px) !important;
+    min-height: calc(100vh - 200px) !important;
+    width: 100% !important;
+  }
+
+  /* Filtros y formulario ocupan toda la altura */
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    display: block !important;
+    min-height: calc(100vh - 200px);
+    height: auto;
+    overflow-y: auto;
+  }
+
+  /* Footer se mantiene abajo */
+  .footer {
+    position: relative;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor-principal {
+    min-height: calc(100vh - 180px);
+  }
+
+  .columna-centro,
+  .columna-derecha,
+  .filtros-contenedor {
+    min-height: calc(100vh - 180px);
+  }
+
+  #map {
+    height: calc(100vh - 180px) !important;
+    min-height: calc(100vh - 180px) !important;
+  }
+
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    min-height: calc(100vh - 180px);
+  }
+}

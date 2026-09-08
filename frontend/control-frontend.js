@@ -102,20 +102,23 @@ function inicializarMenuHamburguesa() {
     const formulario = document.querySelector(".columna-derecha");
     const mapa = document.querySelector(".columna-centro");
 
-    // Ocultar filtros y formulario
     if (filtros) {
       filtros.classList.remove("mostrar");
-      filtros.style.display = "none"; // <-- Forzar ocultación
+      filtros.style.display = "none";
     }
     if (formulario) {
       formulario.classList.remove("mostrar");
-      formulario.style.display = "none"; // <-- Forzar ocultación
+      formulario.style.display = "none";
     }
-
-    // Mostrar solo el mapa
     if (mapa) {
       mapa.style.display = "block";
       mapa.style.width = "100%";
+      // Forzar actualización del mapa
+      if (typeof map !== "undefined" && map) {
+        setTimeout(function () {
+          map.invalidateSize();
+        }, 100);
+      }
     }
   }
 
@@ -260,6 +263,12 @@ function inicializarMenuHamburguesa() {
           setTimeout(() => {
             filtros.scrollIntoView({ behavior: "smooth" });
           }, 100);
+          // ✅ CAMBIO 1: Forzar actualización del mapa
+          if (typeof map !== "undefined" && map) {
+            setTimeout(function () {
+              map.invalidateSize();
+            }, 300);
+          }
         }
       }
       window.cerrarMenus();
@@ -274,6 +283,12 @@ function inicializarMenuHamburguesa() {
       if (mapa) {
         setTimeout(() => {
           mapa.scrollIntoView({ behavior: "smooth" });
+          // ✅ CAMBIO 2: Forzar actualización del mapa
+          if (typeof map !== "undefined" && map) {
+            setTimeout(function () {
+              map.invalidateSize();
+            }, 300);
+          }
         }, 100);
       }
       window.cerrarMenus();
@@ -307,6 +322,12 @@ function inicializarMenuHamburguesa() {
           setTimeout(() => {
             formulario.scrollIntoView({ behavior: "smooth" });
           }, 100);
+          // ✅ CAMBIO 3: Forzar actualización del mapa
+          if (typeof map !== "undefined" && map) {
+            setTimeout(function () {
+              map.invalidateSize();
+            }, 300);
+          }
         }
       }
       window.cerrarMenus();
