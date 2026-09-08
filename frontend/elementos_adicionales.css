@@ -609,53 +609,60 @@
   /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
   /* ============================================ */
 
-  /* Contenedor principal */
+  /* Contenedor principal - flex column */
   .contenedor-principal {
-    flex: 1 1 auto;
-    height: auto;
-    min-height: 0;
-    overflow: hidden;
+    display: flex ;
+    flex-direction: column ;
+    flex: 1 1 auto ;
+    height: auto ;
+    min-height: 0 ;
+    overflow: hidden ;
   }
 
-  /* Columnas - deben ocupar todo el espacio disponible */
+  /* Columnas - se estiran y son flex para sus hijos */
   .columna-centro,
   .columna-derecha,
   .columna-izquierda {
-    min-height: auto ;
-    height: 100% ;        /* ← NUEVO: ocupan todo el espacio */
+    flex: 1 1 auto ;
+    min-height: 0 ;
+    height: auto ;
     max-height: none ;
+    display: flex ;
+    flex-direction: column ;
   }
 
-  /* MAPA */
+  /* MAPA - ocupa todo el espacio de su columna */
   #map {
-    height: 100% ;
+    flex: 1 1 auto ;
     min-height: 350px ;
     width: 100% ;
-    flex: 1 1 auto ;      /* ← NUEVO: se estira para llenar */
   }
 
   /* FILTROS Y FORMULARIO (cuando están activos) */
   .filtros-contenedor.mostrar,
   .columna-derecha.mostrar {
-    display: block;
-    height: auto;
-    min-height: auto;
-    max-height: none;
-    overflow-y: visible;
+    display: block ;
+    height: auto ;
+    min-height: auto ;
+    max-height: none ;
+    overflow-y: visible ;
+    flex: 1 1 auto ;          /* ← NUEVO */
   }
 
   /* FILTROS Y FORMULARIO (límite de altura) */
   .filtros-contenedor,
   .columna-derecha {
-    max-height: 60vh;
-    overflow-y: auto;
+    flex: 1 1 auto ;          /* ← NUEVO: se estiran para llenar */
+    max-height: 60vh ;
+    overflow-y: auto ;
+    height: auto ;
   }
 
   /* Footer */
   .footer {
-    position: relative;
-    margin-top: 0;
-    flex-shrink: 0;
+    position: relative ;
+    margin-top: 0 ;
+    flex-shrink: 0 ;
   }
 }
 
