@@ -272,7 +272,8 @@
 
 @media (max-width: 400px) {
   .presentacion-foto {
-    max-width: 150px;
+    width: 80%;
+    height: 80%;
   }
 
   .presentacion-nombre {
