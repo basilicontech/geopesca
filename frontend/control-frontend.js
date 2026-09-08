@@ -240,12 +240,23 @@ function inicializarMenuHamburguesa() {
       const formulario = document.querySelector(".columna-derecha");
       const mapa = document.querySelector(".columna-centro");
 
-      if (formulario) formulario.classList.remove("mostrar");
+      // Ocultar formulario
+      if (formulario) {
+        formulario.classList.remove("mostrar");
+        formulario.style.display = "none";
+      }
+      // Ocultar mapa
       if (mapa) mapa.style.display = "none";
 
+      // Mostrar/ocultar filtros
       if (filtros) {
-        filtros.classList.toggle("mostrar");
-        if (filtros.classList.contains("mostrar")) {
+        const estaVisible = filtros.classList.contains("mostrar");
+        if (estaVisible) {
+          filtros.classList.remove("mostrar");
+          filtros.style.display = "none";
+        } else {
+          filtros.classList.add("mostrar");
+          filtros.style.display = "block";
           setTimeout(() => {
             filtros.scrollIntoView({ behavior: "smooth" });
           }, 100);
@@ -276,12 +287,23 @@ function inicializarMenuHamburguesa() {
       const filtros = document.querySelector(".filtros-contenedor");
       const mapa = document.querySelector(".columna-centro");
 
-      if (filtros) filtros.classList.remove("mostrar");
+      // Ocultar filtros
+      if (filtros) {
+        filtros.classList.remove("mostrar");
+        filtros.style.display = "none";
+      }
+      // Ocultar mapa
       if (mapa) mapa.style.display = "none";
 
+      // Mostrar/ocultar formulario
       if (formulario) {
-        formulario.classList.toggle("mostrar");
-        if (formulario.classList.contains("mostrar")) {
+        const estaVisible = formulario.classList.contains("mostrar");
+        if (estaVisible) {
+          formulario.classList.remove("mostrar");
+          formulario.style.display = "none";
+        } else {
+          formulario.classList.add("mostrar");
+          formulario.style.display = "block";
           setTimeout(() => {
             formulario.scrollIntoView({ behavior: "smooth" });
           }, 100);
