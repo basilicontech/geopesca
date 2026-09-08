@@ -605,64 +605,85 @@
     transform: translateY(-7.5px) rotate(-45deg);
   }
 
-  /* ============================================ */
-  /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
+   /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
   /* ============================================ */
 
-  /* Contenedor principal - flex column */
+  /* Contenedor principal - Ocupa todo el espacio disponible */
   .contenedor-principal {
-    display: flex ;
-    flex-direction: column ;
-    flex: 1 1 auto ;
-    height: auto ;
-    min-height: 0 ;
-    overflow: hidden ;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 350px); /* Ajusta según cabecera+footer */
+    position: relative;
   }
 
-  /* Columnas - se estiran y son flex para sus hijos */
+  /* Columnas - cada una ocupa el 100% de ancho */
   .columna-centro,
   .columna-derecha,
   .columna-izquierda {
-    flex: 1 1 auto ;
-    min-height: 0 ;
-    height: auto ;
-    max-height: none ;
-    display: flex ;
-    flex-direction: column ;
+    width: 100% !important;
+    min-height: auto;
+    flex: 1 1 auto;
+    display: block;
   }
 
-  /* MAPA - ocupa todo el espacio de su columna */
+  /* MAPA - Ocupa todo el espacio */
   #map {
-    flex: 1 1 auto ;
-    min-height: 350px ;
-    width: 100% ;
+    height: 100% !important;
+    min-height: 350px !important;
+    width: 100% !important;
+    flex: 1 1 auto;
   }
 
-  /* FILTROS Y FORMULARIO (cuando están activos) */
-  .filtros-contenedor.mostrar,
-  .columna-derecha.mostrar {
-    display: block ;
-    height: auto ;
-    min-height: auto ;
-    max-height: none ;
-    overflow-y: visible ;
-    flex: 1 1 auto ;          /* ← NUEVO */
+  .columna-centro {
+    min-height: 350px;
+    height: 100%;
+    flex: 1 1 auto;
   }
 
-  /* FILTROS Y FORMULARIO (límite de altura) */
-  .filtros-contenedor,
+  /* FILTROS - Ocupan todo el ancho */
+  .filtros-contenedor {
+    display: none; /* Oculto por defecto */
+    width: 100% !important;
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 15px !important;
+    flex: 0 0 auto;
+  }
+
+  .filtros-contenedor.mostrar {
+    display: block !important;
+    height: auto;
+    min-height: 200px;
+  }
+
+  /* FORMULARIO - Ocupa todo el ancho */
   .columna-derecha {
-    flex: 1 1 auto ;          /* ← NUEVO: se estiran para llenar */
-    max-height: 60vh ;
-    overflow-y: auto ;
-    height: auto ;
+    display: none; /* Oculto por defecto */
+    width: 100% !important;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 15px !important;
+    flex: 0 0 auto;
   }
 
-  /* Footer */
+  .columna-derecha.mostrar {
+    display: block !important;
+    height: auto;
+    min-height: 300px;
+  }
+
+  /* Asegurar que el footer no tenga margen extra */
   .footer {
-    position: relative ;
-    margin-top: 0 ;
-    flex-shrink: 0 ;
+    margin-top: 0;
+    flex-shrink: 0;
+    position: relative;
+    bottom: 0;
   }
 }
 
