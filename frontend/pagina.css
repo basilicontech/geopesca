@@ -37,7 +37,7 @@ body {
 
 /* Contenedor principal - ocupa el espacio restante */
 .contenedor-principal {
-  flex: 1 1 auto;
+  flex: 1 1 auto; /* ✅ CAMBIO: antes era flex: 1 */
   display: flex;
   gap: 0;
   min-height: 0;
@@ -121,6 +121,8 @@ form {
 @media (max-width: 1024px) {
   .contenedor-principal {
     flex-wrap: wrap;
+    overflow-y: auto; /* ✅ CAMBIO: añadido */
+    align-content: flex-start; /* ✅ CAMBIO: añadido */
   }
 
   .columna-izquierda {
@@ -132,31 +134,46 @@ form {
     width: 100%;
     order: 1;
     min-height: 400px;
+    flex: 0 0 auto; /* ✅ CAMBIO: añadido */
   }
 
   .columna-derecha {
     width: 100%;
     order: 3;
+    flex: 0 0 auto; /* ✅ CAMBIO: añadido */
   }
 }
 
 @media (max-width: 768px) {
+  .contenedor-principal {
+    flex-wrap: wrap;
+    overflow-y: auto; /* ✅ CAMBIO: añadido */
+    align-content: flex-start; /* ✅ CAMBIO: añadido */
+  }
+
   .columna-centro {
     min-height: 350px;
+    flex: 0 0 auto; /* ✅ CAMBIO: añadido */
   }
 
   .columna-izquierda {
-    max-height: 300px;
+    max-height: none; /* ✅ CAMBIO: antes era 300px */
+    flex: 0 0 auto; /* ✅ CAMBIO: añadido */
+  }
+
+  .columna-derecha {
+    flex: 0 0 auto; /* ✅ CAMBIO: añadido */
   }
 }
 
 @media (max-width: 480px) {
   .columna-centro {
     min-height: 300px;
+    flex: 0 0 auto; /* ✅ CAMBIO: añadido */
   }
 
   .columna-izquierda {
-    max-height: 250px;
+    max-height: none; /* ✅ CAMBIO: antes era 250px */
   }
 }
 
