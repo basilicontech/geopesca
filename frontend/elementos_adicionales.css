@@ -610,16 +610,12 @@
   /* ============================================ */
 
   /* El contenedor principal ocupa el espacio entre cabecera y footer */
-@media (max-width: 768px) {
-  /* ... */
-
   .contenedor-principal {
-    flex: 1 1 0 !important;
-    height: 100% !important;
+    flex: 1 1 auto !important;
+    height: auto !important;
     min-height: 0 !important;
     overflow: hidden !important;
   }
-}
 
   /* Cada columna ocupa su espacio sin forzar alturas excesivas */
   .columna-centro,
