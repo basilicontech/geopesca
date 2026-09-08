@@ -513,7 +513,7 @@
 }
 
 .menu-desplegable.abierto {
-  display: flex ;
+  display: flex;
 }
 
 .menu-desplegable button {
@@ -540,7 +540,7 @@
 @media (max-width: 768px) {
   /* Ocultar menú tradicional */
   .menu {
-    display: none ;
+    display: none;
   }
 
   /* Mostrar menú hamburguesa */
@@ -611,18 +611,18 @@
 
   /* Contenedor principal */
   .contenedor-principal {
-    flex: 1 1 auto ;
-    height: auto ;
-    min-height: 0 ;
-    overflow: hidden ;
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
   }
 
-  /* Columnas (eliminan restricciones) */
+  /* Columnas - deben ocupar todo el espacio disponible */
   .columna-centro,
   .columna-derecha,
   .columna-izquierda {
     min-height: auto ;
-    height: auto ;
+    height: 100% ;        /* ← NUEVO: ocupan todo el espacio */
     max-height: none ;
   }
 
@@ -631,32 +631,32 @@
     height: 100% ;
     min-height: 350px ;
     width: 100% ;
+    flex: 1 1 auto ;      /* ← NUEVO: se estira para llenar */
   }
 
   /* FILTROS Y FORMULARIO (cuando están activos) */
   .filtros-contenedor.mostrar,
   .columna-derecha.mostrar {
-    display: block ;
-    height: auto ;
-    min-height: auto ;
-    max-height: none ;
-    overflow-y: visible ;
+    display: block;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    overflow-y: visible;
   }
 
   /* FILTROS Y FORMULARIO (límite de altura) */
   .filtros-contenedor,
   .columna-derecha {
-    max-height: 60vh ;
-    overflow-y: auto ;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
   /* Footer */
   .footer {
-    position: relative ;
-    margin-top: 0 ;
-    flex-shrink: 0 ;
+    position: relative;
+    margin-top: 0;
+    flex-shrink: 0;
   }
-
 }
 
 @media (max-width: 480px) {
@@ -701,29 +701,29 @@
   /* ============================================ */
 
   .contenedor-principal {
-    flex: 1 1 auto ;
+    flex: 1 1 auto;
   }
 
   .columna-centro {
-    min-height: 250px ;
+    min-height: 250px;
   }
 
   #map {
-    min-height: 250px ;
-    height: 100% ;
+    min-height: 250px;
+    height: 100%;
   }
 
   .filtros-contenedor {
-    max-height: 50vh ;
+    max-height: 50vh;
   }
 
   .columna-derecha {
-    max-height: 50vh ;
+    max-height: 50vh;
   }
 
   .filtros-contenedor.mostrar,
   .columna-derecha.mostrar {
-    max-height: 50vh ;
+    max-height: 50vh;
   }
 }
 
@@ -732,17 +732,17 @@
 /* ============================================ */
 
 .menu-desplegable {
-  display: none ;
+  display: none;
 }
 
 .menu-desplegable.abierto {
-  display: flex ;
+  display: flex;
 }
 
 /* Asegurar que en móvil los menús sean visibles */
 @media (max-width: 768px) {
   .menu-desplegable.abierto {
-    display: flex ;
+    display: flex;
     position: relative;
     z-index: 1000;
     background-color: #2c3e50;
