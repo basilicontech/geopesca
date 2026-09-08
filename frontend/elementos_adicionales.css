@@ -296,6 +296,7 @@
   color: rgba(255, 255, 255, 0.15);
   margin: 0 6px;
 }
+
 /* ============================================ */
 /* RESPONSIVE - Cabecera, menú y footer */
 /* ============================================ */
@@ -534,7 +535,7 @@
 }
 
 /* ============================================ */
-/* RESPONSIVE - Menú hamburguesa */
+/* RESPONSIVE - Menú hamburguesa - CORREGIDO */
 /* ============================================ */
 
 @media (max-width: 768px) {
@@ -615,6 +616,8 @@
     height: auto !important;
     min-height: 0 !important;
     overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* Cada columna ocupa su espacio sin forzar alturas excesivas */
@@ -624,6 +627,7 @@
     min-height: auto !important;
     height: auto !important;
     max-height: none !important;
+    flex: 0 0 auto !important;
   }
 
   /* El mapa ocupa el espacio de su columna */
@@ -633,14 +637,40 @@
     width: 100% !important;
   }
 
+  /* Columna centro oculta cuando no se usa */
+  .columna-centro.oculta {
+    display: none !important;
+    flex: 0 0 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
   /* Filtros y formulario ocupan su espacio natural */
-  .filtros-contenedor.mostrar,
+  .filtros-contenedor {
+    display: none !important;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+
+  .filtros-contenedor.mostrar {
+    display: block !important;
+    flex: 1 1 auto !important;
+  }
+
+  .columna-derecha {
+    display: none !important;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+
   .columna-derecha.mostrar {
     display: block !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    overflow-y: visible !important;
+    flex: 1 1 auto !important;
   }
 
   /* Asegurar que el footer no se solape */
@@ -650,18 +680,16 @@
     flex-shrink: 0 !important;
   }
 
-  /* ============================================ */
-  /* FIX: Altura máxima para filtros y formulario */
-  /* ============================================ */
-
-  .filtros-contenedor {
-    max-height: 60vh !important;
-    overflow-y: auto !important;
-  }
-
-  .columna-derecha {
-    max-height: 60vh !important;
-    overflow-y: auto !important;
+  /* Asegurar que en móvil los menús sean visibles */
+  .menu-desplegable.abierto {
+    display: flex !important;
+    position: relative;
+    z-index: 1000;
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    gap: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
   }
 }
 
@@ -686,6 +714,10 @@
 
   .menu-hamburguesa.activo span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
+  }
+
+  .menu-hamburguesa.activo span:nth-child(2) {
+    opacity: 0;
   }
 
   .menu-hamburguesa.activo span:nth-child(3) {
@@ -743,18 +775,4 @@
 
 .menu-desplegable.abierto {
   display: flex !important;
-}
-
-/* Asegurar que en móvil los menús sean visibles */
-@media (max-width: 768px) {
-  .menu-desplegable.abierto {
-    display: flex !important;
-    position: relative;
-    z-index: 1000;
-    background-color: #2c3e50;
-    padding: 10px 20px;
-    gap: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-  }
 }
