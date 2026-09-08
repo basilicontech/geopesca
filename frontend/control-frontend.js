@@ -74,17 +74,19 @@ function inicializarMenuHamburguesa() {
   // FUNCIONES DEL MENÚ
   // ============================================
 
-  window.toggleMenu = function(btn, menu, otroMenu, otroBtn) {
+  window.toggleMenu = function (btn, menu, otroMenu, otroBtn) {
     if (otroMenu && otroMenu.classList.contains("abierto")) {
       otroMenu.classList.remove("abierto");
       if (otroBtn) otroBtn.classList.remove("activo");
     }
     menu.classList.toggle("abierto");
     btn.classList.toggle("activo");
-    console.log(`Menú ${menu.id}: ${menu.classList.contains("abierto") ? "✅ abierto" : "❌ cerrado"}`);
+    console.log(
+      `Menú ${menu.id}: ${menu.classList.contains("abierto") ? "✅ abierto" : "❌ cerrado"}`,
+    );
   };
 
-  window.cerrarMenus = function() {
+  window.cerrarMenus = function () {
     if (menuNav && menuNav.classList.contains("abierto")) {
       menuNav.classList.remove("abierto");
       if (btnNav) btnNav.classList.remove("activo");
@@ -100,8 +102,17 @@ function inicializarMenuHamburguesa() {
     const formulario = document.querySelector(".columna-derecha");
     const mapa = document.querySelector(".columna-centro");
 
-    if (filtros) filtros.classList.remove("mostrar");
-    if (formulario) formulario.classList.remove("mostrar");
+    // Ocultar filtros y formulario
+    if (filtros) {
+      filtros.classList.remove("mostrar");
+      filtros.style.display = "none"; // <-- Forzar ocultación
+    }
+    if (formulario) {
+      formulario.classList.remove("mostrar");
+      formulario.style.display = "none"; // <-- Forzar ocultación
+    }
+
+    // Mostrar solo el mapa
     if (mapa) {
       mapa.style.display = "block";
       mapa.style.width = "100%";
@@ -164,21 +175,29 @@ function inicializarMenuHamburguesa() {
   });
 
   // Soporte táctil
-  btnNav.addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (esMovil) {
-      window.toggleMenu(btnNav, menuNav, menuSecciones, btnSecciones);
-    }
-  }, { passive: false });
+  btnNav.addEventListener(
+    "touchstart",
+    function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (esMovil) {
+        window.toggleMenu(btnNav, menuNav, menuSecciones, btnSecciones);
+      }
+    },
+    { passive: false },
+  );
 
-  btnSecciones.addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (esMovil) {
-      window.toggleMenu(btnSecciones, menuSecciones, menuNav, btnNav);
-    }
-  }, { passive: false });
+  btnSecciones.addEventListener(
+    "touchstart",
+    function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (esMovil) {
+        window.toggleMenu(btnSecciones, menuSecciones, menuNav, btnNav);
+      }
+    },
+    { passive: false },
+  );
 
   // Cerrar menús al hacer clic fuera (solo en móvil)
   document.addEventListener("click", function (e) {
@@ -186,9 +205,15 @@ function inicializarMenuHamburguesa() {
     const clicEnNavBtn = btnNav && btnNav.contains(e.target);
     const clicEnSeccionesBtn = btnSecciones && btnSecciones.contains(e.target);
     const clicEnNavMenu = menuNav && menuNav.contains(e.target);
-    const clicEnSeccionesMenu = menuSecciones && menuSecciones.contains(e.target);
+    const clicEnSeccionesMenu =
+      menuSecciones && menuSecciones.contains(e.target);
 
-    if (!clicEnNavBtn && !clicEnSeccionesBtn && !clicEnNavMenu && !clicEnSeccionesMenu) {
+    if (
+      !clicEnNavBtn &&
+      !clicEnSeccionesBtn &&
+      !clicEnNavMenu &&
+      !clicEnSeccionesMenu
+    ) {
       window.cerrarMenus();
     }
   });
@@ -292,33 +317,35 @@ function inicializarMenuHamburguesa() {
 
 function configurarBotonesMenuDesplegable() {
   const btnAcercaMobile = document.getElementById("btnAcercaMobile");
-  const btnComoFuncionaMobile = document.getElementById("btnComoFuncionaMobile");
+  const btnComoFuncionaMobile = document.getElementById(
+    "btnComoFuncionaMobile",
+  );
   const btnBlogMobile = document.getElementById("btnBlogMobile");
   const btnForoMobile = document.getElementById("btnForoMobile");
 
   if (btnAcercaMobile) {
-    btnAcercaMobile.addEventListener("click", function() {
+    btnAcercaMobile.addEventListener("click", function () {
       if (typeof window.cerrarMenus === "function") window.cerrarMenus();
       if (typeof abrirAcercaDe === "function") abrirAcercaDe();
     });
   }
 
   if (btnComoFuncionaMobile) {
-    btnComoFuncionaMobile.addEventListener("click", function() {
+    btnComoFuncionaMobile.addEventListener("click", function () {
       if (typeof window.cerrarMenus === "function") window.cerrarMenus();
       if (typeof abrirComoFunciona === "function") abrirComoFunciona();
     });
   }
 
   if (btnBlogMobile) {
-    btnBlogMobile.addEventListener("click", function() {
+    btnBlogMobile.addEventListener("click", function () {
       if (typeof window.cerrarMenus === "function") window.cerrarMenus();
       window.open("https://blog.geopesca.com", "_blank");
     });
   }
 
   if (btnForoMobile) {
-    btnForoMobile.addEventListener("click", function() {
+    btnForoMobile.addEventListener("click", function () {
       if (typeof window.cerrarMenus === "function") window.cerrarMenus();
       window.open("https://foro.geopesca.com", "_blank");
     });
