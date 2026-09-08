@@ -606,10 +606,10 @@
   }
 
   /* ============================================ */
-  /* FIX: Ajuste de altura en móvil - CORREGIDO */
+  /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
   /* ============================================ */
 
-  /* El contenedor principal ocupa el espacio entre cabecera y footer */
+  /* Contenedor principal */
   .contenedor-principal {
     flex: 1 1 auto ;
     height: auto ;
@@ -617,7 +617,7 @@
     overflow: hidden ;
   }
 
-  /* Cada columna ocupa su espacio sin forzar alturas excesivas */
+  /* Columnas (eliminan restricciones) */
   .columna-centro,
   .columna-derecha,
   .columna-izquierda {
@@ -626,14 +626,14 @@
     max-height: none ;
   }
 
-  /* El mapa ocupa el espacio de su columna */
+  /* MAPA */
   #map {
     height: 100% ;
     min-height: 350px ;
     width: 100% ;
   }
 
-  /* Filtros y formulario ocupan su espacio natural */
+  /* FILTROS Y FORMULARIO (cuando están activos) */
   .filtros-contenedor.mostrar,
   .columna-derecha.mostrar {
     display: block ;
@@ -643,26 +643,20 @@
     overflow-y: visible ;
   }
 
-  /* Asegurar que el footer no se solape */
+  /* FILTROS Y FORMULARIO (límite de altura) */
+  .filtros-contenedor,
+  .columna-derecha {
+    max-height: 60vh ;
+    overflow-y: auto ;
+  }
+
+  /* Footer */
   .footer {
     position: relative ;
     margin-top: 0 ;
     flex-shrink: 0 ;
   }
 
-  /* ============================================ */
-  /* FIX: Altura máxima para filtros y formulario */
-  /* ============================================ */
-
-  .filtros-contenedor {
-    max-height: 60vh ;
-    overflow-y: auto ;
-  }
-
-  .columna-derecha {
-    max-height: 60vh ;
-    overflow-y: auto ;
-  }
 }
 
 @media (max-width: 480px) {
