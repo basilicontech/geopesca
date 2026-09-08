@@ -7,6 +7,8 @@
   padding: 0;
   position: relative;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  z-index: 10;
 }
 
 /* Banda decorativa inferior estática */
@@ -211,6 +213,8 @@
   padding: 10px 20px;
   display: flex;
   gap: 10px;
+  flex-shrink: 0;
+  z-index: 9;
 }
 
 .menu button {
@@ -237,7 +241,9 @@
   text-align: center;
   border-top: 4px solid #3db8cc;
   box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
+  margin-top: 0;
+  flex-shrink: 0;
+  z-index: 9;
 }
 
 .footer p {
@@ -545,6 +551,8 @@
     background-color: #2c3e50;
     padding: 10px 16px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    z-index: 9;
   }
 
   .menu-mobile-titulo {
@@ -596,6 +604,65 @@
   .menu-hamburguesa.activo span:nth-child(3) {
     transform: translateY(-7.5px) rotate(-45deg);
   }
+
+  /* ============================================ */
+  /* FIX: Ajuste de altura en móvil - CORREGIDO */
+  /* ============================================ */
+
+  /* El contenedor principal ocupa el espacio entre cabecera y footer */
+  .contenedor-principal {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Cada columna ocupa su espacio sin forzar alturas excesivas */
+  .columna-centro,
+  .columna-derecha,
+  .columna-izquierda {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* El mapa ocupa el espacio de su columna */
+  #map {
+    height: 100% !important;
+    min-height: 350px !important;
+    width: 100% !important;
+  }
+
+  /* Filtros y formulario ocupan su espacio natural */
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  /* Asegurar que el footer no se solape */
+  .footer {
+    position: relative !important;
+    margin-top: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ============================================ */
+  /* FIX: Altura máxima para filtros y formulario */
+  /* ============================================ */
+
+  .filtros-contenedor {
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+
+  .columna-derecha {
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -634,6 +701,36 @@
     font-size: 12px;
     padding: 8px 12px;
   }
+
+  /* ============================================ */
+  /* FIX: Ajustes para móvil pequeño */
+  /* ============================================ */
+
+  .contenedor-principal {
+    flex: 1 1 auto !important;
+  }
+
+  .columna-centro {
+    min-height: 250px !important;
+  }
+
+  #map {
+    min-height: 250px !important;
+    height: 100% !important;
+  }
+
+  .filtros-contenedor {
+    max-height: 50vh !important;
+  }
+
+  .columna-derecha {
+    max-height: 50vh !important;
+  }
+
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    max-height: 50vh !important;
+  }
 }
 
 /* ============================================ */
@@ -659,70 +756,5 @@
     gap: 6px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
-  }
-}
-
-/* ============================================ */
-/* FIX: Ajuste de altura en móvil para eliminar espacio vacío */
-/* ============================================ */
-
-@media (max-width: 768px) {
-  /* Contenedor principal ocupa toda la altura disponible */
-  .contenedor-principal {
-    flex: 1;
-    min-height: calc(100vh - 200px); /* Ajusta según cabecera + footer */
-    height: auto;
-  }
-
-  /* Columnas ocupan toda la altura */
-  .columna-centro,
-  .columna-derecha,
-  .filtros-contenedor {
-    min-height: calc(100vh - 200px);
-    height: auto;
-  }
-
-  /* El mapa ocupa toda la altura disponible */
-  #map {
-    height: calc(100vh - 200px) !important;
-    min-height: calc(100vh - 200px) !important;
-    width: 100% !important;
-  }
-
-  /* Filtros y formulario ocupan toda la altura */
-  .filtros-contenedor.mostrar,
-  .columna-derecha.mostrar {
-    display: block !important;
-    min-height: calc(100vh - 200px);
-    height: auto;
-    overflow-y: auto;
-  }
-
-  /* Footer se mantiene abajo */
-  .footer {
-    position: relative;
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .contenedor-principal {
-    min-height: calc(100vh - 180px);
-  }
-
-  .columna-centro,
-  .columna-derecha,
-  .filtros-contenedor {
-    min-height: calc(100vh - 180px);
-  }
-
-  #map {
-    height: calc(100vh - 180px) !important;
-    min-height: calc(100vh - 180px) !important;
-  }
-
-  .filtros-contenedor.mostrar,
-  .columna-derecha.mostrar {
-    min-height: calc(100vh - 180px);
   }
 }
