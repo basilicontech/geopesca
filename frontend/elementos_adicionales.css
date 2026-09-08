@@ -667,71 +667,62 @@
 /* ============================================ */
 
 @media (max-width: 768px) {
-    .contenedor-principal {
-        flex: 1;
-        min-height: calc(100vh - 180px);
-        height: auto;
-        display: block;
-    }
+  /* Contenedor principal ocupa toda la altura disponible */
+  .contenedor-principal {
+    flex: 1;
+    min-height: calc(100vh - 200px); /* Ajusta según cabecera + footer */
+    height: auto;
+  }
 
-    .columna-centro,
-    .columna-derecha,
-    .filtros-contenedor {
-        min-height: calc(100vh - 180px);
-        height: auto;
-        max-height: calc(100vh - 180px);
-        overflow-y: auto;
-    }
+  /* Columnas ocupan toda la altura */
+  .columna-centro,
+  .columna-derecha,
+  .filtros-contenedor {
+    min-height: calc(100vh - 200px);
+    height: auto;
+  }
 
-    #map {
-        height: calc(100vh - 180px) !important;
-        min-height: calc(100vh - 180px) !important;
-        width: 100% !important;
-    }
+  /* El mapa ocupa toda la altura disponible */
+  #map {
+    height: calc(100vh - 200px) !important;
+    min-height: calc(100vh - 200px) !important;
+    width: 100% !important;
+  }
 
-    .filtros-contenedor.mostrar,
-    .columna-derecha.mostrar {
-        display: block !important;
-        min-height: calc(100vh - 180px);
-        height: auto;
-        max-height: calc(100vh - 180px);
-        overflow-y: auto;
-        padding-bottom: 20px;
-    }
+  /* Filtros y formulario ocupan toda la altura */
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    display: block !important;
+    min-height: calc(100vh - 200px);
+    height: auto;
+    overflow-y: auto;
+  }
 
-    .footer {
-        position: relative;
-        margin-top: 0;
-        padding: 12px;
-        flex-shrink: 0;
-    }
-
-    .cabecera,
-    .menu-mobile {
-        flex-shrink: 0;
-    }
+  /* Footer se mantiene abajo */
+  .footer {
+    position: relative;
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 480px) {
-    .contenedor-principal {
-        min-height: calc(100vh - 160px);
-    }
+  .contenedor-principal {
+    min-height: calc(100vh - 180px);
+  }
 
-    .columna-centro,
-    .columna-derecha,
-    .filtros-contenedor {
-        min-height: calc(100vh - 160px);
-        max-height: calc(100vh - 160px);
-    }
+  .columna-centro,
+  .columna-derecha,
+  .filtros-contenedor {
+    min-height: calc(100vh - 180px);
+  }
 
-    #map {
-        height: calc(100vh - 160px) !important;
-        min-height: calc(100vh - 160px) !important;
-    }
+  #map {
+    height: calc(100vh - 180px) !important;
+    min-height: calc(100vh - 180px) !important;
+  }
 
-    .filtros-contenedor.mostrar,
-    .columna-derecha.mostrar {
-        min-height: calc(100vh - 160px);
-        max-height: calc(100vh - 160px);
-    }
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    min-height: calc(100vh - 180px);
+  }
 }

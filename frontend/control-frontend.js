@@ -117,7 +117,7 @@ function inicializarMenuHamburguesa() {
       if (typeof map !== "undefined" && map) {
         setTimeout(function () {
           map.invalidateSize();
-        }, 300);
+        }, 100);
       }
     }
   }
