@@ -117,7 +117,7 @@ function inicializarMenuHamburguesa() {
       if (typeof map !== "undefined" && map) {
         setTimeout(function () {
           map.invalidateSize();
-        }, 100);
+        }, 300);
       }
     }
   }
@@ -263,6 +263,12 @@ function inicializarMenuHamburguesa() {
           setTimeout(() => {
             filtros.scrollIntoView({ behavior: "smooth" });
           }, 100);
+          // ✅ CAMBIO 1: Forzar actualización del mapa
+          if (typeof map !== "undefined" && map) {
+            setTimeout(function () {
+              map.invalidateSize();
+            }, 300);
+          }
         }
       }
       window.cerrarMenus();
@@ -277,6 +283,12 @@ function inicializarMenuHamburguesa() {
       if (mapa) {
         setTimeout(() => {
           mapa.scrollIntoView({ behavior: "smooth" });
+          // ✅ CAMBIO 2: Forzar actualización del mapa
+          if (typeof map !== "undefined" && map) {
+            setTimeout(function () {
+              map.invalidateSize();
+            }, 300);
+          }
         }, 100);
       }
       window.cerrarMenus();
@@ -310,6 +322,12 @@ function inicializarMenuHamburguesa() {
           setTimeout(() => {
             formulario.scrollIntoView({ behavior: "smooth" });
           }, 100);
+          // ✅ CAMBIO 3: Forzar actualización del mapa
+          if (typeof map !== "undefined" && map) {
+            setTimeout(function () {
+              map.invalidateSize();
+            }, 300);
+          }
         }
       }
       window.cerrarMenus();
