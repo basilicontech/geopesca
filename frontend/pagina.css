@@ -9,6 +9,7 @@
 html,
 body {
   height: 100%;
+  min-height: 100vh;      /* ← AÑADE ESTA LÍNEA */
   overflow: hidden;
 }
 
@@ -121,7 +122,6 @@ form {
 @media (max-width: 1024px) {
   .contenedor-principal {
     flex-wrap: wrap;
-    height: 100% !important;
   }
 
   .columna-izquierda {
