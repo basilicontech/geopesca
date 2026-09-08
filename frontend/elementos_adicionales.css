@@ -1,8 +1,355 @@
-@media (max-width: 768px) {
-  /* ============================================ */
-  /* RESPONSIVE - Cabecera, menú y footer */
-  /* ============================================ */
+/* elementos_adicionales.css - Estilos exclusivos de cabecera, menú y footer */
 
+/* CABECERA */
+/* ===== CABECERA ===== */
+.cabecera {
+  background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 45%, #3db8cc 100%);
+  padding: 0;
+  position: relative;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+/* Banda decorativa inferior estática */
+.cabecera::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffd93d, #ff6b6b, #4ecdc4, #45b7d1);
+}
+
+/* Fondo con patrón de olas sutil */
+.cabecera::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 255, 255, 0.04) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(255, 255, 255, 0.04) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.cabecera-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== LOGO ===== */
+.cabecera-logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 70px;
+  width: 70px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.25));
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* ===== TÍTULO CENTRAL MEJORADO ===== */
+.cabecera-texto {
+  flex: 1;
+  text-align: center;
+  padding: 0 30px;
+}
+
+.cabecera-texto h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
+  /* Gradiente estático en el texto */
+  background: linear-gradient(
+    135deg,
+    #fff7e6 0%,
+    #ffd93d 30%,
+    #ff6b6b 60%,
+    #4ecdc4 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  filter: drop-shadow(0 2px 15px rgba(255, 215, 0, 0.15));
+}
+
+.cabecera-texto p {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 8px 0 0 0;
+  letter-spacing: 3px;
+  color: #e8f4f8;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  display: inline-block;
+  padding: 0 25px;
+}
+
+/* Líneas decorativas alrededor del subtítulo */
+.cabecera-texto p::before,
+.cabecera-texto p::after {
+  content: "——";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.15);
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+.cabecera-texto p::before {
+  left: -50px;
+}
+
+.cabecera-texto p::after {
+  right: -50px;
+}
+
+/* ===== PANEL DE USUARIO ===== */
+.cabecera-usuario {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 6px 18px 6px 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cabecera-usuario:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.usuario-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usuario-nombre {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.15);
+}
+
+.usuario-acciones {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== BOTONES ===== */
+.btn-logout-header,
+.btn-delete-account {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.btn-logout-header {
+  background: rgba(220, 53, 69, 0.85);
+}
+
+.btn-logout-header:hover {
+  background: #dc3545;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.35);
+}
+
+.btn-delete-account {
+  background: rgba(220, 53, 69, 0.35);
+}
+
+.btn-delete-account:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(200, 35, 51, 0.3);
+}
+
+/* MENÚ */
+.menu {
+  background-color: #2c3e50;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  z-index: 9;
+}
+
+.menu button {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu button:hover {
+  background-color: #527496;
+}
+
+/* FOOTER */
+/* ===== FOOTER MEJORADO ===== */
+.footer {
+  background: linear-gradient(135deg, #0a2d3a 0%, #1a4a5a 50%, #0d3d4f 100%);
+  color: #b8d4dc;
+  padding: 30px 40px 25px;
+  text-align: center;
+  border-top: 4px solid #3db8cc;
+  box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.2);
+  margin-top: 0;
+  flex-shrink: 0;
+  z-index: 9;
+}
+
+.footer p {
+  margin: 8px 0;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.footer p:first-child {
+  font-weight: 500;
+  color: #e0f0f5;
+  font-size: 15px;
+}
+
+.footer p:last-child {
+  font-size: 13px;
+  opacity: 0.8;
+  font-style: italic;
+  color: #8ab4c4;
+}
+
+.footer a {
+  color: #4ecdc4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  padding: 0 4px;
+}
+
+.footer a:hover {
+  color: #7fd8e6;
+  text-decoration: underline;
+}
+
+/* Línea decorativa superior del footer */
+.footer::before {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #4ecdc4, #ffd93d);
+  margin: -32px auto 20px;
+  border-radius: 2px;
+}
+
+/* Separador entre enlaces */
+.footer .separador {
+  color: rgba(255, 255, 255, 0.15);
+  margin: 0 6px;
+}
+/* ============================================ */
+/* RESPONSIVE - Cabecera, menú y footer */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+  .cabecera-contenido {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .cabecera-texto h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  .cabecera-texto p {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .cabecera-texto p::before,
+  .cabecera-texto p::after {
+    display: none;
+  }
+
+  .logo-img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .menu {
+    padding: 8px 12px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .footer {
+    padding: 20px 20px 16px;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
   .cabecera-contenido {
     padding: 10px 16px;
     flex-direction: column;
@@ -74,191 +421,9 @@
   .footer a {
     font-size: 11px;
   }
-
-  /* ============================================ */
-  /* MENÚ HAMBURGUESA */
-  /* ============================================ */
-
-  /* Ocultar menú tradicional */
-  .menu {
-    display: none !important;
-  }
-
-  /* Mostrar menú hamburguesa */
-  .menu-mobile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2c3e50;
-    padding: 10px 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
-    z-index: 9;
-  }
-
-  .menu-mobile-titulo {
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  .menu-hamburguesa {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    width: 36px;
-    height: 36px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-
-  .menu-hamburguesa:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .menu-hamburguesa span {
-    display: block;
-    width: 24px;
-    height: 2.5px;
-    background-color: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  .menu-hamburguesa.activo span:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
-  }
-
-  .menu-hamburguesa.activo span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-hamburguesa.activo span:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
-  }
-
-  /* ============================================ */
-  /* FIX: Ajuste de altura en móvil - CORREGIDO */
-  /* ============================================ */
-
-  .contenedor-principal {
-    flex: 1 1 auto !important;
-    height: auto !important;
-    min-height: 0 !important;
-    overflow-y: auto !important;
-    align-content: flex-start !important;
-    gap: 0 !important;
-  }
-
-  .columna-centro,
-  .columna-derecha,
-  .columna-izquierda {
-    min-height: auto !important;
-    height: auto !important;
-    max-height: none !important;
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    overflow: visible !important;
-  }
-
-  #map {
-    height: 100% !important;
-    min-height: 350px !important;
-    width: 100% !important;
-    flex: 0 0 auto !important;
-  }
-
-  /* Filtros - ocultos por defecto */
-  .filtros-contenedor {
-    display: none !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    overflow-y: visible !important;
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    padding: 15px !important;
-  }
-
-  .filtros-contenedor.mostrar {
-    display: block !important;
-  }
-
-  /* Columna derecha (formulario) - oculta por defecto */
-  .columna-derecha {
-    display: none !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    overflow-y: visible !important;
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    padding: 15px !important;
-  }
-
-  .columna-derecha.mostrar {
-    display: block !important;
-  }
-
-  .footer {
-    position: relative !important;
-    margin-top: 0 !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* ============================================ */
-  /* MENÚ DESPLEGABLE */
-  /* ============================================ */
-
-  .menu-desplegable {
-    display: none !important;
-  }
-
-  .menu-desplegable.abierto {
-    display: flex !important;
-    position: relative;
-    z-index: 1000;
-    background-color: #2c3e50;
-    padding: 10px 20px;
-    gap: 6px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-  }
-
-  .menu-desplegable button {
-    background-color: #34495e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 16px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: left;
-    width: 100%;
-  }
-
-  .menu-desplegable button:hover {
-    background-color: #527496;
-  }
 }
 
 @media (max-width: 480px) {
-  /* ============================================ */
-  /* RESPONSIVE - Cabecera, menú y footer */
-  /* ============================================ */
-
   .cabecera-contenido {
     padding: 8px 12px;
   }
@@ -326,11 +491,181 @@
     width: 50px;
     margin: -24px auto 12px;
   }
+}
+
+/* ============================================ */
+/* MENÚ HAMBURGUESA */
+/* ============================================ */
+
+/* Ocultar menú hamburguesa en desktop */
+.menu-mobile {
+  display: none;
+}
+
+/* Menú desplegable oculto por defecto */
+.menu-desplegable {
+  display: none;
+  flex-direction: column;
+  background-color: #2c3e50;
+  padding: 10px 20px;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-desplegable.abierto {
+  display: flex !important;
+}
+
+.menu-desplegable button {
+  background-color: #34495e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-desplegable button:hover {
+  background-color: #527496;
+}
+
+/* ============================================ */
+/* RESPONSIVE - Menú hamburguesa */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  /* Ocultar menú tradicional */
+  .menu {
+    display: none !important;
+  }
+
+  /* Mostrar menú hamburguesa */
+  .menu-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 10px 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    z-index: 9;
+  }
+
+  .menu-mobile-titulo {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* Botón hamburguesa */
+  .menu-hamburguesa {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  .menu-hamburguesa:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-hamburguesa span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Animación de hamburguesa a X (para cerrar) */
+  .menu-hamburguesa.activo span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  .menu-hamburguesa.activo span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-hamburguesa.activo span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
 
   /* ============================================ */
-  /* MENÚ HAMBURGUESA - móvil pequeño */
+  /* FIX: Ajuste de altura en móvil - CORREGIDO */
   /* ============================================ */
 
+  /* El contenedor principal ocupa el espacio entre cabecera y footer */
+  .contenedor-principal {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Cada columna ocupa su espacio sin forzar alturas excesivas */
+  .columna-centro,
+  .columna-derecha,
+  .columna-izquierda {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* El mapa ocupa el espacio de su columna */
+  #map {
+    height: 100% !important;
+    min-height: 350px !important;
+    width: 100% !important;
+  }
+
+  /* Filtros y formulario ocupan su espacio natural */
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  /* Asegurar que el footer no se solape */
+  .footer {
+    position: relative !important;
+    margin-top: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ============================================ */
+  /* FIX: Altura máxima para filtros y formulario */
+  /* ============================================ */
+
+  .filtros-contenedor {
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+
+  .columna-derecha {
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
   .menu-mobile {
     padding: 8px 12px;
   }
@@ -385,10 +720,41 @@
   }
 
   .filtros-contenedor {
-    padding: 10px !important;
+    max-height: 50vh !important;
   }
 
   .columna-derecha {
-    padding: 10px !important;
+    max-height: 50vh !important;
+  }
+
+  .filtros-contenedor.mostrar,
+  .columna-derecha.mostrar {
+    max-height: 50vh !important;
+  }
+}
+
+/* ============================================ */
+/* FIX: Asegurar que los menús desplegables se muestren */
+/* ============================================ */
+
+.menu-desplegable {
+  display: none !important;
+}
+
+.menu-desplegable.abierto {
+  display: flex !important;
+}
+
+/* Asegurar que en móvil los menús sean visibles */
+@media (max-width: 768px) {
+  .menu-desplegable.abierto {
+    display: flex !important;
+    position: relative;
+    z-index: 1000;
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    gap: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
   }
 }

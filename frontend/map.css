@@ -2,10 +2,10 @@
 
 /* Fuerza una altura mínima para el mapa */
 #map {
-  height: 100% !important; /* ✅ CAMBIO: antes era 500px */
-  min-height: 100% !important; /* ✅ CAMBIO: antes era 500px */
+  height: 100% !important;
+  min-height: 100% !important;
   width: 100% !important;
-  flex: 1 1 auto; /* ✅ CAMBIO: añadido */
+  flex: 1 1 auto;
 }
 
 /* Asegura que la columna central tenga altura */
