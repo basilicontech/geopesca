@@ -229,7 +229,7 @@ function inicializarMenuHamburguesa() {
   });
 
   // ============================================
-  // BOTONES DE SECCIÓN
+  // BOTONES DE SECCIÓN - CORREGIDO
   // ============================================
 
   const btnFiltros = document.getElementById("btnMostrarFiltros");
@@ -237,7 +237,8 @@ function inicializarMenuHamburguesa() {
   const btnFormulario = document.getElementById("btnMostrarFormulario");
 
   if (btnFiltros) {
-    btnFiltros.addEventListener("click", function () {
+    btnFiltros.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevenir comportamiento por defecto
       if (!esMovil) return;
       const filtros = document.querySelector(".filtros-contenedor");
       const formulario = document.querySelector(".columna-derecha");
@@ -260,10 +261,7 @@ function inicializarMenuHamburguesa() {
         } else {
           filtros.classList.add("mostrar");
           filtros.style.display = "block";
-          setTimeout(() => {
-            filtros.scrollIntoView({ behavior: "smooth" });
-          }, 100);
-          // ✅ CAMBIO 1: Forzar actualización del mapa
+          // Forzar actualización del mapa
           if (typeof map !== "undefined" && map) {
             setTimeout(function () {
               map.invalidateSize();
@@ -276,27 +274,23 @@ function inicializarMenuHamburguesa() {
   }
 
   if (btnMapa) {
-    btnMapa.addEventListener("click", function () {
+    btnMapa.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevenir comportamiento por defecto
       if (!esMovil) return;
       ocultarTodasSecciones();
-      const mapa = document.getElementById("map");
-      if (mapa) {
-        setTimeout(() => {
-          mapa.scrollIntoView({ behavior: "smooth" });
-          // ✅ CAMBIO 2: Forzar actualización del mapa
-          if (typeof map !== "undefined" && map) {
-            setTimeout(function () {
-              map.invalidateSize();
-            }, 300);
-          }
-        }, 100);
+      // Forzar actualización del mapa
+      if (typeof map !== "undefined" && map) {
+        setTimeout(function () {
+          map.invalidateSize();
+        }, 300);
       }
       window.cerrarMenus();
     });
   }
 
   if (btnFormulario) {
-    btnFormulario.addEventListener("click", function () {
+    btnFormulario.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevenir comportamiento por defecto
       if (!esMovil) return;
       const formulario = document.querySelector(".columna-derecha");
       const filtros = document.querySelector(".filtros-contenedor");
@@ -319,10 +313,7 @@ function inicializarMenuHamburguesa() {
         } else {
           formulario.classList.add("mostrar");
           formulario.style.display = "block";
-          setTimeout(() => {
-            formulario.scrollIntoView({ behavior: "smooth" });
-          }, 100);
-          // ✅ CAMBIO 3: Forzar actualización del mapa
+          // Forzar actualización del mapa
           if (typeof map !== "undefined" && map) {
             setTimeout(function () {
               map.invalidateSize();
