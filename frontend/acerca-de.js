@@ -88,7 +88,7 @@ const contenidoAcercaDe = `
     <button class="btn-modal-info btn-modal-info-small" onclick="cerrarAcercaDe(); abrirComoFunciona();">
       📖 Cómo funciona
     </button>
-  </div>
+  </div>       
 `;
 
 function abrirAcercaDe() {
@@ -131,10 +131,15 @@ function cerrarAcercaDe() {
 // EVENTO PARA EL BOTÓN "ACERCA DE"
 // ============================================
 document.addEventListener("DOMContentLoaded", function () {
-  const btnAcerca = document.getElementById("btnAcerca");
-  if (btnAcerca) {
-    btnAcerca.addEventListener("click", abrirAcercaDe);
+  // Desktop
+  const btnAcercaDesktop = document.getElementById("btnAcercaDesktop");
+  if (btnAcercaDesktop) {
+    btnAcercaDesktop.addEventListener("click", abrirAcercaDe);
+  }
+
+  // Mobile
+  const btnAcercaMobile = document.getElementById("btnAcercaMobile");
+  if (btnAcercaMobile) {
+    btnAcercaMobile.addEventListener("click", abrirAcercaDe);
   }
 });
-
-window.abrirAcercaDe = abrirAcercaDe;

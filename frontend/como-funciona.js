@@ -43,7 +43,7 @@ const contenidoComoFunciona = `
     </ul>
   </div>
   <div class="modal-info-footer">
-    <button class="btn-modal-info btn-modal-info-small" onclick="cerrarComoFunciona(); abrirAcercaDe();">
+    <button class="btn-modal-info btn-modal-info-primary" onclick="cerrarComoFunciona(); abrirAcercaDe();">
       ℹ️ Acerca de
     </button>
   </div>
@@ -89,10 +89,19 @@ function cerrarComoFunciona() {
 // EVENTO PARA EL BOTÓN "CÓMO FUNCIONA"
 // ============================================
 document.addEventListener("DOMContentLoaded", function () {
-  const btnComoFunciona = document.getElementById("btnComoFunciona");
-  if (btnComoFunciona) {
-    btnComoFunciona.addEventListener("click", abrirComoFunciona);
+  // Desktop
+  const btnComoFuncionaDesktop = document.getElementById(
+    "btnComoFuncionaDesktop",
+  );
+  if (btnComoFuncionaDesktop) {
+    btnComoFuncionaDesktop.addEventListener("click", abrirComoFunciona);
+  }
+
+  // Mobile
+  const btnComoFuncionaMobile = document.getElementById(
+    "btnComoFuncionaMobile",
+  );
+  if (btnComoFuncionaMobile) {
+    btnComoFuncionaMobile.addEventListener("click", abrirComoFunciona);
   }
 });
-
-window.abrirComoFunciona = abrirComoFunciona;
