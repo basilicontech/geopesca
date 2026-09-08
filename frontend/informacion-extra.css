@@ -567,10 +567,10 @@
   }
 
   @media (max-width: 768px) {
-    .btn-modal-info {
+    .modal-info-footer .btn-modal-info {
       width: 100%;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 16px 20px;
       min-height: 52px;
     }
@@ -597,6 +597,7 @@
     }
   }
 }
+
 @media (max-width: 480px) {
   .modal-info-header {
     padding: 10px 14px;
