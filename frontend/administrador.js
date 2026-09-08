@@ -1,10 +1,16 @@
 // frontend/administrador.js
 
 document.addEventListener("DOMContentLoaded", function () {
+  // === BOTÓN VOLVER (Desktop y Mobile) ===
   document.getElementById("btnVolver").addEventListener("click", function () {
     window.location.href = "index.html";
   });
 
+  document.getElementById("btnVolverMobile").addEventListener("click", function () {
+    window.location.href = "index.html";
+  });
+
+  // === CERRAR SESIÓN ===
   document
     .getElementById("headerLogoutBtn")
     .addEventListener("click", function () {
@@ -12,20 +18,89 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "index.html";
     });
 
-  const buttons = document.querySelectorAll(".admin-btn");
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      buttons.forEach((b) => b.classList.remove("activo"));
-      this.classList.add("activo");
+  // === MENÚ HAMBURGUESA (Mobile) ===
+  const menuBtn = document.getElementById("menuHamburguesaBtn");
+  const menuDesplegable = document.getElementById("menuAdminDesplegable");
 
+  if (menuBtn && menuDesplegable) {
+    menuBtn.addEventListener("click", function () {
+      this.classList.toggle("activo");
+      menuDesplegable.classList.toggle("abierto");
+    });
+  }
+
+  // === BOTONES DE NAVEGACIÓN (Desktop y Mobile) ===
+  const desktopButtons = document.querySelectorAll(".admin-btn");
+  const mobileButtons = document.querySelectorAll(".admin-btn-mobile");
+
+  // Función para manejar clic en botones
+  function handlePanelClick(panel, btnElement) {
+    // Desactivar todos los botones (desktop)
+    desktopButtons.forEach((b) => b.classList.remove("activo"));
+    // Desactivar todos los botones (mobile)
+    mobileButtons.forEach((b) => b.classList.remove("activo"));
+
+    // Activar el botón clickeado
+    if (btnElement) {
+      btnElement.classList.add("activo");
+    }
+
+    // Cerrar menú desplegable en móvil
+    if (menuDesplegable) {
+      menuDesplegable.classList.remove("abierto");
+    }
+    if (menuBtn) {
+      menuBtn.classList.remove("activo");
+    }
+
+    // Cargar el panel
+    cargarPanel(panel);
+  }
+
+  // Eventos para botones desktop
+  desktopButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
       const panel = this.dataset.panel;
-      cargarPanel(panel);
+      handlePanelClick(panel, this);
     });
   });
+
+  // Eventos para botones mobile
+  mobileButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const panel = this.dataset.panel;
+      handlePanelClick(panel, this);
+    });
+  });
+
+  // === CARGAR PANEL POR DEFECTO ===
+  // Cargar "pescadores" al iniciar
+  const defaultBtn = document.querySelector('.admin-btn[data-panel="pescadores"]');
+  if (defaultBtn) {
+    defaultBtn.classList.add("activo");
+    cargarPanel("pescadores");
+  }
 });
 
+// ============================================================
+// FUNCIÓN PRINCIPAL PARA CARGAR PANELES
+// ============================================================
 async function cargarPanel(panel) {
   const centro = document.querySelector(".admin-centro");
+
+  // Actualizar el título del menú móvil
+  const tituloMobile = document.querySelector(".menu-mobile-titulo");
+  const nombresPanel = {
+    pescadores: "🎣 Pescadores",
+    clubs: "🏢 Clubs",
+    administradores: "👤 Administradores",
+    jornadas: "📅 Jornadas",
+    concursos: "🏆 Concursos",
+    especies: "🐟 Especies",
+  };
+  if (tituloMobile && nombresPanel[panel]) {
+    tituloMobile.textContent = nombresPanel[panel];
+  }
 
   switch (panel) {
     case "pescadores":
@@ -43,8 +118,12 @@ async function cargarPanel(panel) {
     case "concursos":
       await cargarConcursos(centro);
       break;
+    case "especies":
+      await cargarEspecies(centro);
+      break;
     default:
-      centro.innerHTML = '<p class="empty-message">Panel no implementado</p>';
+      centro.innerHTML =
+        '<p class="empty-message">Panel no implementado</p>';
   }
 }
 
@@ -431,7 +510,9 @@ async function cargarJornadas(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando jornadas...</div>';
 
-    const response = await fetch("https://geopesca.basilicontech.com/api/jornadas/list");
+    const response = await fetch(
+      "https://geopesca.basilicontech.com/api/jornadas/list",
+    );
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -559,7 +640,9 @@ async function cargarClubs(centro) {
     centro.innerHTML =
       '<div style="text-align:center; padding:40px; color:#666;">Cargando clubs...</div>';
 
-    const response = await fetch("https://geopesca.basilicontech.com/api/clubs/list");
+    const response = await fetch(
+      "https://geopesca.basilicontech.com/api/clubs/list",
+    );
 
     if (!response.ok) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -683,9 +766,12 @@ async function eliminarClub(id) {
   }
 
   try {
-    const response = await fetch(`https://geopesca.basilicontech.com/api/clubs/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://geopesca.basilicontech.com/api/clubs/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data = await response.json();
 
@@ -704,6 +790,122 @@ async function eliminarClub(id) {
     await cargarClubs(centro);
   } catch (error) {
     console.error("Error eliminando club:", error);
+    alert("❌ Error: " + error.message);
+  }
+}
+
+// ============================================================
+// CARGAR ESPECIES
+// ============================================================
+async function cargarEspecies(centro) {
+  try {
+    centro.innerHTML =
+      '<div style="text-align:center; padding:40px; color:#666;">Cargando especies...</div>';
+
+    const response = await fetch(
+      "https://geopesca.basilicontech.com/api/especies/list",
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+
+    const especies = await response.json();
+
+    if (!especies || especies.length === 0) {
+      centro.innerHTML = `
+                <div style="text-align:center; padding:40px; color:#666;">
+                    <p style="font-size:1.2rem;">🐟 No hay especies registradas</p>
+                </div>
+            `;
+      return;
+    }
+
+    let html = `
+            <h2>🐟 Especies registradas</h2>
+            <div style="margin-bottom:15px; color:#666; font-size:0.9rem;">
+                Total: <strong>${especies.length}</strong> especie${especies.length !== 1 ? "s" : ""}
+            </div>
+            <div class="tabla-container">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre común</th>
+                            <th>Nombre científico</th>
+                            <th>Familia</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+    especies.forEach((especie) => {
+      html += `
+                <tr>
+                    <td><strong>${especie.id_especie}</strong></td>
+                    <td>${especie.nombre_comun || "-"}</td>
+                    <td><em>${especie.nombre_cientifico || "-"}</em></td>
+                    <td>${especie.familia || "-"}</td>
+                    <td>
+                        <button class="btn-eliminar-admin" onclick="eliminarEspecie(${especie.id_especie})" title="Eliminar especie">
+                            🗑️
+                        </button>
+                    </td>
+                </tr>
+            `;
+    });
+
+    html += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+    centro.innerHTML = html;
+  } catch (error) {
+    console.error("Error cargando especies:", error);
+    centro.innerHTML = `
+            <div style="text-align:center; padding:40px; color:#721c24; background:#f8d7da; border-radius:8px;">
+                <p style="font-size:1.1rem;">❌ Error al cargar las especies</p>
+                <p style="font-size:0.85rem; color:#666;">${error.message}</p>
+            </div>
+        `;
+  }
+}
+
+// ============================================================
+// eliminarEspecie() - Eliminar una especie
+// ============================================================
+async function eliminarEspecie(id) {
+  if (
+    !confirm(
+      "⚠️ ¿Estás seguro de que quieres eliminar esta especie?\n\nNo se podrá eliminar si está siendo utilizada en capturas.",
+    )
+  ) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `https://geopesca.basilicontech.com/api/especies/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Error al eliminar la especie");
+    }
+
+    alert(`✅ ${data.message}`);
+
+    const centro = document.querySelector(".admin-centro");
+    await cargarEspecies(centro);
+  } catch (error) {
+    console.error("Error eliminando especie:", error);
     alert("❌ Error: " + error.message);
   }
 }
