@@ -605,7 +605,7 @@
     transform: translateY(-7.5px) rotate(-45deg);
   }
 
-    /* ============================================ */
+  /* ============================================ */
   /* FIX: Ajuste de altura en móvil - CORREGIDO */
   /* ============================================ */
 
@@ -669,20 +669,6 @@
   .filtros-contenedor.mostrar,
   .columna-derecha.mostrar {
     max-height: none !important;
-  }
-
-  /* ============================================ */
-  /* FIX: Altura máxima para filtros y formulario */
-  /* ============================================ */
-
-  .filtros-contenedor {
-    max-height: 60vh !important;
-    overflow-y: auto !important;
-  }
-
-  .columna-derecha {
-    max-height: 60vh !important;
-    overflow-y: auto !important;
   }
 }
 
