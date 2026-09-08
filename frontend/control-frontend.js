@@ -101,6 +101,7 @@ function inicializarMenuHamburguesa() {
     const filtros = document.querySelector(".filtros-contenedor");
     const formulario = document.querySelector(".columna-derecha");
     const mapa = document.querySelector(".columna-centro");
+    const contenedor = document.querySelector(".contenedor-principal");
 
     if (filtros) {
       filtros.classList.remove("mostrar");
@@ -108,6 +109,12 @@ function inicializarMenuHamburguesa() {
     }
     if (formulario) {
       formulario.classList.remove("mostrar");
+      const forms = formulario.querySelectorAll("form");
+      forms.forEach((form) => (form.style.display = "none"));
+      const authPanel = formulario.querySelector(".auth-panel");
+      if (authPanel && !window.usuarioActual) {
+        authPanel.style.display = "block";
+      }
       formulario.style.display = "none";
     }
     if (mapa) {
@@ -119,6 +126,12 @@ function inicializarMenuHamburguesa() {
           map.invalidateSize();
         }, 100);
       }
+    }
+    // Asegurar que el contenedor principal ocupe todo el espacio
+    if (contenedor) {
+      contenedor.style.flex = "1 1 auto";
+      contenedor.style.minHeight = "0";
+      contenedor.style.height = "auto";
     }
   }
 
@@ -238,19 +251,30 @@ function inicializarMenuHamburguesa() {
 
   if (btnFiltros) {
     btnFiltros.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevenir comportamiento por defecto
+      e.preventDefault();
       if (!esMovil) return;
+
       const filtros = document.querySelector(".filtros-contenedor");
       const formulario = document.querySelector(".columna-derecha");
       const mapa = document.querySelector(".columna-centro");
+      const contenedor = document.querySelector(".contenedor-principal");
 
       // Ocultar formulario
       if (formulario) {
         formulario.classList.remove("mostrar");
+        const forms = formulario.querySelectorAll("form");
+        forms.forEach((form) => (form.style.display = "none"));
+        const authPanel = formulario.querySelector(".auth-panel");
+        if (authPanel && !window.usuarioActual) {
+          authPanel.style.display = "block";
+        }
         formulario.style.display = "none";
       }
+
       // Ocultar mapa
-      if (mapa) mapa.style.display = "none";
+      if (mapa) {
+        mapa.style.display = "none";
+      }
 
       // Mostrar/ocultar filtros
       if (filtros) {
@@ -258,10 +282,25 @@ function inicializarMenuHamburguesa() {
         if (estaVisible) {
           filtros.classList.remove("mostrar");
           filtros.style.display = "none";
+          if (mapa) {
+            mapa.style.display = "block";
+            mapa.style.width = "100%";
+            setTimeout(function () {
+              if (typeof map !== "undefined" && map) {
+                map.invalidateSize();
+              }
+            }, 100);
+          }
         } else {
           filtros.classList.add("mostrar");
           filtros.style.display = "block";
-          // Forzar actualización del mapa
+          filtros.style.width = "100%";
+          filtros.style.height = "100%";
+          filtros.style.maxHeight = "none";
+          if (contenedor) {
+            contenedor.style.flex = "1 1 auto";
+            contenedor.style.minHeight = "0";
+          }
           if (typeof map !== "undefined" && map) {
             setTimeout(function () {
               map.invalidateSize();
