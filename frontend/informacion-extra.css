@@ -579,8 +579,10 @@
   }
 
   .presentacion-foto {
-    max-width: 800px;
-    height: 400px;
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
   }
 
