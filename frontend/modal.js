@@ -168,3 +168,173 @@ window.abrirModalJornada = abrirModalJornada;
 window.abrirModalConcurso = abrirModalConcurso;
 window.cerrarModal = cerrarModal;
 window.inicializarModal = inicializarModal;
+
+/////////////////
+// ACEPTACIÓN DE TÉRMINOS Y CONDICIONES
+/////////////
+
+// ============================================
+// FUNCIONES PARA VENTANA DE TÉRMINOS Y CONDICIONES
+// ============================================
+
+function abrirVentanaTerminos(callback) {
+  const overlay = document.createElement("div");
+  overlay.id = "terminosOverlay";
+  overlay.className = "terminos-overlay";
+
+  const ventana = document.createElement("div");
+  ventana.className = "terminos-ventana";
+
+  ventana.innerHTML = `
+    <h2>📋 Términos y Condiciones</h2>
+    <p>Para continuar con el registro, debes leer y aceptar los siguientes documentos:</p>
+    
+    <div>
+      <div>
+        <input type="checkbox" id="term-privacidad">
+        <label for="term-privacidad">
+          He leído y acepto la 
+          <a href="/politica-privacidad.html" target="_blank">Política de Privacidad</a> 
+          y el tratamiento de mis datos personales.
+        </label>
+      </div>
+      
+      <div>
+        <input type="checkbox" id="term-condiciones">
+        <label for="term-condiciones">
+          Acepto las 
+          <a href="/condiciones-uso.html" target="_blank">Condiciones Generales de Uso</a>.
+        </label>
+      </div>
+      
+      <div>
+        <input type="checkbox" id="term-cookies">
+        <label for="term-cookies">
+          He leído y acepto la 
+          <a href="/politica-de-cookies.html" target="_blank">Política de Cookies</a>.
+        </label>
+      </div>
+      
+      <div>
+        <input type="checkbox" id="term-marketing">
+        <label for="term-marketing">
+          📧 Deseo recibir información sobre novedades y concursos (opcional)
+        </label>
+      </div>
+    </div>
+    
+    <div id="errorTerminos" style="display:none;">
+      ❌ Debes aceptar todos los documentos obligatorios.
+    </div>
+    
+    <div>
+      <button id="btnRechazarTerminos">Cancelar</button>
+      <button id="btnAceptarTerminos">✅ Aceptar y continuar</button>
+    </div>
+  `;
+
+  overlay.appendChild(ventana);
+  document.body.appendChild(overlay);
+
+  document.getElementById("btnAceptarTerminos").onclick = function() {
+    const privacidad = document.getElementById("term-privacidad").checked;
+    const condiciones = document.getElementById("term-condiciones").checked;
+    const cookies = document.getElementById("term-cookies").checked;
+
+    if (!privacidad || !condiciones || !cookies) {
+      document.getElementById("errorTerminos").style.display = "block";
+      return;
+    }
+
+    document.body.removeChild(overlay);
+    callback(true);
+  };
+
+  document.getElementById("btnRechazarTerminos").onclick = function() {
+    document.body.removeChild(overlay);
+    callback(false);
+  };
+
+  overlay.onclick = function(e) {
+    if (e.target === overlay) {
+      document.body.removeChild(overlay);
+      callback(false);
+    }
+  };
+}
+
+function mostrarMensajeRegistro(mensaje, tipo) {
+  const mensajeDiv = document.getElementById("registroMensaje");
+  if (!mensajeDiv) return;
+  mensajeDiv.textContent = mensaje;
+}
+
+function cerrarModalRegistro() {
+  const modal = document.getElementById("modalRegistro");
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+function inicializarRegistro() {
+  const btnPescador = document.getElementById("btnRegistroPescador");
+  const btnClub = document.getElementById("btnRegistroClub");
+  const modalClose = document.getElementById("modalClose");
+
+  if (btnPescador) {
+    btnPescador.addEventListener("click", abrirModalPescador);
+  }
+
+  if (btnClub) {
+    btnClub.addEventListener("click", abrirModalClub);
+  }
+
+  if (modalClose) {
+    modalClose.addEventListener("click", cerrarModalRegistro);
+  }
+}
+
+async function enviarRegistro(nombre, email, password, rol) {
+  try {
+    mostrarMensajeRegistro("⏳ Registrando...", "info");
+
+    const response = await fetch("https://geopesca.basilicontech.com/api/registro", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nombre: nombre,
+        email: email,
+        password: password,
+        rol: rol
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      mostrarMensajeRegistro(`✅ ${data.mensaje}`, "success");
+      
+      setTimeout(() => {
+        cerrarModalRegistro();
+        
+        if (rol === "pescador" && typeof window.procesarLogin === "function") {
+          window.procesarLogin(email, password);
+        }
+        
+        if (rol === "club") {
+          alert("✅ Club registrado correctamente. Espera la validación del administrador.");
+        }
+        
+      }, 1500);
+
+    } else {
+      mostrarMensajeRegistro(`❌ ${data.mensaje}`, "error");
+    }
+
+  } catch (error) {
+    console.error("Error en registro:", error);
+    mostrarMensajeRegistro("❌ Error de conexión con el servidor", "error");
+  }
+}
