@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro de Jornadas de Pesca Deportiva</title>
+
+    <!-- ZEST - Gestor de consentimiento de cookies -->
+    <script
+      src="https://unpkg.com/@freshjuice/zest"
+      data-position="bottom"
+      data-language="es"
+      data-policy-url="/politica-de-cookies.html"
+      data-categories="preferences,analytics,marketing"
+      data-hide-categories="marketing"
+      data-zest-mode="safe"
+    ></script>
+
     <!-- Leaflet CSS -->
     <link
       rel="stylesheet"
@@ -524,25 +536,32 @@
     <footer class="footer">
       <p>
         © 2026 - Registro de Jornadas de Pesca Recreativa |
-        <a href="#">Política de privacidad</a> |
-        <a href="#">Contacto: alfonsoisman@gmail.com</a>
+        <a href="aviso-legal.html">Aviso legal</a> |
+        <a href="politica-privacidad.html">Política de privacidad</a> |
+        <a href="politica-de-cookies.html">Política de cookies</a> |
+        <a href="mailto:alfonsoisman@gmail.com"
+          >Contacto: alfonsoisman@gmail.com</a
+        >
       </p>
       <p>Sistema de Información Geográfica para pescadores recreativos</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <script src="map.js"></script>
-    <script src="puntosControl.js"></script>
-    <script src="insertar-jornada.js"></script>
-    <script src="insertar-concurso.js"></script>
-    <script src="insertar-datos-ambientales.js"></script>
-    <script src="modal.js"></script>
-    <script src="filtro.js"></script>
-    <script src="control-frontend.js"></script>
-    <script src="frontend-login.js"></script>
-    <script src="modal-registro.js"></script>
-    <script src="acerca-de.js"></script>
-    <script src="como-funciona.js"></script>
+    <!-- AÑADIR data-zest-allow a TODOS los scripts -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      data-zest-allow
+    ></script>
+    <script src="map.js" data-zest-allow></script>
+    <script src="puntosControl.js" data-zest-allow></script>
+    <script src="insertar-jornada.js" data-zest-allow></script>
+    <script src="insertar-concurso.js" data-zest-allow></script>
+    <script src="insertar-datos-ambientales.js" data-zest-allow></script>
+    <script src="modal.js" data-zest-allow></script>
+    <script src="filtro.js" data-zest-allow></script>
+    <script src="control-frontend.js" data-zest-allow></script>
+    <script src="frontend-login.js" data-zest-allow></script>
+    <script src="modal-registro.js" data-zest-allow></script>
+    <script src="acerca-de.js" data-zest-allow></script>
+    <script src="como-funciona.js" data-zest-allow></script>
   </body>
 </html>

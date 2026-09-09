@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Cookies - GeoPesca</title>
+
+    <!-- Estilos compartidos para páginas legales -->
+    <link rel="stylesheet" href="paginas-legales.css" />
+
+    <!-- ZEST - necesario para el enlace "Configuración de cookies" -->
+    <script
+      src="https://unpkg.com/@freshjuice/zest"
+      data-position="bottom"
+      data-language="es"
+      data-policy-url="politica-de-cookies.html"
+      data-categories="preferences,analytics,marketing"
+      data-hide-categories="marketing"
+      data-zest-mode="safe"
+    ></script>
+  </head>
+  <body>
+    <h1>🍪 Política de Cookies</h1>
+    <p class="fecha">Última actualización: 9 de septiembre de 2026</p>
+
+    <h2>¿QUÉ SON LAS COOKIES?</h2>
+    <p>
+      Las cookies son pequeños archivos que se descargan en el dispositivo del
+      usuario al acceder a determinadas páginas web.
+    </p>
+
+    <h2>TIPOS DE COOKIES QUE PUEDE UTILIZAR ESTE SITIO</h2>
+    <ul>
+      <li>
+        <strong>Técnicas (necesarias):</strong> permiten el funcionamiento
+        básico del sitio. Ejemplo: cookie de sesión para mantener al usuario
+        identificado tras el inicio de sesión.
+      </li>
+      <li>
+        <strong>Preferencias:</strong> recuerdan opciones del usuario, como los
+        filtros aplicados en la búsqueda de jornadas.
+      </li>
+      <li>
+        <strong>Geolocalización:</strong> esta aplicación utiliza el servicio de
+        mapas de OpenStreetMap. El funcionamiento de este servicio quizás podría
+        implicar el uso de cookies técnicas necesarias para su correcta
+        visualización. Al hacer uso de esta funcionalidad, aceptas dichas
+        condiciones.
+      </li>
+      <li>
+        <strong>Analíticas:</strong> nos ayudan a entender cómo se usa el sitio
+        para mejorar contenidos (si se instala Google Analytics).
+      </li>
+      <li>
+        <strong>Marketing/publicidad:</strong> no se utilizan actualmente.
+      </li>
+    </ul>
+
+    <h2>CONSENTIMIENTO Y CONFIGURACIÓN</h2>
+    <p>
+      Al acceder a este sitio, se muestra un aviso de cookies desde el que el
+      usuario puede aceptar, rechazar o configurar las cookies no necesarias.
+    </p>
+    <p>
+      El usuario puede modificar su elección en cualquier momento desde:
+      <a href="#" id="btnConfigCookies" class="config-link"
+        >⚙️ Configuración de cookies</a
+      >
+    </p>
+
+    <h2>CÓMO DESACTIVAR COOKIES DESDE EL NAVEGADOR</h2>
+    <p>
+      El usuario puede permitir, bloquear o eliminar cookies desde la
+      configuración del navegador.
+    </p>
+
+    <h2>COOKIES DE TERCEROS</h2>
+    <p>
+      Este sitio puede utilizar servicios de terceros que instalan cookies en
+      función del consentimiento otorgado por el usuario.
+    </p>
+
+    <h2>ACTUALIZACIONES</h2>
+    <p>
+      Esta Política de Cookies puede actualizarse. Se recomienda revisarla
+      periódicamente.
+    </p>
+
+    <a href="index.html" class="volver">← Volver a GeoPesca</a>
+
+    <div class="footer-nota">
+      <p>© 2026 - Registro de Jornadas de Pesca Recreativa</p>
+    </div>
+
+    <!-- Script de control para abrir la configuración de cookies -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("btnConfigCookies");
+        if (!btn) return;
+
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Buscar en window cualquier objeto que pueda ser Zest
+          let zest = window.Zest || window.__zest || window.zest;
+          if (!zest) {
+            // Buscar cualquier objeto global que contenga 'zest' en su nombre
+            const keys = Object.keys(window).filter((k) =>
+              k.toLowerCase().includes("zest"),
+            );
+            if (keys.length > 0) zest = window[keys[0]];
+          }
+
+          if (zest) {
+            // Si es una función, llamarla
+            if (typeof zest === "function") {
+              zest();
+              return;
+            }
+            // Si tiene métodos comunes
+            const methods = [
+              "openSettings",
+              "showSettings",
+              "open",
+              "show",
+              "openModal",
+              "configure",
+            ];
+            for (let m of methods) {
+              if (typeof zest[m] === "function") {
+                zest[m]();
+                return;
+              }
+            }
+            // Si tiene un método 'open' con un parámetro 'settings'
+            if (typeof zest.open === "function") {
+              zest.open("settings");
+              return;
+            }
+          }
+
+          // Si no se pudo, intentar con eventos
+          try {
+            document.dispatchEvent(new CustomEvent("zest:openSettings"));
+            document.dispatchEvent(new CustomEvent("zest:showPreferences"));
+            // Esperar un poco y si no hay cambios, mostrar alerta
+            setTimeout(() => {
+              // Si no se abrió nada (podríamos comprobar si hay un modal), redirigir
+              alert(
+                "No se pudo abrir el panel. Puedes configurar las cookies desde el banner.",
+              );
+              window.location.href = "index.html";
+            }, 500);
+          } catch (err) {
+            alert(
+              "No se pudo abrir el panel. Puedes configurar las cookies desde el banner.",
+            );
+            window.location.href = "index.html";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
