@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
@@ -12,12 +13,13 @@ const concursosRoutes = require("./routes/concursos");
 const clubsRoutes = require("./routes/clubs");
 const pescadoresRoutes = require("./routes/pescadores");
 const administradoresRoutes = require("./routes/administradores");
+const cookiesRoutes = require("./routes/cookies-backend");
 
 app.use(cors());
 app.use(express.json());
 
 // Servir archivos estáticos del frontend
-app.use(express.static("/home/ubuntu/proyectos/pesca-deportiva/frontend"));
+app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 // Registrar rutas
 app.use("/api/jornadas", jornadasRoutes);
@@ -28,6 +30,7 @@ app.use("/api/concursos", concursosRoutes);
 app.use("/api/clubs", clubsRoutes);
 app.use("/api/pescadores", pescadoresRoutes);
 app.use("/api/administradores", administradoresRoutes);
+app.use("/api", cookiesRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {
@@ -37,9 +40,9 @@ app.get("/api/health", (req, res) => {
 // ============================================
 // WEBHOOK DE GITHUB - Actualización automática
 // ============================================
-app.post('/github-webhook', (req, res) => {
-  console.log('📥 Webhook recibido de GitHub');
-  res.status(200).send('OK');
+app.post("/github-webhook", (req, res) => {
+  console.log("📥 Webhook recibido de GitHub");
+  res.status(200).send("OK");
 });
 
 const PORT = 3000;

@@ -1,0 +1,122 @@
+[
+  {
+    "ip": "::1",
+    "tipo": "test",
+    "configuracion": null,
+    "fecha": "2026-09-09T18:08:41.041Z",
+    "userAgent": "unknown",
+    "url": "unknown",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "all",
+    "configuracion": null,
+    "fecha": "2026-09-09T18:31:17.157Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "test",
+    "configuracion": null,
+    "fecha": "2026-09-09T19:14:46.111Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0-test"
+  },
+  {
+    "ip": "::1",
+    "tipo": "test",
+    "configuracion": null,
+    "fecha": "2026-09-09T19:18:12.096Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0-test"
+  },
+  {
+    "ip": "::1",
+    "tipo": "partial",
+    "configuracion": {
+      "essential": true,
+      "functional": true,
+      "analytics": true,
+      "marketing": false
+    },
+    "fecha": "2026-09-09T19:21:36.461Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "partial",
+    "configuracion": {
+      "essential": true,
+      "functional": true,
+      "analytics": true,
+      "marketing": false
+    },
+    "fecha": "2026-09-09T19:21:36.946Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "partial",
+    "configuracion": {
+      "essential": true,
+      "functional": true,
+      "analytics": true,
+      "marketing": false
+    },
+    "fecha": "2026-09-09T19:21:39.951Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "partial",
+    "configuracion": {
+      "essential": true,
+      "functional": true,
+      "analytics": true,
+      "marketing": false
+    },
+    "fecha": "2026-09-09T19:21:42.950Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "partial",
+    "configuracion": {
+      "essential": true,
+      "functional": true,
+      "analytics": true,
+      "marketing": false
+    },
+    "fecha": "2026-09-09T19:21:45.950Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  },
+  {
+    "ip": "::1",
+    "tipo": "partial",
+    "configuracion": {
+      "essential": true,
+      "functional": true,
+      "analytics": true,
+      "marketing": false
+    },
+    "fecha": "2026-09-09T19:21:48.951Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "url": "http://localhost:3000/",
+    "version": "1.0"
+  }
+]
