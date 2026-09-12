@@ -3,6 +3,12 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../db/connection");
+const {
+  enviarEmail,
+  plantillaBienvenidaPescador,
+  plantillaSolicitudClub,
+  avisarAdmin,
+} = require("../mailer");
 
 // Ruta de registro
 router.post("/registro", async (req, res) => {
@@ -17,7 +23,9 @@ router.post("/registro", async (req, res) => {
     }
 
     if (password.length < 4) {
-      return res.status(400).json({ mensaje: "La contraseña debe tener al menos 4 caracteres" });
+      return res
+        .status(400)
+        .json({ mensaje: "La contraseña debe tener al menos 4 caracteres" });
     }
 
     if (!email.includes("@") || !email.includes(".")) {
@@ -34,14 +42,14 @@ router.post("/registro", async (req, res) => {
       tabla = "pescador";
       const check = await pool.query(
         `SELECT id_pescador FROM ${tabla} WHERE email_pescador = $1`,
-        [email]
+        [email],
       );
       if (check.rows.length > 0) existe = true;
     } else if (rol === "club") {
       tabla = "clubs";
       const check = await pool.query(
         `SELECT id_club FROM ${tabla} WHERE email_contacto = $1`,
-        [email]
+        [email],
       );
       if (check.rows.length > 0) existe = true;
     } else {
@@ -59,14 +67,29 @@ router.post("/registro", async (req, res) => {
       await pool.query(
         `INSERT INTO pescador (nombre_pescador, email_pescador, password_hash)
          VALUES ($1, $2, $3)`,
-        [nombre, email, password]
+        [nombre, email, password],
       );
+
+      // Enviar email de bienvenida (no bloqueante)
+      const plantilla = plantillaBienvenidaPescador(nombre);
+      enviarEmail({ to: email, ...plantilla });
+
+      // Avisar al admin (no bloqueante)
+      avisarAdmin("registro_pescador", { nombre, email });
+
     } else if (rol === "club") {
       await pool.query(
         `INSERT INTO clubs (nombre_club, email_contacto, password_hash, validado)
          VALUES ($1, $2, $3, false)`,
-        [nombre, email, password]
+        [nombre, email, password],
       );
+
+      // Enviar email de solicitud recibida (no bloqueante)
+      const plantilla = plantillaSolicitudClub(nombre);
+      enviarEmail({ to: email, ...plantilla });
+
+      // Avisar al admin (no bloqueante)
+      avisarAdmin("registro_club", { nombre, email });
     }
 
     // ============================================
@@ -77,10 +100,9 @@ router.post("/registro", async (req, res) => {
       usuario: {
         nombre: nombre,
         email: email,
-        rol: rol
-      }
+        rol: rol,
+      },
     });
-
   } catch (error) {
     console.error("Error en registro:", error);
     res.status(500).json({ mensaje: "Error interno del servidor" });

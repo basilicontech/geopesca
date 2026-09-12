@@ -136,7 +136,7 @@ async function cargarConcursos(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando concursos...</div>';
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/concursos/list",
+      "/api/concursos/list",
     );
 
     if (!response.ok) {
@@ -237,7 +237,7 @@ async function eliminarConcurso(id) {
 
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/concursos/${id}`,
+      `/api/concursos/${id}`,
       {
         method: "DELETE",
       },
@@ -268,7 +268,7 @@ async function cargarAdministradores(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando administradores...</div>';
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/administradores/list",
+      "/api/administradores/list",
     );
 
     if (!response.ok) {
@@ -360,7 +360,7 @@ async function eliminarAdministrador(id) {
 
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/administradores/${id}`,
+      `/api/administradores/${id}`,
       {
         method: "DELETE",
       },
@@ -391,7 +391,7 @@ async function cargarPescadores(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando pescadores...</div>';
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/pescadores/list",
+      "/api/pescadores/list",
     );
 
     if (!response.ok) {
@@ -480,7 +480,7 @@ async function eliminarPescador(id) {
 
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/pescadores/${id}`,
+      `/api/pescadores/${id}`,
       {
         method: "DELETE",
       },
@@ -511,7 +511,7 @@ async function cargarJornadas(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando jornadas...</div>';
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/jornadas/list",
+      "/api/jornadas/list",
     );
 
     if (!response.ok) {
@@ -610,7 +610,7 @@ async function eliminarJornada(id) {
 
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/jornadas/${id}`,
+      `/api/jornadas/${id}`,
       {
         method: "DELETE",
       },
@@ -641,7 +641,7 @@ async function cargarClubs(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando clubs...</div>';
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/clubs/list",
+      "/api/clubs/list",
     );
 
     if (!response.ok) {
@@ -731,7 +731,7 @@ async function cargarClubs(centro) {
 async function validarClub(id) {
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/clubs/${id}/validar`,
+      `/api/clubs/${id}/validar`,
       {
         method: "PUT",
       },
@@ -767,7 +767,7 @@ async function eliminarClub(id) {
 
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/clubs/${id}`,
+      `/api/clubs/${id}`,
       {
         method: "DELETE",
       },
@@ -803,7 +803,7 @@ async function cargarEspecies(centro) {
       '<div style="text-align:center; padding:40px; color:#666;">Cargando especies...</div>';
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/especies/list",
+      "/api/especies/list",
     );
 
     if (!response.ok) {
@@ -888,7 +888,7 @@ async function eliminarEspecie(id) {
 
   try {
     const response = await fetch(
-      `https://geopesca.basilicontech.com/api/especies/${id}`,
+      `/api/especies/${id}`,
       {
         method: "DELETE",
       },

@@ -218,7 +218,7 @@ async function enviarRegistro(nombre, email, password, rol) {
     mostrarMensajeRegistro("⏳ Registrando...", "info");
 
     const response = await fetch(
-      "https://geopesca.basilicontech.com/api/registro",
+      "/api/registro",
       {
         method: "POST",
         headers: {

@@ -90,7 +90,7 @@ async function cargarDatosAmbientales(prefix = '') {
     const esJornada = prefix === '';
     
     // Hábitats
-    const habitats = await fetch("https://geopesca.basilicontech.com/api/catalogs/habitats").then(r => r.json());
+    const habitats = await fetch("/api/catalogs/habitats").then(r => r.json());
     const habitatSelect = document.getElementById(`${prefix}habitat`);
     if (habitatSelect) {
       habitats.forEach(h => {
@@ -102,7 +102,7 @@ async function cargarDatosAmbientales(prefix = '') {
     }
 
     // Tipos de lecho
-    const lechos = await fetch("https://geopesca.basilicontech.com/api/catalogs/tipos-lecho").then(r => r.json());
+    const lechos = await fetch("/api/catalogs/tipos-lecho").then(r => r.json());
     const lechoSelect = document.getElementById(`${prefix}tipo_lecho`);
     if (lechoSelect) {
       lechos.forEach(l => {
@@ -114,7 +114,7 @@ async function cargarDatosAmbientales(prefix = '') {
     }
 
     // Direcciones de viento
-    const vientos = await fetch("https://geopesca.basilicontech.com/api/catalogs/direcciones-viento").then(r => r.json());
+    const vientos = await fetch("/api/catalogs/direcciones-viento").then(r => r.json());
     const vientoSelect = document.getElementById(`${prefix}direccion_viento`);
     if (vientoSelect) {
       vientos.forEach(v => {
@@ -126,7 +126,7 @@ async function cargarDatosAmbientales(prefix = '') {
     }
 
     // Velocidades de viento
-    const velocidades = await fetch("https://geopesca.basilicontech.com/api/catalogs/velocidades-viento").then(r => r.json());
+    const velocidades = await fetch("/api/catalogs/velocidades-viento").then(r => r.json());
     const velocidadSelect = document.getElementById(`${prefix}velocidad_viento`);
     if (velocidadSelect) {
       velocidades.forEach(v => {
@@ -138,7 +138,7 @@ async function cargarDatosAmbientales(prefix = '') {
     }
 
     // Alturas de olas
-    const olas = await fetch("https://geopesca.basilicontech.com/api/catalogs/alturas-olas").then(r => r.json());
+    const olas = await fetch("/api/catalogs/alturas-olas").then(r => r.json());
     const olasSelect = document.getElementById(`${prefix}altura_olas`);
     if (olasSelect) {
       olas.forEach(o => {
@@ -150,7 +150,7 @@ async function cargarDatosAmbientales(prefix = '') {
     }
 
     // Turbideces
-    const turbideces = await fetch("https://geopesca.basilicontech.com/api/catalogs/turbideces").then(r => r.json());
+    const turbideces = await fetch("/api/catalogs/turbideces").then(r => r.json());
     const turbidezSelect = document.getElementById(`${prefix}turbidez`);
     if (turbidezSelect) {
       turbideces.forEach(t => {
@@ -162,7 +162,7 @@ async function cargarDatosAmbientales(prefix = '') {
     }
 
     // Tiempos atmosféricos
-    const tiempos = await fetch("https://geopesca.basilicontech.com/api/catalogs/tiempos-atmosfericos").then(r => r.json());
+    const tiempos = await fetch("/api/catalogs/tiempos-atmosfericos").then(r => r.json());
     const tiempoSelect = document.getElementById(`${prefix}tiempo`);
     if (tiempoSelect) {
       tiempos.forEach(t => {
@@ -176,7 +176,7 @@ async function cargarDatosAmbientales(prefix = '') {
     // Solo cargar catálogos específicos de pesca si es jornada
     if (esJornada) {
       // Tipo de pesca
-      const pescas = await fetch("https://geopesca.basilicontech.com/api/catalogs/tipos-pesca").then(r => r.json());
+      const pescas = await fetch("/api/catalogs/tipos-pesca").then(r => r.json());
       const pescaSelect = document.getElementById("tipo_pesca");
       if (pescaSelect) {
         pescas.forEach(p => {
@@ -188,7 +188,7 @@ async function cargarDatosAmbientales(prefix = '') {
       }
 
       // Cebos naturales
-      const cebosNat = await fetch("https://geopesca.basilicontech.com/api/catalogs/cebos-naturales").then(r => r.json());
+      const cebosNat = await fetch("/api/catalogs/cebos-naturales").then(r => r.json());
       const ceboNatSelect = document.getElementById("cebo_natural");
       if (ceboNatSelect) {
         cebosNat.forEach(c => {
@@ -200,7 +200,7 @@ async function cargarDatosAmbientales(prefix = '') {
       }
 
       // Cebos artificiales
-      const cebosArt = await fetch("https://geopesca.basilicontech.com/api/catalogs/cebos-artificiales").then(r => r.json());
+      const cebosArt = await fetch("/api/catalogs/cebos-artificiales").then(r => r.json());
       const ceboArtSelect = document.getElementById("cebo_artificial");
       if (ceboArtSelect) {
         cebosArt.forEach(c => {

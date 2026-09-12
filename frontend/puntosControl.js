@@ -75,7 +75,7 @@ const estilosPuntos = {
 
 async function cargarPuntosPescadores(map, onPointClick) {
   try {
-    const response = await fetch("https://geopesca.basilicontech.com/api/jornadas");
+    const response = await fetch("/api/jornadas");
     const geojson = await response.json();
 
     if (!geojson.features) return;
@@ -114,7 +114,7 @@ async function cargarPuntosPescadores(map, onPointClick) {
 
 async function cargarPuntosConcursos(map, onConcursoClick) {
   try {
-    const response = await fetch("https://geopesca.basilicontech.com/api/concursos/list");
+    const response = await fetch("/api/concursos/list");
     const data = await response.json();
 
     if (!data || data.length === 0) return;

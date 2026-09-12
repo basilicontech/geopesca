@@ -2,6 +2,12 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../db/connection");
+const {
+  enviarEmail,
+  plantillaClubValidado,
+  plantillaCuentaEliminadaClub,
+  avisarAdmin,
+} = require("../mailer");
 
 // ============================================================
 // GET /api/clubs/list - Listar todos los clubs
@@ -158,6 +164,7 @@ router.delete("/:id", async (req, res) => {
     }
 
     const nombreClub = clubResult.rows[0].nombre_club;
+    const emailClub = clubResult.rows[0].email_contacto;
 
     // 1. Eliminar participaciones de concursos donde este club participó
     await pool.query(
@@ -196,6 +203,17 @@ router.delete("/:id", async (req, res) => {
     // 4. Eliminar el club
     await pool.query("DELETE FROM clubs WHERE id_club = $1", [id]);
 
+    // 5. Enviar email de confirmación al club eliminado (no bloqueante)
+    const plantilla = plantillaCuentaEliminadaClub(nombreClub);
+    enviarEmail({ to: emailClub, ...plantilla });
+
+    // 6. Avisar al admin (no bloqueante)
+    avisarAdmin("eliminacion_club", {
+      nombre: nombreClub,
+      email: emailClub,
+      concursos: concursoIds.length,
+    });
+
     res.json({
       message: `Club "${nombreClub}" y sus ${concursoIds.length} concurso(s) eliminados correctamente`,
       concursos_eliminados: concursoIds.length,
@@ -227,9 +245,21 @@ router.put("/:id/validar", async (req, res) => {
       [id],
     );
 
+    const club = result.rows[0];
+
+    // Enviar email de validación (no bloqueante)
+    const plantilla = plantillaClubValidado(club.nombre_club);
+    enviarEmail({ to: club.email_contacto, ...plantilla });
+
+    // Avisar al admin (no bloqueante)
+    avisarAdmin("validacion_club", {
+      nombre: club.nombre_club,
+      email: club.email_contacto,
+    });
+
     res.json({
       message: "Club validado correctamente",
-      club: result.rows[0],
+      club: club,
     });
   } catch (error) {
     console.error("Error validando club:", error);

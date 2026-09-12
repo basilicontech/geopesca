@@ -2,6 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const pool = require("../db/connection");
+const {
+  enviarEmail,
+  plantillaCuentaEliminadaPescador,
+  avisarAdmin,
+} = require("../mailer");
 
 // ============================================================
 // GET /api/pescadores/list - Listar todos los pescadores
@@ -66,6 +71,7 @@ router.delete('/:id', async (req, res) => {
         }
 
         const nombrePescador = pescadorResult.rows[0].nombre_pescador;
+        const emailPescador = pescadorResult.rows[0].email_pescador;
 
         await client.query('BEGIN');
 
@@ -95,6 +101,17 @@ router.delete('/:id', async (req, res) => {
         await client.query('DELETE FROM pescador WHERE id_pescador = $1', [id]);
 
         await client.query('COMMIT');
+
+        // 5. Enviar email de confirmación al pescador eliminado (no bloqueante)
+        const plantilla = plantillaCuentaEliminadaPescador(nombrePescador);
+        enviarEmail({ to: emailPescador, ...plantilla });
+
+        // 6. Avisar al admin (no bloqueante)
+        avisarAdmin("eliminacion_pescador", {
+            nombre: nombrePescador,
+            email: emailPescador,
+            jornadas: jornadaIds.length,
+        });
 
         res.json({ 
             message: `Pescador "${nombrePescador}" y sus ${jornadaIds.length} jornada(s) eliminados correctamente`,

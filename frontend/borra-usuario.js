@@ -1,7 +1,7 @@
 // frontend/borra-usuario.js - Eliminación de la cuenta del usuario logueado
 // Depende de: frontend-login.js (usa window.usuarioActual y localStorage["usuarioActual"])
 
-const API_BASE = "https://geopesca.basilicontech.com/api";
+const API_BASE = "/api";
 
 async function eliminarCuenta() {
   const usuario = window.usuarioActual;

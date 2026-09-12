@@ -9,7 +9,7 @@ async function loadConcursoCatalogs() {
   try {
     // Especies
     const especies = await fetch(
-      "https://geopesca.basilicontech.com/api/catalogs/especies",
+      "/api/catalogs/especies",
     ).then((r) => r.json());
     const especieSelect = document.getElementById("concurso_especie");
     especies.forEach((e) => {
@@ -234,7 +234,7 @@ async function inicializarInsertarConcurso() {
       console.log("Datos a enviar:", JSON.stringify(datos, null, 2));
 
       try {
-        const response = await fetch("https://geopesca.basilicontech.com/api/concursos", {
+        const response = await fetch("/api/concursos", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(datos),
