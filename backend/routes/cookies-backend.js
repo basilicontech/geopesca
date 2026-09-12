@@ -36,6 +36,30 @@ router.post("/registrar-consentimiento", (req, res) => {
     const data = fs.readFileSync(CONSENTIMIENTOS_FILE, "utf8");
     const consentimientos = JSON.parse(data);
 
+    // ===== DEDUPLICACIÓN (defensa en profundidad) =====
+    // Si el último registro tiene la misma IP, mismo tipo y misma configuración,
+    // y ocurrió en los últimos 60 segundos, no lo guardamos de nuevo.
+    const ultimo = consentimientos[consentimientos.length - 1];
+    if (ultimo) {
+      const mismoIp = ultimo.ip === registro.ip;
+      const mismoTipo = ultimo.tipo === registro.tipo;
+      const mismaConfig =
+        JSON.stringify(ultimo.configuracion) ===
+        JSON.stringify(registro.configuracion);
+
+      const ahora = new Date(registro.fecha).getTime();
+      const antes = new Date(ultimo.fecha).getTime();
+      const segundos = (ahora - antes) / 1000;
+
+      if (mismoIp && mismoTipo && mismaConfig && segundos < 60) {
+        console.log(`⏭️ Consentimiento duplicado ignorado (${tipo}, IP ${ip})`);
+        return res.status(200).json({
+          ok: true,
+          mensaje: "Consentimiento duplicado, ignorado",
+        });
+      }
+    }
+
     // Añadir nuevo registro
     consentimientos.push(registro);
 
