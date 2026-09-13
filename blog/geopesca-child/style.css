@@ -359,3 +359,92 @@ input[type="submit"]:hover,
     color: #ffffff !important;
   }
 }
+
+/* ============================================
+   VÍDEOS EMBEBIDOS - Responsive
+   ============================================ */
+
+.gp-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 25px 0;
+  border-radius: 8px;
+  background: #000;
+}
+
+.gp-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.gp-video-credit {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+/* Manual: estructura jerárquica */
+.gp-manual h2 {
+  margin-top: 40px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #d1e9f0;
+}
+
+.gp-manual h3 {
+  margin-top: 30px;
+  color: var(--gp-azul-profundo);
+}
+
+.gp-manual h4 {
+  margin-top: 20px;
+  font-size: 1.05rem;
+}
+
+.gp-manual ul {
+  margin-left: 20px;
+}
+
+/* ============================================
+   MODO MANUAL - Entradas sin aspecto de blog
+   ============================================ */
+
+/* Ocultar metadatos (fecha, autor, categorías, comentarios) */
+body.category-manual .entry-meta,
+body.category-manual .ast-single-post .entry-meta,
+body.category-manual .posted-on,
+body.category-manual .byline,
+body.category-manual .cat-links,
+body.category-manual .tags-links,
+body.category-manual .comments-link {
+  display: none !important;
+}
+
+/* Ocultar navegación entre entradas */
+body.category-manual .post-navigation,
+body.category-manual .ast-post-navigation-wrap,
+body.category-manual .ast-single-post-navigation {
+  display: none !important;
+}
+
+/* Título de la entrada con estilo de capítulo */
+body.category-manual .entry-title {
+  font-size: 2rem;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gp-turquesa);
+  margin-bottom: 25px;
+}
+
+/* Ancho del contenido más estrecho, tipo lectura de manual */
+body.category-manual .ast-container {
+  max-width: 800px;
+}
