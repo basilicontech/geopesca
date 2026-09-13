@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.0.6
+ Version:      1.0.7
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -73,7 +73,7 @@ button,
 input[type="submit"],
 .ast-button {
   background-color: var(--gp-azul-profundo) !important;
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 .wp-block-button__link:hover,
@@ -256,4 +256,36 @@ input[type="submit"]:hover,
     width: 120px;
     height: 120px;
   }
+}
+
+/* ============================================
+   BARRA DE NAVEGACIÓN - Fondo oscuro, letras claras
+   ============================================ */
+
+/* Fondo del header (escritorio y móvil) */
+.ast-primary-header-bar,
+.ast-mobile-header-wrap .ast-primary-header-bar {
+  background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 100%) !important;
+}
+
+/* Letras del menú (escritorio y móvil) */
+.main-header-menu a,
+.ast-mobile-popup-content a,
+.site-title a,
+.site-title a:focus,
+.site-title a:hover,
+.site-title a:visited {
+  color: #ffffff !important;
+}
+
+/* Hover */
+.main-header-menu a:hover,
+.ast-mobile-popup-content a:hover {
+  color: #ff6b6b !important;
+}
+
+/* Botón hamburguesa */
+.menu-toggle,
+.ast-mobile-menu-trigger {
+  color: #ffffff !important;
 }
