@@ -10,3 +10,63 @@
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
 */
+
+/* ============================================
+   PALETA GEOPESCA - Coherencia con la app
+   ============================================ */
+
+:root {
+  --gp-azul-profundo: #0a3d4f;
+  --gp-azul-medio: #1a7a94;
+  --gp-turquesa: #3db8cc;
+  --gp-turquesa-claro: #4ecdc4;
+  --gp-coral: #ff6b6b;
+  --gp-amarillo: #ffd93d;
+  --gp-texto-oscuro: #1a3c40;
+  --gp-texto: #2c3e50;
+  --gp-fondo-claro: #e8f4f8;
+  --gp-borde-suave: #d1e9f0;
+}
+
+/* Enlaces */
+a {
+  color: var(--gp-azul-profundo);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--gp-coral);
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--gp-texto-oscuro);
+}
+
+/* Texto del cuerpo */
+body,
+p {
+  color: var(--gp-texto);
+}
+
+/* Botones */
+.wp-block-button__link,
+button,
+input[type="submit"] {
+  background-color: var(--gp-azul-profundo);
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.wp-block-button__link:hover,
+button:hover,
+input[type="submit"]:hover {
+  background-color: var(--gp-turquesa);
+  color: #fff;
+}
