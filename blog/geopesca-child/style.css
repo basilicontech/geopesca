@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.0.9
+ Version:      1.0.10
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -418,25 +418,173 @@ input[type="submit"]:hover,
    MODO MANUAL - Entradas sin aspecto de blog
    ============================================ */
 
-/* Ocultar metadatos (fecha, autor, categorías, comentarios) */
+/* ============================================
+   MANUAL - Estructura completa
+   ============================================ */
+
+/* --- Página índice --- */
+.gp-manual-index {
+  padding: 20px 0;
+}
+
+.gp-toc-section {
+  margin-bottom: 35px;
+}
+
+.gp-toc-section h2 {
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gp-turquesa);
+  color: var(--gp-azul-profundo);
+  margin-bottom: 15px;
+}
+
+.gp-toc-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.gp-toc-list li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.gp-toc-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--gp-turquesa);
+  font-weight: 600;
+}
+
+.gp-toc-list a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.gp-toc-list a:hover {
+  color: var(--gp-coral);
+  text-decoration: underline;
+}
+
+/* --- Entradas del manual --- */
+.gp-manual h2 {
+  margin-top: 40px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #d1e9f0;
+}
+
+.gp-manual h3 {
+  margin-top: 30px;
+  color: var(--gp-azul-profundo);
+}
+
+.gp-manual h4 {
+  margin-top: 20px;
+  font-size: 1.05rem;
+}
+
+.gp-manual ul {
+  margin-left: 20px;
+}
+
+/* --- Breadcrumb dentro de las entradas --- */
+.gp-manual-breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.gp-manual-breadcrumb a {
+  color: var(--gp-azul-profundo);
+  font-weight: 500;
+}
+
+.gp-manual-breadcrumb a:hover {
+  color: var(--gp-coral);
+}
+
+/* --- Navegación entre capítulos --- */
+.gp-manual-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.gp-manual-nav a {
+  color: var(--gp-azul-profundo);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 15px;
+  border: 1px solid var(--gp-turquesa);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.gp-manual-nav a:hover {
+  background-color: var(--gp-turquesa);
+  color: #fff;
+}
+
+.gp-manual-nav .gp-nav-prev::before {
+  content: "← ";
+}
+
+.gp-manual-nav .gp-nav-next::after {
+  content: " →";
+}
+
+/* --- Vídeos embebidos responsive --- */
+.gp-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 25px 0;
+  border-radius: 8px;
+  background: #000;
+}
+
+.gp-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.gp-video-credit {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+/* --- Modo manual: quitar aspecto de blog --- */
 body.category-manual .entry-meta,
-body.category-manual .ast-single-post .entry-meta,
 body.category-manual .posted-on,
 body.category-manual .byline,
 body.category-manual .cat-links,
 body.category-manual .tags-links,
-body.category-manual .comments-link {
-  display: none !important;
-}
-
-/* Ocultar navegación entre entradas */
+body.category-manual .comments-link,
 body.category-manual .post-navigation,
-body.category-manual .ast-post-navigation-wrap,
-body.category-manual .ast-single-post-navigation {
+body.category-manual .ast-post-navigation-wrap {
   display: none !important;
 }
 
-/* Título de la entrada con estilo de capítulo */
 body.category-manual .entry-title {
   font-size: 2rem;
   padding-bottom: 12px;
@@ -444,7 +592,27 @@ body.category-manual .entry-title {
   margin-bottom: 25px;
 }
 
-/* Ancho del contenido más estrecho, tipo lectura de manual */
 body.category-manual .ast-container {
   max-width: 800px;
+}
+
+body.category-manual #comments,
+body.category-manual .comments-area,
+body.category-manual .comment-respond {
+  display: none !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .gp-manual-index {
+    padding: 10px 0;
+  }
+
+  .gp-toc-section {
+    margin-bottom: 25px;
+  }
+
+  .gp-manual-nav {
+    flex-direction: column;
+  }
 }
