@@ -289,3 +289,73 @@ input[type="submit"]:hover,
 .ast-mobile-menu-trigger {
   color: #ffffff !important;
 }
+
+/* ============================================
+   MENÚ MÓVIL - Fondo oscuro y letras claras
+   ============================================ */
+
+@media (max-width: 921px) {
+  /* Header móvil */
+  .ast-mobile-header-wrap .ast-primary-header-bar,
+  .ast-mobile-header-content,
+  .ast-mobile-popup-drawer,
+  .ast-mobile-popup-inner,
+  .ast-mobile-popup-content,
+  .ast-mobile-menu-buttons,
+  .main-header-bar {
+    background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 100%) !important;
+  }
+
+  /* Contenedor del menú desplegado */
+  .ast-mobile-header-content .main-header-menu,
+  .ast-mobile-popup-content .main-header-menu,
+  .ast-nav-menu,
+  .main-header-menu {
+    background-color: transparent !important;
+  }
+
+  /* Enlaces del menú móvil */
+  .ast-mobile-header-content a,
+  .ast-mobile-popup-content a,
+  .ast-mobile-header-content .menu-item a,
+  .ast-mobile-popup-content .menu-item a,
+  .ast-mobile-header-wrap .main-header-menu a,
+  .ast-mobile-header-wrap .main-header-menu .menu-link,
+  .ast-mobile-menu-trigger,
+  .ast-mobile-menu-trigger-minimal,
+  .menu-toggle,
+  .ast-button-wrap .mobile-menu-toggle-icon {
+    color: #ffffff !important;
+    background-color: transparent !important;
+  }
+
+  /* Hover en móvil */
+  .ast-mobile-header-content a:hover,
+  .ast-mobile-popup-content a:hover,
+  .ast-mobile-header-content .menu-item a:hover,
+  .ast-mobile-popup-content .menu-item a:hover,
+  .ast-mobile-header-wrap .main-header-menu a:hover {
+    color: #ff6b6b !important;
+  }
+
+  /* Ícono de la hamburguesa (las rayas) */
+  .ast-mobile-menu-trigger-minimal .ast-menu-toggle-icon,
+  .ast-mobile-menu-trigger-minimal::before,
+  .ast-mobile-menu-trigger-minimal::after,
+  .menu-toggle .ast-menu-toggle-icon {
+    background-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* Botón cerrar (la X) */
+  .ast-mobile-popup-drawer .ast-mobile-popup-header,
+  .ast-mobile-popup-drawer .ast-mobile-popup-close {
+    background-color: #0a3d4f !important;
+  }
+
+  .ast-mobile-popup-drawer .ast-mobile-popup-close svg,
+  .ast-mobile-popup-drawer .ast-mobile-popup-close path {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+  }
+}
