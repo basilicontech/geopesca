@@ -415,36 +415,60 @@ input[type="submit"]:hover,
 }
 
 /* ============================================
-   MODO MANUAL - Entradas sin aspecto de blog
+   MANUAL - Página índice
    ============================================ */
 
-/* Ocultar metadatos (fecha, autor, categorías, comentarios) */
-body.category-manual .entry-meta,
-body.category-manual .ast-single-post .entry-meta,
-body.category-manual .posted-on,
-body.category-manual .byline,
-body.category-manual .cat-links,
-body.category-manual .tags-links,
-body.category-manual .comments-link {
-  display: none !important;
+.gp-manual-index {
+  padding: 20px 0;
 }
 
-/* Ocultar navegación entre entradas */
-body.category-manual .post-navigation,
-body.category-manual .ast-post-navigation-wrap,
-body.category-manual .ast-single-post-navigation {
-  display: none !important;
+.gp-manual-index .gp-toc-section {
+  margin-bottom: 35px;
 }
 
-/* Título de la entrada con estilo de capítulo */
-body.category-manual .entry-title {
-  font-size: 2rem;
-  padding-bottom: 12px;
+.gp-manual-index .gp-toc-section h2 {
+  padding-bottom: 8px;
   border-bottom: 2px solid var(--gp-turquesa);
-  margin-bottom: 25px;
+  color: var(--gp-azul-profundo);
+  margin-bottom: 15px;
 }
 
-/* Ancho del contenido más estrecho, tipo lectura de manual */
-body.category-manual .ast-container {
-  max-width: 800px;
+.gp-manual-index .gp-toc-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.gp-manual-index .gp-toc-list li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.gp-manual-index .gp-toc-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--gp-turquesa);
+  font-weight: 600;
+}
+
+.gp-manual-index .gp-toc-list a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.gp-manual-index .gp-toc-list a:hover {
+  color: var(--gp-coral);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .gp-manual-index {
+    padding: 10px 0;
+  }
+
+  .gp-manual-index .gp-toc-section {
+    margin-bottom: 25px;
+  }
 }
