@@ -354,7 +354,6 @@ function configurarBotonesMenuDesplegable() {
   const btnComoFuncionaMobile = document.getElementById(
     "btnComoFuncionaMobile",
   );
-  const btnBlogMobile = document.getElementById("btnBlogMobile");
   const btnForoMobile = document.getElementById("btnForoMobile");
 
   if (btnAcercaMobile) {
@@ -368,13 +367,6 @@ function configurarBotonesMenuDesplegable() {
     btnComoFuncionaMobile.addEventListener("click", function () {
       if (typeof window.cerrarMenus === "function") window.cerrarMenus();
       if (typeof abrirComoFunciona === "function") abrirComoFunciona();
-    });
-  }
-
-  if (btnBlogMobile) {
-    btnBlogMobile.addEventListener("click", function () {
-      if (typeof window.cerrarMenus === "function") window.cerrarMenus();
-      window.open("https://blog.geopesca.com", "_blank");
     });
   }
 

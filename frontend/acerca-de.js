@@ -55,7 +55,7 @@ const contenidoAcercaDe = `
       Un espacio pensado para aprender, descubrir y mantenerse informado sobre todo lo relacionado con nuestra afición.
     </p>
     <p>
-      <strong>👉 <a href="https://blog.geopesca.com" target="_blank" class="modal-info-link">Haz clic aquí para acceder a GeoPescaBlog</a></strong>
+      <strong>👉 <a href="https://geopesca.basilicontech.com/blog/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a GeoPescaBlog</a></strong>
     </p>
 
     <hr class="modal-info-divider">
@@ -68,7 +68,7 @@ const contenidoAcercaDe = `
       En <strong>GeoPescaForo</strong> podrás hacerlo, además de conectar con otros pescadores, plantear dudas, compartir experiencias y participar en debates relacionados con nuestra pasión.
     </p>
     <p>
-      <strong>👉 <a href="https://foro.geopesca.com" target="_blank" class="modal-info-link">Haz clic aquí para acceder a GeoPescaForo</a></strong>
+      <strong>👉 <a href="https://foro.geopesca.basilicontech.com/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a GeoPescaForo</a></strong>
     </p>
 
     <hr class="modal-info-divider">
