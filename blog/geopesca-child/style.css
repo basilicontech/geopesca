@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.0.5
+ Version:      1.0.6
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -82,4 +82,178 @@ input[type="submit"]:hover,
 .ast-button:hover {
   background-color: var(--gp-turquesa) !important;
   color: #fff !important;
+}
+
+/* ============================================
+   PORTADA Y PÁGINAS - Estilos y responsive
+   ============================================ */
+
+.gp-hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.gp-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.gp-hero p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.gp-author {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px 20px;
+}
+
+.gp-author-photo {
+  flex: 0 0 180px;
+  text-align: center;
+}
+
+.gp-author-photo img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.gp-author-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.gp-author-text h2 {
+  margin-top: 0;
+}
+
+.gp-section {
+  padding: 30px 20px;
+}
+
+.gp-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.gp-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.gp-card h3 {
+  margin-top: 0;
+}
+
+.gp-card p {
+  color: #666;
+}
+
+.gp-card a {
+  font-weight: 600;
+}
+
+.gp-cta {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.gp-cta h2 {
+  margin-top: 0;
+}
+
+.gp-cta p {
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+
+.gp-cta-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #0a3d4f;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.gp-cta-button:hover {
+  background-color: #3db8cc;
+  color: #fff !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .gp-hero {
+    padding: 20px 15px;
+  }
+
+  .gp-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .gp-hero p {
+    font-size: 1rem;
+  }
+
+  .gp-author {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 20px 15px;
+  }
+
+  .gp-author-photo {
+    flex: 0 0 auto;
+  }
+
+  .gp-author-text {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .gp-section {
+    padding: 20px 15px;
+  }
+
+  .gp-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .gp-cta {
+    padding: 25px 15px;
+  }
+
+  .gp-cta-button {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gp-hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .gp-author-photo img {
+    width: 120px;
+    height: 120px;
+  }
 }
