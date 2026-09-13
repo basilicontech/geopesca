@@ -617,9 +617,15 @@ body.category-manual .comment-respond {
   }
 }
 
-/* Ocultar caja de comentarios en entradas del manual */
+/* ============================================
+   MANUAL - Ocultar caja de comentarios
+   ============================================ */
+
 body.category-manual #comments,
 body.category-manual .comments-area,
-body.category-manual #respond {
-  display: none !important;
+body.category-manual .comment-respond,
+body.category-manual #respond,
+body.category-manual .ast-comment-form,
+body.category-manual .ast-comments-area {
+    display: none !important;
 }
