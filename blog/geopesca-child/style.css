@@ -5,46 +5,81 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.0.4
+ Version:      1.0.5
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
 */
 
 /* ============================================
-   PRUEBA DE CSS - Colores obvios
-   Si esto no se ve, el CSS no se aplica
+   PALETA GEOPESCA
    ============================================ */
 
-/* Site title → ROJO */
+:root {
+  --gp-azul-profundo: #0a3d4f;
+  --gp-azul-medio: #1a7a94;
+  --gp-turquesa: #3db8cc;
+  --gp-turquesa-claro: #4ecdc4;
+  --gp-coral: #ff6b6b;
+  --gp-texto-oscuro: #1a3c40;
+  --gp-texto: #2c3e50;
+}
+
+/* Site title */
 .site-title a,
 .site-title a:focus,
 .site-title a:hover,
 .site-title a:visited {
-    color: red !important;
+  color: var(--gp-azul-profundo) !important;
 }
 
-/* Enlaces → MAGENTA */
+/* Enlaces generales */
 a,
 a:focus,
 a:visited {
-    color: magenta !important;
+  color: var(--gp-azul-profundo) !important;
 }
 
 a:hover {
-    color: orange !important;
+  color: var(--gp-coral) !important;
 }
 
-/* Títulos → VERDE */
-h1, h2, h3, h4, h5, h6,
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .entry-title a,
-.entry-content h1, .entry-content h2,
-.entry-content h3, .entry-content h4,
-.entry-content h5, .entry-content h6 {
-    color: green !important;
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+  color: var(--gp-texto-oscuro) !important;
 }
 
-/* Cuerpo → AZUL */
-body, p {
-    color: blue !important;
+/* Cuerpo */
+body,
+p {
+  color: var(--gp-texto) !important;
+}
+
+/* Botones */
+.wp-block-button__link,
+button,
+input[type="submit"],
+.ast-button {
+  background-color: var(--gp-azul-profundo) !important;
+  color: #fff !important;
+}
+
+.wp-block-button__link:hover,
+button:hover,
+input[type="submit"]:hover,
+.ast-button:hover {
+  background-color: var(--gp-turquesa) !important;
+  color: #fff !important;
 }
