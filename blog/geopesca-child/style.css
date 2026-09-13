@@ -616,3 +616,10 @@ body.category-manual .comment-respond {
     flex-direction: column;
   }
 }
+
+/* Ocultar caja de comentarios en entradas del manual */
+body.category-manual #comments,
+body.category-manual .comments-area,
+body.category-manual #respond {
+  display: none !important;
+}
