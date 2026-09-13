@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.0.12
+ Version:      1.0.9
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -615,17 +615,4 @@ body.category-manual .comment-respond {
   .gp-manual-nav {
     flex-direction: column;
   }
-}
-
-/* ============================================
-   MANUAL - Ocultar caja de comentarios
-   ============================================ */
-
-body.category-manual #comments,
-body.category-manual .comments-area,
-body.category-manual .comment-respond,
-body.category-manual #respond,
-body.category-manual .ast-comment-form,
-body.category-manual .ast-comments-area {
-    display: none !important;
 }
