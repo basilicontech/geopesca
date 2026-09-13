@@ -18,3 +18,18 @@ Thumbs.db
 .vscode/
 .idea/
 backend/consentimientos.json
+
+# Python (para python-services/)
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.venv/
+python-services/venv/
+
+# WordPress (por si acaso, aunque no debería haber nada de esto en el repo)
+wp-config.php
+wp-content/uploads/
+wp-content/plugins/
+wp-content/themes/astra/
