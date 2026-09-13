@@ -29,16 +29,16 @@
   --gp-borde-suave: #d1e9f0;
 }
 
-/* Sobrescribimos variables de Astra con doble selector para ganar especificidad */
-:root:root {
-  --ast-global-color-0: #0a3d4f;
-  --ast-global-color-1: #1a7a94;
-  --ast-global-color-2: #1a3c40;
-  --ast-global-color-3: #2c3e50;
-  --ast-global-color-4: #ffffff;
-  --ast-global-color-5: #e8f4f8;
-  --ast-global-color-6: #0a2d3a;
-  --ast-global-color-7: #d1e9f0;
-  --ast-global-color-8: #4ecdc4;
-  --ast-border-color: #d1e9f0;
+/* Sobrescribimos variables de Astra con !important para ganar siempre */
+:root {
+    --ast-global-color-0: #0a3d4f !important;
+    --ast-global-color-1: #1a7a94 !important;
+    --ast-global-color-2: #1a3c40 !important;
+    --ast-global-color-3: #2c3e50 !important;
+    --ast-global-color-4: #ffffff !important;
+    --ast-global-color-5: #e8f4f8 !important;
+    --ast-global-color-6: #0a2d3a !important;
+    --ast-global-color-7: #d1e9f0 !important;
+    --ast-global-color-8: #4ecdc4 !important;
+    --ast-border-color: #d1e9f0 !important;
 }
