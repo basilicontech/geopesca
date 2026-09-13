@@ -749,3 +749,23 @@ input[type="submit"]:hover,
     grid-template-columns: 1fr;
   }
 }
+
+/* Créditos de autoría (banderas, imágenes, etc.) */
+.gp-creditos {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  line-height: 1.5;
+}
+
+.gp-creditos a {
+  color: #888;
+  text-decoration: underline;
+}
+
+.gp-creditos a:hover {
+  color: var(--gp-coral);
+}
