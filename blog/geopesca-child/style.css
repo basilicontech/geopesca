@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.4.7
+ Version:      1.4.4
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -29,6 +29,7 @@
    TIPOGRAFÍA Y COLORES BASE
    ============================================ */
 
+/* Site title */
 .site-title a,
 .site-title a:focus,
 .site-title a:hover,
@@ -36,6 +37,7 @@
   color: var(--gp-azul-profundo) !important;
 }
 
+/* Enlaces generales */
 a,
 a:focus,
 a:visited {
@@ -46,6 +48,7 @@ a:hover {
   color: var(--gp-coral) !important;
 }
 
+/* Títulos */
 h1,
 h2,
 h3,
@@ -62,11 +65,13 @@ h6,
   color: var(--gp-texto-oscuro) !important;
 }
 
+/* Cuerpo */
 body,
 p {
   color: var(--gp-texto) !important;
 }
 
+/* Botones */
 .wp-block-button__link,
 button,
 input[type="submit"],
@@ -261,11 +266,13 @@ input[type="submit"]:hover,
    BARRA DE NAVEGACIÓN - Fondo oscuro, letras claras
    ============================================ */
 
+/* Fondo del header (escritorio y móvil) */
 .ast-primary-header-bar,
 .ast-mobile-header-wrap .ast-primary-header-bar {
   background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 100%) !important;
 }
 
+/* Letras del menú (escritorio y móvil) */
 .main-header-menu a,
 .ast-mobile-popup-content a,
 .site-title a,
@@ -275,11 +282,13 @@ input[type="submit"]:hover,
   color: #ffffff !important;
 }
 
+/* Hover */
 .main-header-menu a:hover,
 .ast-mobile-popup-content a:hover {
   color: #ff6b6b !important;
 }
 
+/* Botón hamburguesa */
 .menu-toggle,
 .ast-mobile-menu-trigger {
   color: #ffffff !important;
@@ -290,6 +299,7 @@ input[type="submit"]:hover,
    ============================================ */
 
 @media (max-width: 921px) {
+  /* Header móvil */
   .ast-mobile-header-wrap .ast-primary-header-bar,
   .ast-mobile-header-content,
   .ast-mobile-popup-drawer,
@@ -300,6 +310,7 @@ input[type="submit"]:hover,
     background: linear-gradient(135deg, #0a3d4f 0%, #1a7a94 100%) !important;
   }
 
+  /* Contenedor del menú desplegado */
   .ast-mobile-header-content .main-header-menu,
   .ast-mobile-popup-content .main-header-menu,
   .ast-nav-menu,
@@ -307,6 +318,7 @@ input[type="submit"]:hover,
     background-color: transparent !important;
   }
 
+  /* Enlaces del menú móvil */
   .ast-mobile-header-content a,
   .ast-mobile-popup-content a,
   .ast-mobile-header-content .menu-item a,
@@ -321,6 +333,7 @@ input[type="submit"]:hover,
     background-color: transparent !important;
   }
 
+  /* Hover en móvil */
   .ast-mobile-header-content a:hover,
   .ast-mobile-popup-content a:hover,
   .ast-mobile-header-content .menu-item a:hover,
@@ -329,6 +342,7 @@ input[type="submit"]:hover,
     color: #ff6b6b !important;
   }
 
+  /* Ícono de la hamburguesa (las rayas) */
   .ast-mobile-menu-trigger-minimal .ast-menu-toggle-icon,
   .ast-mobile-menu-trigger-minimal::before,
   .ast-mobile-menu-trigger-minimal::after,
@@ -337,6 +351,7 @@ input[type="submit"]:hover,
     color: #ffffff !important;
   }
 
+  /* Botón cerrar (la X) */
   .ast-mobile-popup-drawer .ast-mobile-popup-header,
   .ast-mobile-popup-drawer .ast-mobile-popup-close {
     background-color: #0a3d4f !important;
@@ -353,6 +368,7 @@ input[type="submit"]:hover,
    MANUAL - Estructura completa
    ============================================ */
 
+/* --- Página índice --- */
 .gp-manual-index {
   padding: 20px 0;
 }
@@ -398,6 +414,7 @@ input[type="submit"]:hover,
   text-decoration: underline;
 }
 
+/* --- Entradas del manual --- */
 .gp-manual h2 {
   margin-top: 40px;
   padding-bottom: 8px;
@@ -424,7 +441,7 @@ input[type="submit"]:hover,
 
 .gp-video-wrapper {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
   max-width: 100%;
@@ -476,6 +493,7 @@ input[type="submit"]:hover,
   min-width: 140px;
 }
 
+/* Botón al padre */
 .gp-manual-nav .gp-nav-parent {
   background-color: var(--gp-turquesa);
   color: #ffffff !important;
@@ -487,6 +505,7 @@ input[type="submit"]:hover,
   color: var(--gp-turquesa) !important;
 }
 
+/* Botón a la hermana anterior */
 .gp-manual-nav .gp-nav-prev {
   background-color: transparent;
   color: var(--gp-coral) !important;
@@ -498,6 +517,7 @@ input[type="submit"]:hover,
   color: #ffffff !important;
 }
 
+/* Botón a la hermana siguiente */
 .gp-manual-nav .gp-nav-next {
   background-color: var(--gp-azul-profundo);
   color: #ffffff !important;
@@ -509,6 +529,7 @@ input[type="submit"]:hover,
   color: var(--gp-azul-profundo) !important;
 }
 
+/* Iconos de flechas */
 .gp-manual-nav .gp-nav-parent::before {
   content: "↑ ";
 }
@@ -520,6 +541,10 @@ input[type="submit"]:hover,
 .gp-manual-nav .gp-nav-next::after {
   content: " →";
 }
+
+/* ============================================
+   RESPONSIVE - Manual
+   ============================================ */
 
 @media (max-width: 768px) {
   .gp-manual-index {
@@ -633,9 +658,99 @@ input[type="submit"]:hover,
 }
 
 /* ============================================
-   CRÉDITOS DE AUTORÍA
+   LICENCIAS - Cuadrícula de tarjetas
    ============================================ */
 
+.gp-licencias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.gp-licencia-card {
+  display: block;
+  text-decoration: none;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.gp-licencia-card:hover {
+  border-color: var(--gp-turquesa);
+  background-color: #f8fdfe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.gp-licencia-card h3 {
+  margin: 0 0 8px 0;
+  color: var(--gp-azul-profundo);
+  font-size: 1.15rem;
+}
+
+.gp-licencia-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ============================================
+   LICENCIAS - Página individual
+   ============================================ */
+
+.gp-licencia-notas {
+  padding: 10px 0 20px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.gp-licencia h2 {
+  margin-top: 45px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #d1e9f0;
+}
+
+.gp-licencia-links {
+  margin-top: 20px;
+}
+
+.gp-licencia-link {
+  border-left: 4px solid var(--gp-turquesa);
+  padding: 12px 18px;
+  margin-bottom: 15px;
+  background-color: #f8fdfe;
+  border-radius: 0 6px 6px 0;
+}
+
+.gp-licencia-link a {
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.gp-licencia-link a:hover {
+  color: var(--gp-coral) !important;
+  text-decoration: underline;
+}
+
+.gp-licencia-link p {
+  margin: 6px 0 0 0;
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .gp-licencias-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Créditos de autoría (banderas, imágenes, etc.) */
 .gp-creditos {
   font-size: 0.75rem;
   color: #888;
@@ -676,6 +791,19 @@ input[type="submit"]:hover,
    ============================================ */
 
 .wp-block-image figcaption {
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+  text-align: left;
+  margin-top: 8px;
+  padding-left: 15px;
+  border-left: 3px solid var(--gp-turquesa);
+  line-height: 1.5;
+} /* ============================================
+   LEYENDAS DE IMAGEN - Estilo elegante
+   ============================================ */
+
+.wp-block-image figcaption {
   font-size: 0.85rem !important;
   color: #888 !important;
   font-style: italic !important;
@@ -690,6 +818,7 @@ input[type="submit"]:hover,
    ENTREVISTAS - Presentaciones, diálogos y agradecimientos
    ============================================ */
 
+/* Texto de presentación del autor */
 .gp-entrevista-presentacion {
   font-style: italic;
   color: #555;
@@ -701,6 +830,7 @@ input[type="submit"]:hover,
   line-height: 1.6;
 }
 
+/* Cuadro de diálogo */
 .gp-dialogo {
   background-color: #f8fdfe;
   border-left: 4px solid var(--gp-turquesa);
@@ -736,6 +866,7 @@ input[type="submit"]:hover,
   color: var(--gp-azul-profundo);
 }
 
+/* Caja de agradecimientos */
 .gp-entrevista-agradecimientos {
   background: linear-gradient(135deg, #f8fdfe 0%, #e8f4f8 100%);
   border: 2px solid var(--gp-turquesa);
@@ -783,6 +914,7 @@ body.archive .ast-archive-description {
    ARCHIVOS DE CATEGORÍA - Tarjetas visuales
    ============================================ */
 
+/* Contenedor del listado en cuadrícula */
 body.archive .site-main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -790,15 +922,111 @@ body.archive .site-main {
   padding: 20px 0;
 }
 
+/* Cada entrada como tarjeta */
 body.archive .ast-article-post {
   background-color: #ffffff;
-  border: 1px solid #d1e9f0;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.25s ease;
   padding: 0 !important;
   margin: 0 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.archive .ast-article-post:hover {
+  border-color: var(--gp-turquesa);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Imagen destacada */
+body.archive .post-thumb {
+  margin: 0;
+  border-radius: 0;
+}
+
+body.archive .post-thumb img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenido de la tarjeta */
+body.archive .ast-article-inner {
+  padding: 20px;
+}
+
+/* Título */
+body.archive .entry-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+body.archive .entry-title a {
+  color: var(--gp-azul-profundo) !important;
+  text-decoration: none;
+}
+
+body.archive .entry-title a:hover {
+  color: var(--gp-coral) !important;
+}
+
+/* Meta (autor, fecha) */
+body.archive .entry-meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.archive .entry-meta a {
+  color: #888 !important;
+  text-decoration: none;
+}
+
+/* Extracto */
+body.archive .entry-summary {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Enlace "Leer más" */
+body.archive .read-more {
+  display: inline-block;
+  color: var(--gp-turquesa) !important;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+body.archive .read-more:hover {
+  color: var(--gp-coral) !important;
+}
+
+/* ============================================
+   ARCHIVOS DE CATEGORÍA - Tarjetas visuales
+   ============================================ */
+
+body.archive .site-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+body.archive .ast-article-post {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 body.archive .ast-article-post:hover {
@@ -870,17 +1098,13 @@ body.archive .read-more:hover {
   color: var(--gp-coral) !important;
 }
 
-/* Ocultar la categoría en cada tarjeta */
+/* ============================================
+   ARCHIVOS - Ocultar la categoría en cada tarjeta
+   ============================================ */
+
 body.archive .entry-meta .cat-links,
 body.archive .entry-meta .ast-taxonomy-container,
 body.archive .ast-taxonomy-container,
 body.archive .cat-links {
   display: none !important;
-}
-
-/* Responsive: 1 columna en móvil */
-@media (max-width: 768px) {
-  body.archive .site-main {
-    grid-template-columns: 1fr;
-  }
 }
