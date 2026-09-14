@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.2.4
+ Version:      1.4.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -898,4 +898,112 @@ input[type="submit"]:hover,
   background-color: var(--gp-turquesa);
   color: #ffffff !important;
   text-decoration: none !important;
+}
+
+/* ============================================
+   ARCHIVOS DE CATEGORÍA - Ocultar título automático
+   ============================================ */
+
+body.archive .ast-archive-title,
+body.archive .page-title,
+body.archive .ast-archive-description {
+  display: none !important;
+}
+
+/* ============================================
+   ARCHIVOS DE CATEGORÍA - Tarjetas visuales
+   ============================================ */
+
+/* Contenedor del listado en cuadrícula */
+body.archive .site-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+/* Cada entrada como tarjeta */
+body.archive .ast-article-post {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.archive .ast-article-post:hover {
+  border-color: var(--gp-turquesa);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Imagen destacada */
+body.archive .post-thumb {
+  margin: 0;
+  border-radius: 0;
+}
+
+body.archive .post-thumb img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenido de la tarjeta */
+body.archive .ast-article-inner {
+  padding: 20px;
+}
+
+/* Título */
+body.archive .entry-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+body.archive .entry-title a {
+  color: var(--gp-azul-profundo) !important;
+  text-decoration: none;
+}
+
+body.archive .entry-title a:hover {
+  color: var(--gp-coral) !important;
+}
+
+/* Meta (autor, fecha) */
+body.archive .entry-meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.archive .entry-meta a {
+  color: #888 !important;
+  text-decoration: none;
+}
+
+/* Extracto */
+body.archive .entry-summary {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Enlace "Leer más" */
+body.archive .read-more {
+  display: inline-block;
+  color: var(--gp-turquesa) !important;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+body.archive .read-more:hover {
+  color: var(--gp-coral) !important;
 }
