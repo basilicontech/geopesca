@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.4.4
+ Version:      1.4.6
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -925,12 +925,13 @@ body.archive .site-main {
 /* Cada entrada como tarjeta */
 body.archive .ast-article-post {
   background-color: #ffffff;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #d1e9f0;
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.25s ease;
   padding: 0 !important;
   margin: 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 body.archive .ast-article-post:hover {
