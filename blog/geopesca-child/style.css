@@ -5,7 +5,7 @@
  Author:       Alfonso Ismael Manzano Rodríguez
  Author URI:   https://basilicontech.com
  Template:     astra
- Version:      1.2.3
+ Version:      1.2.4
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain:  geopesca-child
@@ -812,4 +812,90 @@ input[type="submit"]:hover,
   padding-left: 15px !important;
   border-left: 3px solid var(--gp-turquesa) !important;
   line-height: 1.5 !important;
+}
+
+/* ============================================
+   ENTREVISTAS - Presentaciones, diálogos y agradecimientos
+   ============================================ */
+
+/* Texto de presentación del autor */
+.gp-entrevista-presentacion {
+  font-style: italic;
+  color: #555;
+  padding: 15px 20px;
+  margin: 25px 0;
+  background-color: #fafafa;
+  border-left: 4px solid var(--gp-coral);
+  border-radius: 0 6px 6px 0;
+  line-height: 1.6;
+}
+
+/* Cuadro de diálogo */
+.gp-dialogo {
+  background-color: #f8fdfe;
+  border-left: 4px solid var(--gp-turquesa);
+  border-radius: 0 8px 8px 0;
+  padding: 20px 25px;
+  margin: 25px 0;
+}
+
+.gp-dialogo-pregunta,
+.gp-dialogo-respuesta {
+  margin-bottom: 18px;
+}
+
+.gp-dialogo-pregunta:last-child,
+.gp-dialogo-respuesta:last-child {
+  margin-bottom: 0;
+}
+
+.gp-dialogo-nombre {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.gp-dialogo-pregunta .gp-dialogo-nombre {
+  color: var(--gp-turquesa);
+}
+
+.gp-dialogo-respuesta .gp-dialogo-nombre {
+  color: var(--gp-azul-profundo);
+}
+
+/* Caja de agradecimientos */
+.gp-entrevista-agradecimientos {
+  background: linear-gradient(135deg, #f8fdfe 0%, #e8f4f8 100%);
+  border: 2px solid var(--gp-turquesa);
+  border-radius: 8px;
+  padding: 25px 30px;
+  margin: 40px 0 25px;
+  text-align: center;
+}
+
+.gp-entrevista-agradecimientos h3 {
+  margin-top: 0;
+  color: var(--gp-azul-profundo);
+}
+
+.gp-entrevista-agradecimientos a {
+  display: inline-block;
+  margin: 5px 8px;
+  padding: 8px 16px;
+  background-color: var(--gp-azul-profundo);
+  color: #ffffff !important;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.gp-entrevista-agradecimientos a:hover {
+  background-color: var(--gp-turquesa);
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
