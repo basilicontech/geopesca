@@ -769,3 +769,19 @@ input[type="submit"]:hover,
 .gp-creditos a:hover {
   color: var(--gp-coral);
 }
+
+/* ============================================
+   CRÉDITOS DE VÍDEO - Pie elegante
+   ============================================ */
+
+.gp-credito-video {
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+  text-align: left;
+  margin-top: 8px;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  border-left: 3px solid var(--gp-turquesa);
+  line-height: 1.5;
+}
