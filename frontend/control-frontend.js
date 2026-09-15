@@ -8,41 +8,31 @@ function usuarioPuedeIntroducirUbicacion() {
   const usuario = window.usuarioActual;
   return Boolean(
     usuario &&
-      (usuario.rol === "pescador" ||
-        (usuario.rol === "club" && usuario.validado === true)),
+    (usuario.rol === "pescador" ||
+      (usuario.rol === "club" && usuario.validado === true)),
   );
 }
 
 function formularioVisibleEnMovil() {
   const formulario = document.querySelector(".columna-derecha");
-  const fishingForm = document.getElementById("fishingForm");
-  const concursoForm = document.getElementById("concursoForm");
-
   if (!formulario) return false;
 
-  const visibleByContainer =
+  // Solo el contenedor determina si el formulario está visible en móvil
+  return (
     formulario.classList.contains("mostrar") ||
-    getComputedStyle(formulario).display !== "none";
-  const visibleByFishingForm =
-    fishingForm && getComputedStyle(fishingForm).display !== "none";
-  const visibleByConcursoForm =
-    concursoForm && getComputedStyle(concursoForm).display !== "none";
-
-  return visibleByContainer || visibleByFishingForm || visibleByConcursoForm;
+    getComputedStyle(formulario).display !== "none"
+  );
 }
 
-function actualizarControlesUbicacion() {
-  const controlesFormulario = document.getElementById(
-    "mobileLocationFormControls",
-  );
-  const formularioVisible = formularioVisibleEnMovil();
+function formularioVisibleEnMovil() {
+  const formulario = document.querySelector(".columna-derecha");
+  if (!formulario) return false;
 
-  if (controlesFormulario) {
-    controlesFormulario.classList.toggle(
-      "visible",
-      esMovil && usuarioPuedeIntroducirUbicacion() && formularioVisible,
-    );
-  }
+  // Solo el contenedor determina si el formulario está visible en móvil
+  return (
+    formulario.classList.contains("mostrar") ||
+    getComputedStyle(formulario).display !== "none"
+  );
 }
 
 window.actualizarControlesUbicacion = actualizarControlesUbicacion;
@@ -285,9 +275,7 @@ function inicializarMenuHamburguesa() {
   function mostrarFormularioMovil() {
     const formulario = document.querySelector(".columna-derecha");
     const mapa = document.querySelector(".columna-centro");
-    const controlesMapa = document.getElementById(
-      "mobileLocationMapControls",
-    );
+    const controlesMapa = document.getElementById("mobileLocationMapControls");
     const controlesFormulario = document.getElementById(
       "mobileLocationFormControls",
     );
@@ -308,9 +296,7 @@ function inicializarMenuHamburguesa() {
   function mostrarMapaMovil() {
     const formulario = document.querySelector(".columna-derecha");
     const mapa = document.querySelector(".columna-centro");
-    const controlesMapa = document.getElementById(
-      "mobileLocationMapControls",
-    );
+    const controlesMapa = document.getElementById("mobileLocationMapControls");
     const controlesFormulario = document.getElementById(
       "mobileLocationFormControls",
     );

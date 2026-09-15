@@ -269,31 +269,31 @@ VALUES
   (
     'Antonio García',
     'antonio.garcia@email.com',
-    'p1',
+    '123456789',
     '2025-01-15 09:30:00'
   ),
   (
     'Manuel Ruiz',
     'manuel.ruiz@email.com',
-    'p2',
+    '123456789',
     '2025-02-10 14:45:00'
   ),
   (
     'José Sánchez',
     'jose.sanchez@email.com',
-    'p3',
+    '123456789',
     '2025-03-22 08:15:00'
   ),
   (
     'Francisco Moreno',
     'francisco.moreno@email.com',
-    'p4',
+    '123456789',
     '2025-04-05 18:20:00'
   ),
   (
     'Miguel Torres',
     'miguel.torres@email.com',
-    'p5',
+    '123456789',
     '2025-05-12 11:10:00'
   );
 
