@@ -29,9 +29,9 @@ let insertarJornadaInicializado = false;
 
 async function loadCatalogs() {
   try {
-    const especies = await fetch("/api/catalogs/especies").then((r) =>
-      r.json(),
-    );
+    const especies = await fetch(
+      "/api/catalogs/especies",
+    ).then((r) => r.json());
     const especieSelect = document.getElementById("especie");
     especies.forEach((e) => {
       const option = document.createElement("option");
@@ -40,9 +40,9 @@ async function loadCatalogs() {
       especieSelect.appendChild(option);
     });
 
-    const habitats = await fetch("/api/catalogs/habitats").then((r) =>
-      r.json(),
-    );
+    const habitats = await fetch(
+      "/api/catalogs/habitats",
+    ).then((r) => r.json());
     const habitatSelect = document.getElementById("habitat");
     habitats.forEach((h) => {
       const option = document.createElement("option");
@@ -51,9 +51,9 @@ async function loadCatalogs() {
       habitatSelect.appendChild(option);
     });
 
-    const lechos = await fetch("/api/catalogs/tipos-lecho").then((r) =>
-      r.json(),
-    );
+    const lechos = await fetch(
+      "/api/catalogs/tipos-lecho",
+    ).then((r) => r.json());
     const lechoSelect = document.getElementById("tipo_lecho");
     lechos.forEach((l) => {
       const option = document.createElement("option");
@@ -62,9 +62,9 @@ async function loadCatalogs() {
       lechoSelect.appendChild(option);
     });
 
-    const vientos = await fetch("/api/catalogs/direcciones-viento").then((r) =>
-      r.json(),
-    );
+    const vientos = await fetch(
+      "/api/catalogs/direcciones-viento",
+    ).then((r) => r.json());
     const vientoSelect = document.getElementById("direccion_viento");
     vientos.forEach((v) => {
       const option = document.createElement("option");
@@ -73,9 +73,9 @@ async function loadCatalogs() {
       vientoSelect.appendChild(option);
     });
 
-    const velocidades = await fetch("/api/catalogs/velocidades-viento").then(
-      (r) => r.json(),
-    );
+    const velocidades = await fetch(
+      "/api/catalogs/velocidades-viento",
+    ).then((r) => r.json());
     const velocidadSelect = document.getElementById("velocidad_viento");
     velocidades.forEach((v) => {
       const option = document.createElement("option");
@@ -84,9 +84,9 @@ async function loadCatalogs() {
       velocidadSelect.appendChild(option);
     });
 
-    const olas = await fetch("/api/catalogs/alturas-olas").then((r) =>
-      r.json(),
-    );
+    const olas = await fetch(
+      "/api/catalogs/alturas-olas",
+    ).then((r) => r.json());
     const olasSelect = document.getElementById("altura_olas");
     olas.forEach((o) => {
       const option = document.createElement("option");
@@ -95,9 +95,9 @@ async function loadCatalogs() {
       olasSelect.appendChild(option);
     });
 
-    const turbideces = await fetch("/api/catalogs/turbideces").then((r) =>
-      r.json(),
-    );
+    const turbideces = await fetch(
+      "/api/catalogs/turbideces",
+    ).then((r) => r.json());
     const turbidezSelect = document.getElementById("turbidez");
     turbideces.forEach((t) => {
       const option = document.createElement("option");
@@ -106,9 +106,9 @@ async function loadCatalogs() {
       turbidezSelect.appendChild(option);
     });
 
-    const tiempos = await fetch("/api/catalogs/tiempos-atmosfericos").then(
-      (r) => r.json(),
-    );
+    const tiempos = await fetch(
+      "/api/catalogs/tiempos-atmosfericos",
+    ).then((r) => r.json());
     const tiempoSelect = document.getElementById("tiempo");
     tiempos.forEach((t) => {
       const option = document.createElement("option");
@@ -117,9 +117,9 @@ async function loadCatalogs() {
       tiempoSelect.appendChild(option);
     });
 
-    const pescas = await fetch("/api/catalogs/tipos-pesca").then((r) =>
-      r.json(),
-    );
+    const pescas = await fetch(
+      "/api/catalogs/tipos-pesca",
+    ).then((r) => r.json());
     const pescaSelect = document.getElementById("tipo_pesca");
     pescas.forEach((p) => {
       const option = document.createElement("option");
@@ -128,9 +128,9 @@ async function loadCatalogs() {
       pescaSelect.appendChild(option);
     });
 
-    const cebosNat = await fetch("/api/catalogs/cebos-naturales").then((r) =>
-      r.json(),
-    );
+    const cebosNat = await fetch(
+      "/api/catalogs/cebos-naturales",
+    ).then((r) => r.json());
     const ceboNatSelect = document.getElementById("cebo_natural");
     cebosNat.forEach((c) => {
       const option = document.createElement("option");
@@ -139,9 +139,9 @@ async function loadCatalogs() {
       ceboNatSelect.appendChild(option);
     });
 
-    const cebosArt = await fetch("/api/catalogs/cebos-artificiales").then((r) =>
-      r.json(),
-    );
+    const cebosArt = await fetch(
+      "/api/catalogs/cebos-artificiales",
+    ).then((r) => r.json());
     const ceboArtSelect = document.getElementById("cebo_artificial");
     cebosArt.forEach((c) => {
       const option = document.createElement("option");
@@ -205,6 +205,8 @@ async function inicializarInsertarJornada() {
   insertarJornadaInicializado = true;
 
   console.log("📋 Inicializando formulario...");
+
+  await loadCatalogs();
 
   await loadCatalogs();
 

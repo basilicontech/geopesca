@@ -184,14 +184,6 @@
       <!-- Columna central - Mapa -->
       <div class="columna columna-centro">
         <div id="map"></div>
-        <button
-          type="button"
-          id="btnVolverFormulario"
-          class="btn-volver-formulario"
-          style="display: none"
-        >
-          📝 Seguir rellenando el Formulario
-        </button>
       </div>
 
       <!-- Columna derecha - Formulario -->
@@ -525,7 +517,13 @@
             ⚠️ Haz clic en el mapa para seleccionar ubicación
           </div>
 
-
+          <button type="submit" id="concursoSubmitBtn" disabled>
+            Registrar concurso
+          </button>
+          <button type="reset">Limpiar formulario</button>
+        </form>
+      </div>
+    </div>
 
     <!-- Modal flotante -->
     <div id="modalJornada" class="modal">
@@ -565,9 +563,7 @@
     <script src="modal-registro.js" data-zest-allow></script>
     <script src="acerca-de.js" data-zest-allow></script>
     <script src="como-funciona.js" data-zest-allow></script>
-        <script src="blog.js"></script>
-    <!-- ✅ NUEVO: lógica del botón de ubicación en móvil -->
-    <script src="boton-ubicacion-mobile.js" data-zest-allow></script>
+    <script src="blog.js"></script>
     <script src="cookies-frontend.js" data-zest-allow></script>
   </body>
 </html>
