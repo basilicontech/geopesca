@@ -605,7 +605,7 @@
     transform: translateY(-7.5px) rotate(-45deg);
   }
 
-   /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
+  /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
   /* ============================================ */
 
   /* Contenedor principal - Ocupa todo el espacio disponible */
@@ -778,5 +778,76 @@
     gap: 6px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
+  }
+}
+
+/* ============================================ */
+/* ✅ NUEVO: BOTONES DE UBICACIÓN EN MÓVIL */
+/* ============================================ */
+
+/* Botón "Introducir ubicación" (solo se muestra en móvil) */
+.btn-ubicacion-mobile {
+  display: none;
+  width: 100%;
+  background-color: #46b5a5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 15px;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+  box-shadow: 0 2px 8px rgba(70, 181, 165, 0.3);
+}
+
+.btn-ubicacion-mobile:hover {
+  background-color: #35967f;
+  transform: translateY(-1px);
+}
+
+.btn-ubicacion-mobile:active {
+  transform: translateY(0);
+}
+
+/* Botón "Volver al formulario" flotante sobre el mapa */
+.btn-volver-formulario {
+  display: none;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #1e5799;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 22px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-volver-formulario:hover {
+  background-color: #2e6b9e;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-volver-formulario:active {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Seguridad: en escritorio nunca se muestran */
+@media (min-width: 769px) {
+  .btn-ubicacion-mobile,
+  .btn-volver-formulario {
+    display: none !important;
   }
 }
