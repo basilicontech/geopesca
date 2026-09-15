@@ -208,8 +208,6 @@ async function inicializarInsertarJornada() {
 
   await loadCatalogs();
 
-  await loadCatalogs();
-
   // ============================================================
   // EVENTO 1: Botón "Añadir captura" (addCatchBtn)
   // PROPÓSITO: Añadir una nueva captura a la lista

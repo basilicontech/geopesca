@@ -1,5 +1,9 @@
 /* elementos_adicionales.css - Estilos exclusivos de cabecera, menú y footer */
 
+.mobile-location-controls {
+  display: none;
+}
+
 /* CABECERA */
 /* ===== CABECERA ===== */
 .cabecera {
@@ -634,6 +638,22 @@
     min-height: 350px !important;
     width: 100% !important;
     flex: 1 1 auto;
+  }
+
+  .mobile-location-controls {
+    display: none;
+    width: 100%;
+    padding: 10px 15px 15px;
+    box-sizing: border-box;
+    background: #fff;
+  }
+
+  .mobile-location-controls.visible {
+    display: block;
+  }
+
+  .mobile-location-controls button {
+    margin-top: 0;
   }
 
   .columna-centro {
