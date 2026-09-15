@@ -4,39 +4,6 @@
 let esMovil = false;
 let btnNav, btnSecciones, menuNav, menuSecciones;
 
-function usuarioPuedeIntroducirUbicacion() {
-  const usuario = window.usuarioActual;
-  return Boolean(
-    usuario &&
-    (usuario.rol === "pescador" ||
-      (usuario.rol === "club" && usuario.validado === true)),
-  );
-}
-
-function formularioVisibleEnMovil() {
-  const formulario = document.querySelector(".columna-derecha");
-  if (!formulario) return false;
-
-  // Solo el contenedor determina si el formulario está visible en móvil
-  return (
-    formulario.classList.contains("mostrar") ||
-    getComputedStyle(formulario).display !== "none"
-  );
-}
-
-function formularioVisibleEnMovil() {
-  const formulario = document.querySelector(".columna-derecha");
-  if (!formulario) return false;
-
-  // Solo el contenedor determina si el formulario está visible en móvil
-  return (
-    formulario.classList.contains("mostrar") ||
-    getComputedStyle(formulario).display !== "none"
-  );
-}
-
-window.actualizarControlesUbicacion = actualizarControlesUbicacion;
-
 async function init() {
   console.log("🎣 Iniciando Control Frontend...");
 
@@ -182,7 +149,6 @@ function inicializarMenuHamburguesa() {
         window.cerrarMenus();
       }
     }
-    actualizarControlesUbicacion();
   }
 
   // Establecer estado inicial
@@ -269,70 +235,6 @@ function inicializarMenuHamburguesa() {
   const btnFiltros = document.getElementById("btnMostrarFiltros");
   const btnMapa = document.getElementById("btnMostrarMapa");
   const btnFormulario = document.getElementById("btnMostrarFormulario");
-  const btnSeleccionarUbicacion = document.getElementById("selectLocationBtn");
-  const btnContinuarFormulario = document.getElementById("continueFormBtn");
-
-  function mostrarFormularioMovil() {
-    const formulario = document.querySelector(".columna-derecha");
-    const mapa = document.querySelector(".columna-centro");
-    const controlesMapa = document.getElementById("mobileLocationMapControls");
-    const controlesFormulario = document.getElementById(
-      "mobileLocationFormControls",
-    );
-
-    if (mapa) {
-      mapa.style.display = "none";
-      mapa.classList.remove("mostrar");
-    }
-    if (formulario) {
-      formulario.classList.add("mostrar");
-      formulario.style.display = "block";
-    }
-    if (controlesMapa) controlesMapa.classList.remove("visible");
-    if (controlesFormulario) controlesFormulario.classList.add("visible");
-    actualizarControlesUbicacion();
-  }
-
-  function mostrarMapaMovil() {
-    const formulario = document.querySelector(".columna-derecha");
-    const mapa = document.querySelector(".columna-centro");
-    const controlesMapa = document.getElementById("mobileLocationMapControls");
-    const controlesFormulario = document.getElementById(
-      "mobileLocationFormControls",
-    );
-
-    if (formulario) {
-      formulario.classList.remove("mostrar");
-      formulario.style.display = "none";
-    }
-    if (mapa) {
-      mapa.style.display = "block";
-      mapa.classList.add("mostrar");
-      mapa.style.width = "100%";
-    }
-    if (controlesMapa) controlesMapa.classList.add("visible");
-    if (controlesFormulario) controlesFormulario.classList.remove("visible");
-    actualizarControlesUbicacion();
-
-    if (typeof map !== "undefined" && map) {
-      setTimeout(() => {
-        map.invalidateSize();
-      }, 150);
-    }
-  }
-
-  if (btnSeleccionarUbicacion) {
-    btnSeleccionarUbicacion.addEventListener("click", function () {
-      if (!esMovil || !usuarioPuedeIntroducirUbicacion()) return;
-      mostrarMapaMovil();
-    });
-  }
-
-  if (btnContinuarFormulario) {
-    btnContinuarFormulario.addEventListener("click", function () {
-      if (esMovil) mostrarFormularioMovil();
-    });
-  }
 
   if (btnFiltros) {
     btnFiltros.addEventListener("click", function (e) {
@@ -367,7 +269,6 @@ function inicializarMenuHamburguesa() {
           }
         }
       }
-      actualizarControlesUbicacion();
       window.cerrarMenus();
     });
   }

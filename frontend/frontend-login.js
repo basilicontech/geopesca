@@ -113,10 +113,6 @@ function mostrarFormularioPescador(usuario) {
       inicializarInsertarConcurso();
     }
   }
-
-  if (typeof window.actualizarControlesUbicacion === "function") {
-    window.actualizarControlesUbicacion();
-  }
 }
 
 function cerrarSesion() {
