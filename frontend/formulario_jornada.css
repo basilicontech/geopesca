@@ -13,6 +13,29 @@
   box-sizing: border-box;
 }
 
+#btnMostrarMapaFormulario {
+  display: none;
+}
+
+#btnMostrarMapaFormulario:hover {
+  background: #256d46;
+}
+
+@media (max-width: 768px) {
+  #btnMostrarMapaFormulario {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    background: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
 /* Título del formulario */
 #contenedor-fishingForm h3 {
   color: #1e6b6b;

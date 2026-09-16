@@ -4,6 +4,9 @@
 let esMovil = false;
 let btnNav, btnSecciones, menuNav, menuSecciones;
 
+// Estado global del panel de formulario (para reevaluar el botón al hacer login)
+window._panelFormularioAbierto = false;
+
 async function init() {
   console.log("🎣 Iniciando Control Frontend...");
 
@@ -47,10 +50,167 @@ async function init() {
   }
 
   // ============================================
-  // MENÚ HAMBURGUESA - Inicializar
+  // INICIALIZAR COMPONENTES
   // ============================================
 
   inicializarMenuHamburguesa();
+  inicializarBotonesAccionMapa();
+  inicializarBotonUbicacion();
+  observarCambiosSesion();
+}
+
+// ============================================
+// HELPER: mostrar/ocultar el botón "Insertar ubicación"
+// ============================================
+
+function actualizarBotonUbicacion(mostrar) {
+  const btn = document.getElementById("btnInsertarUbicacion");
+  if (!btn) return;
+
+  const esMovilAhora = window.innerWidth <= 768;
+
+  const usuarioValido =
+    window.usuarioActual &&
+    (window.usuarioActual.rol === "pescador" ||
+      window.usuarioActual.rol === "club");
+
+  const debeMostrarse = mostrar && esMovilAhora && usuarioValido;
+  btn.style.display = debeMostrarse ? "inline-block" : "none";
+
+  window._panelFormularioAbierto = !!mostrar;
+}
+
+// ============================================
+// ACCIÓN GLOBAL: ocultarTodasSecciones()
+// Oculta filtros y formulario, y muestra el mapa
+// a pantalla completa. Reutilizable desde cualquier sitio.
+// ============================================
+
+function ocultarTodasSecciones() {
+  const filtros = document.querySelector(".filtros-contenedor");
+  const formulario = document.querySelector(".columna-derecha");
+  const mapa = document.querySelector(".columna-centro");
+
+  if (filtros) {
+    filtros.classList.remove("mostrar");
+    filtros.style.display = "none";
+  }
+  if (formulario) {
+    formulario.classList.remove("mostrar");
+    formulario.style.display = "none";
+  }
+  if (mapa) {
+    mapa.style.display = "block";
+    mapa.style.width = "100%";
+    if (typeof map !== "undefined" && map) {
+      setTimeout(function () {
+        map.invalidateSize();
+      }, 100);
+    }
+  }
+
+  actualizarBotonUbicacion(false);
+}
+
+// ============================================
+// ACCIÓN GLOBAL: accionMostrarMapa(origen)
+// Toda la lógica de "mostrar solo el mapa" en un único sitio.
+// La pueden llamar cualquier botón o atajo de teclado.
+// ============================================
+
+function accionMostrarMapa(origen) {
+  console.log(`🗺️ Mostrando mapa (origen: ${origen || "desconocido"})`);
+
+  ocultarTodasSecciones();
+
+  if (typeof map !== "undefined" && map) {
+    setTimeout(function () {
+      map.invalidateSize();
+    }, 300);
+  }
+
+  if (typeof window.cerrarMenus === "function") {
+    window.cerrarMenus();
+  }
+}
+
+// ============================================
+// INICIALIZAR: botones con clase .btn-accion-mapa
+// Cualquier botón con esta clase ejecutará accionMostrarMapa().
+// Añadir un botón nuevo = solo darle la clase en el HTML.
+// ============================================
+
+function inicializarBotonesAccionMapa() {
+  const botones = document.querySelectorAll(".btn-accion-mapa");
+
+  if (botones.length === 0) {
+    console.warn("⚠️ No se encontraron botones .btn-accion-mapa");
+    return;
+  }
+
+  botones.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!esMovil) return;
+      accionMostrarMapa(btn.id || "anónimo");
+    });
+  });
+
+  console.log(`✅ ${botones.length} botones .btn-accion-mapa inicializados`);
+}
+
+// ============================================
+// INICIALIZAR: botón "Insertar ubicación"
+// Tiene su propio handler porque requiere validar login
+// antes de ejecutar la acción común.
+// ============================================
+
+function inicializarBotonUbicacion() {
+  const btn = document.getElementById("btnInsertarUbicacion");
+  if (!btn) {
+    console.warn("⚠️ Botón 'Insertar ubicación' no encontrado");
+    return;
+  }
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log("📍 Insertar ubicación → validando sesión...");
+
+    const usuarioValido =
+      window.usuarioActual &&
+      (window.usuarioActual.rol === "pescador" ||
+        window.usuarioActual.rol === "club");
+
+    if (!usuarioValido) {
+      alert("Debes iniciar sesión como pescador o club para usar esta función.");
+      return;
+    }
+
+    // Reutiliza la acción común
+    accionMostrarMapa("btnInsertarUbicacion");
+
+    console.log("🗺️ Mapa abierto: haz clic en el mapa para marcar tu ubicación");
+  });
+}
+
+// ============================================
+// OBSERVAR cambios de sesión (login/logout)
+// ============================================
+
+function observarCambiosSesion() {
+  const headerUserInfo = document.getElementById("headerUserInfo");
+  if (!headerUserInfo) return;
+
+  const observer = new MutationObserver(function () {
+    if (window._panelFormularioAbierto) {
+      actualizarBotonUbicacion(true);
+    }
+  });
+
+  observer.observe(headerUserInfo, {
+    attributes: true,
+    attributeFilter: ["style"],
+  });
 }
 
 // ============================================
@@ -58,13 +218,11 @@ async function init() {
 // ============================================
 
 function inicializarMenuHamburguesa() {
-  // Obtener elementos
   btnNav = document.getElementById("menuNavBtn");
   btnSecciones = document.getElementById("menuSeccionesBtn");
   menuNav = document.getElementById("menuNavDesplegable");
   menuSecciones = document.getElementById("menuSeccionesDesplegable");
 
-  // Verificar que los elementos existen
   if (!btnNav || !btnSecciones || !menuNav || !menuSecciones) {
     console.warn("⚠️ Elementos del menú hamburguesa no encontrados");
     return;
@@ -97,31 +255,6 @@ function inicializarMenuHamburguesa() {
     }
   };
 
-  function ocultarTodasSecciones() {
-    const filtros = document.querySelector(".filtros-contenedor");
-    const formulario = document.querySelector(".columna-derecha");
-    const mapa = document.querySelector(".columna-centro");
-
-    if (filtros) {
-      filtros.classList.remove("mostrar");
-      filtros.style.display = "none";
-    }
-    if (formulario) {
-      formulario.classList.remove("mostrar");
-      formulario.style.display = "none";
-    }
-    if (mapa) {
-      mapa.style.display = "block";
-      mapa.style.width = "100%";
-      // Forzar actualización del mapa
-      if (typeof map !== "undefined" && map) {
-        setTimeout(function () {
-          map.invalidateSize();
-        }, 100);
-      }
-    }
-  }
-
   // ============================================
   // DETECCIÓN DINÁMICA DE MÓVIL
   // ============================================
@@ -136,7 +269,6 @@ function inicializarMenuHamburguesa() {
         ocultarTodasSecciones();
       } else {
         console.log("💻 Cambio a modo desktop");
-        // Restaurar layout de escritorio
         const mapa = document.querySelector(".columna-centro");
         const filtros = document.querySelector(".filtros-contenedor");
         const formulario = document.querySelector(".columna-derecha");
@@ -147,21 +279,18 @@ function inicializarMenuHamburguesa() {
         if (filtros) filtros.style.display = "block";
         if (formulario) formulario.style.display = "block";
         window.cerrarMenus();
+        actualizarBotonUbicacion(false);
       }
     }
   }
 
-  // Establecer estado inicial
   esMovil = window.innerWidth <= 768;
-
-  // Escuchar cambios de tamaño
   window.addEventListener("resize", actualizarModoMovil);
 
   // ============================================
   // CONFIGURAR EVENTOS
   // ============================================
 
-  // Botón de navegación (izquierdo)
   btnNav.addEventListener("click", function (e) {
     e.stopPropagation();
     if (esMovil) {
@@ -169,7 +298,6 @@ function inicializarMenuHamburguesa() {
     }
   });
 
-  // Botón de secciones (derecho)
   btnSecciones.addEventListener("click", function (e) {
     e.stopPropagation();
     if (esMovil) {
@@ -177,7 +305,6 @@ function inicializarMenuHamburguesa() {
     }
   });
 
-  // Soporte táctil
   btnNav.addEventListener(
     "touchstart",
     function (e) {
@@ -202,7 +329,6 @@ function inicializarMenuHamburguesa() {
     { passive: false },
   );
 
-  // Cerrar menús al hacer clic fuera (solo en móvil)
   document.addEventListener("click", function (e) {
     if (!esMovil) return;
     const clicEnNavBtn = btnNav && btnNav.contains(e.target);
@@ -221,7 +347,6 @@ function inicializarMenuHamburguesa() {
     }
   });
 
-  // Cerrar menús con tecla ESC (solo en móvil)
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && esMovil) {
       window.cerrarMenus();
@@ -229,30 +354,26 @@ function inicializarMenuHamburguesa() {
   });
 
   // ============================================
-  // BOTONES DE SECCIÓN - CORREGIDO
+  // BOTONES DE SECCIÓN
   // ============================================
 
   const btnFiltros = document.getElementById("btnMostrarFiltros");
-  const btnMapa = document.getElementById("btnMostrarMapa");
   const btnFormulario = document.getElementById("btnMostrarFormulario");
 
   if (btnFiltros) {
     btnFiltros.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevenir comportamiento por defecto
+      e.preventDefault();
       if (!esMovil) return;
       const filtros = document.querySelector(".filtros-contenedor");
       const formulario = document.querySelector(".columna-derecha");
       const mapa = document.querySelector(".columna-centro");
 
-      // Ocultar formulario
       if (formulario) {
         formulario.classList.remove("mostrar");
         formulario.style.display = "none";
       }
-      // Ocultar mapa
       if (mapa) mapa.style.display = "none";
 
-      // Mostrar/ocultar filtros
       if (filtros) {
         const estaVisible = filtros.classList.contains("mostrar");
         if (estaVisible) {
@@ -261,7 +382,6 @@ function inicializarMenuHamburguesa() {
         } else {
           filtros.classList.add("mostrar");
           filtros.style.display = "block";
-          // Forzar actualización del mapa
           if (typeof map !== "undefined" && map) {
             setTimeout(function () {
               map.invalidateSize();
@@ -269,51 +389,36 @@ function inicializarMenuHamburguesa() {
           }
         }
       }
-      window.cerrarMenus();
-    });
-  }
 
-  if (btnMapa) {
-    btnMapa.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevenir comportamiento por defecto
-      if (!esMovil) return;
-      ocultarTodasSecciones();
-      // Forzar actualización del mapa
-      if (typeof map !== "undefined" && map) {
-        setTimeout(function () {
-          map.invalidateSize();
-        }, 300);
-      }
+      actualizarBotonUbicacion(false);
       window.cerrarMenus();
     });
   }
 
   if (btnFormulario) {
     btnFormulario.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevenir comportamiento por defecto
+      e.preventDefault();
       if (!esMovil) return;
       const formulario = document.querySelector(".columna-derecha");
       const filtros = document.querySelector(".filtros-contenedor");
       const mapa = document.querySelector(".columna-centro");
 
-      // Ocultar filtros
       if (filtros) {
         filtros.classList.remove("mostrar");
         filtros.style.display = "none";
       }
-      // Ocultar mapa
       if (mapa) mapa.style.display = "none";
 
-      // Mostrar/ocultar formulario
       if (formulario) {
         const estaVisible = formulario.classList.contains("mostrar");
         if (estaVisible) {
           formulario.classList.remove("mostrar");
           formulario.style.display = "none";
+          actualizarBotonUbicacion(false);
         } else {
           formulario.classList.add("mostrar");
           formulario.style.display = "block";
-          // Forzar actualización del mapa
+          actualizarBotonUbicacion(true);
           if (typeof map !== "undefined" && map) {
             setTimeout(function () {
               map.invalidateSize();
@@ -342,6 +447,7 @@ function inicializarMenuHamburguesa() {
   } else {
     console.log("💻 Modo desktop - Menú hamburguesa oculto");
     window.cerrarMenus();
+    actualizarBotonUbicacion(false);
   }
 }
 
@@ -351,9 +457,7 @@ function inicializarMenuHamburguesa() {
 
 function configurarBotonesMenuDesplegable() {
   const btnAcercaMobile = document.getElementById("btnAcercaMobile");
-  const btnComoFuncionaMobile = document.getElementById(
-    "btnComoFuncionaMobile",
-  );
+  const btnComoFuncionaMobile = document.getElementById("btnComoFuncionaMobile");
   const btnForoMobile = document.getElementById("btnForoMobile");
 
   if (btnAcercaMobile) {

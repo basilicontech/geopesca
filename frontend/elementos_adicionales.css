@@ -780,3 +780,91 @@
     width: 100%;
   }
 }
+
+/* ============================================ */
+/* BOTÓN "INSERTAR UBICACIÓN" - SOLO EN MÓVIL   */
+/* ============================================ */
+
+/* Oculto por defecto (desktop / tablet grande) */
+.solo-movil {
+  display: none;
+}
+
+/* Estilo base del botón */
+.btn-insertar-ubicacion {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1a7a94 0%, #3db8cc 100%);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 10px rgba(26, 122, 148, 0.25);
+}
+
+.btn-insertar-ubicacion:hover {
+  background: linear-gradient(135deg, #17596f 0%, #2ea0b3 100%);
+  box-shadow: 0 5px 14px rgba(26, 122, 148, 0.35);
+}
+
+.btn-insertar-ubicacion:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(26, 122, 148, 0.3);
+}
+
+/* Mostrar solo en móvil (mismo breakpoint que control-frontend.js) */
+@media (max-width: 768px) {
+  .solo-movil {
+    display: inline-block;
+  }
+
+  .btn-insertar-ubicacion {
+    font-size: 0.9rem;
+    padding: 9px 12px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Ajuste fino para móviles pequeños */
+@media (max-width: 480px) {
+  .btn-insertar-ubicacion {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+}
+
+/* ============================================ */
+/* BOTÓN "INSERTAR UBICACIÓN"                   */
+/* ============================================ */
+
+/* Por defecto NUNCA se muestra (desktop y móvil cerrado) */
+.btn-insertar-ubicacion {
+  display: none;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1a7a94 0%, #3db8cc 100%);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 10px rgba(26, 122, 148, 0.25);
+}
+
+.btn-insertar-ubicacion:hover {
+  background: linear-gradient(135deg, #17596f 0%, #2ea0b3 100%);
+  box-shadow: 0 5px 14px rgba(26, 122, 148, 0.35);
+}
+
+.btn-insertar-ubicacion:active {
+  transform: scale(0.98);
+}
