@@ -56,6 +56,7 @@ async function init() {
   inicializarMenuHamburguesa();
   inicializarBotonesAccionMapa();
   inicializarBotonUbicacion();
+  inicializarBotonVolverFormulario();
   observarCambiosSesion();
 }
 
@@ -78,6 +79,26 @@ function actualizarBotonUbicacion(mostrar) {
   btn.style.display = debeMostrarse ? "inline-block" : "none";
 
   window._panelFormularioAbierto = !!mostrar;
+}
+
+// ============================================
+// HELPER: mostrar/ocultar el botón flotante
+// "Volver al formulario" sobre el mapa
+// ============================================
+
+function actualizarBotonVolverFormulario(mostrar) {
+  const btn = document.getElementById("btnVolverFormulario");
+  if (!btn) return;
+
+  const esMovilAhora = window.innerWidth <= 768;
+
+  const usuarioValido =
+    window.usuarioActual &&
+    (window.usuarioActual.rol === "pescador" ||
+      window.usuarioActual.rol === "club");
+
+  const debeMostrarse = mostrar && esMovilAhora && usuarioValido;
+  btn.style.display = debeMostrarse ? "inline-block" : "none";
 }
 
 // ============================================
@@ -129,6 +150,50 @@ function accionMostrarMapa(origen) {
     }, 300);
   }
 
+  // Mostrar el botón flotante "Volver al formulario"
+  actualizarBotonVolverFormulario(true);
+
+  if (typeof window.cerrarMenus === "function") {
+    window.cerrarMenus();
+  }
+}
+
+// ============================================
+// ACCIÓN GLOBAL: accionMostrarFormulario()
+// Muestra el panel derecho (formulario) y oculta filtros y mapa.
+// ============================================
+
+function accionMostrarFormulario() {
+  console.log("📝 Mostrando formulario");
+
+  const formulario = document.querySelector(".columna-derecha");
+  const filtros = document.querySelector(".filtros-contenedor");
+  const mapa = document.querySelector(".columna-centro");
+
+  // Ocultar filtros
+  if (filtros) {
+    filtros.classList.remove("mostrar");
+    filtros.style.display = "none";
+  }
+
+  // Ocultar mapa
+  if (mapa) mapa.style.display = "none";
+
+  // Mostrar formulario
+  if (formulario) {
+    formulario.classList.add("mostrar");
+    formulario.style.display = "block";
+    actualizarBotonUbicacion(true);
+    if (typeof map !== "undefined" && map) {
+      setTimeout(function () {
+        map.invalidateSize();
+      }, 300);
+    }
+  }
+
+  // Ocultar el botón flotante (ya no estamos viendo el mapa)
+  actualizarBotonVolverFormulario(false);
+
   if (typeof window.cerrarMenus === "function") {
     window.cerrarMenus();
   }
@@ -136,8 +201,6 @@ function accionMostrarMapa(origen) {
 
 // ============================================
 // INICIALIZAR: botones con clase .btn-accion-mapa
-// Cualquier botón con esta clase ejecutará accionMostrarMapa().
-// Añadir un botón nuevo = solo darle la clase en el HTML.
 // ============================================
 
 function inicializarBotonesAccionMapa() {
@@ -161,8 +224,6 @@ function inicializarBotonesAccionMapa() {
 
 // ============================================
 // INICIALIZAR: botón "Insertar ubicación"
-// Tiene su propio handler porque requiere validar login
-// antes de ejecutar la acción común.
 // ============================================
 
 function inicializarBotonUbicacion() {
@@ -182,14 +243,47 @@ function inicializarBotonUbicacion() {
         window.usuarioActual.rol === "club");
 
     if (!usuarioValido) {
-      alert("Debes iniciar sesión como pescador o club para usar esta función.");
+      alert(
+        "Debes iniciar sesión como pescador o club para usar esta función.",
+      );
       return;
     }
 
     // Reutiliza la acción común
     accionMostrarMapa("btnInsertarUbicacion");
 
-    console.log("🗺️ Mapa abierto: haz clic en el mapa para marcar tu ubicación");
+    console.log(
+      "🗺️ Mapa abierto: haz clic en el mapa para marcar tu ubicación",
+    );
+  });
+}
+
+// ============================================
+// INICIALIZAR: botón flotante "Volver al formulario"
+// ============================================
+
+function inicializarBotonVolverFormulario() {
+  const btn = document.getElementById("btnVolverFormulario");
+  if (!btn) {
+    console.warn("⚠️ Botón 'Volver al formulario' no encontrado");
+    return;
+  }
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (!esMovil) return;
+
+    const usuarioValido =
+      window.usuarioActual &&
+      (window.usuarioActual.rol === "pescador" ||
+        window.usuarioActual.rol === "club");
+
+    if (!usuarioValido) {
+      alert("Debes iniciar sesión para acceder al formulario.");
+      return;
+    }
+
+    accionMostrarFormulario();
   });
 }
 
@@ -202,8 +296,16 @@ function observarCambiosSesion() {
   if (!headerUserInfo) return;
 
   const observer = new MutationObserver(function () {
+    // Si el panel de formulario está abierto, reevaluar botón "Insertar ubicación"
     if (window._panelFormularioAbierto) {
       actualizarBotonUbicacion(true);
+    }
+
+    // Si estamos viendo el mapa, reevaluar botón "Volver al formulario"
+    const mapa = document.querySelector(".columna-centro");
+    const mapaVisible = mapa && mapa.style.display !== "none";
+    if (mapaVisible) {
+      actualizarBotonVolverFormulario(true);
     }
   });
 
@@ -267,6 +369,7 @@ function inicializarMenuHamburguesa() {
         console.log("📱 Cambio a modo móvil");
         window.cerrarMenus();
         ocultarTodasSecciones();
+        actualizarBotonVolverFormulario(true);
       } else {
         console.log("💻 Cambio a modo desktop");
         const mapa = document.querySelector(".columna-centro");
@@ -280,6 +383,7 @@ function inicializarMenuHamburguesa() {
         if (formulario) formulario.style.display = "block";
         window.cerrarMenus();
         actualizarBotonUbicacion(false);
+        actualizarBotonVolverFormulario(false);
       }
     }
   }
@@ -391,6 +495,7 @@ function inicializarMenuHamburguesa() {
       }
 
       actualizarBotonUbicacion(false);
+      actualizarBotonVolverFormulario(false);
       window.cerrarMenus();
     });
   }
@@ -399,34 +504,18 @@ function inicializarMenuHamburguesa() {
     btnFormulario.addEventListener("click", function (e) {
       e.preventDefault();
       if (!esMovil) return;
+
       const formulario = document.querySelector(".columna-derecha");
-      const filtros = document.querySelector(".filtros-contenedor");
-      const mapa = document.querySelector(".columna-centro");
+      const estaVisible =
+        formulario && formulario.classList.contains("mostrar");
 
-      if (filtros) {
-        filtros.classList.remove("mostrar");
-        filtros.style.display = "none";
+      if (estaVisible) {
+        // Estaba abierto → cerrar y volver al mapa
+        accionMostrarMapa("btnFormulario-toggle");
+      } else {
+        // Estaba cerrado → abrir formulario
+        accionMostrarFormulario();
       }
-      if (mapa) mapa.style.display = "none";
-
-      if (formulario) {
-        const estaVisible = formulario.classList.contains("mostrar");
-        if (estaVisible) {
-          formulario.classList.remove("mostrar");
-          formulario.style.display = "none";
-          actualizarBotonUbicacion(false);
-        } else {
-          formulario.classList.add("mostrar");
-          formulario.style.display = "block";
-          actualizarBotonUbicacion(true);
-          if (typeof map !== "undefined" && map) {
-            setTimeout(function () {
-              map.invalidateSize();
-            }, 300);
-          }
-        }
-      }
-      window.cerrarMenus();
     });
   }
 
@@ -443,11 +532,13 @@ function inicializarMenuHamburguesa() {
   if (esMovil) {
     console.log("📱 Modo móvil activado - Menú hamburguesa disponible");
     ocultarTodasSecciones();
+    actualizarBotonVolverFormulario(true);
     window.cerrarMenus();
   } else {
     console.log("💻 Modo desktop - Menú hamburguesa oculto");
     window.cerrarMenus();
     actualizarBotonUbicacion(false);
+    actualizarBotonVolverFormulario(false);
   }
 }
 
@@ -457,7 +548,9 @@ function inicializarMenuHamburguesa() {
 
 function configurarBotonesMenuDesplegable() {
   const btnAcercaMobile = document.getElementById("btnAcercaMobile");
-  const btnComoFuncionaMobile = document.getElementById("btnComoFuncionaMobile");
+  const btnComoFuncionaMobile = document.getElementById(
+    "btnComoFuncionaMobile",
+  );
   const btnForoMobile = document.getElementById("btnForoMobile");
 
   if (btnAcercaMobile) {

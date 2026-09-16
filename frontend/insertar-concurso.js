@@ -8,9 +8,9 @@ let insertarConcursoInicializado = false;
 async function loadConcursoCatalogs() {
   try {
     // Especies
-    const especies = await fetch(
-      "/api/catalogs/especies",
-    ).then((r) => r.json());
+    const especies = await fetch("/api/catalogs/especies").then((r) =>
+      r.json(),
+    );
     const especieSelect = document.getElementById("concurso_especie");
     especies.forEach((e) => {
       const option = document.createElement("option");
@@ -58,14 +58,21 @@ function validarConcursoFechas() {
   const submitBtn = document.getElementById("concursoSubmitBtn");
   const estadoDiv = document.getElementById("concursoEstadoCoordenada");
 
-  // Si no hay coordenadas, no habilitar
+  // Sin coordenada: no habilitar y avisar
   if (!concursoSelectedCoordinates) {
+    estadoDiv.innerHTML = "⚠️ Haz clic en el mapa para seleccionar ubicación";
+    estadoDiv.style.backgroundColor = "#f8d7da";
+    estadoDiv.style.color = "#721c24";
     submitBtn.disabled = true;
     return false;
   }
 
-  // Si faltan datos, no validar
+  // Con coordenada pero sin fechas/horas: avisar de qué falta
   if (!fechaInicio || !fechaFin || !horaInicio || !horaFin) {
+    estadoDiv.innerHTML =
+      "📍 Ubicación capturada. Completa fechas y horas para poder registrar.";
+    estadoDiv.style.backgroundColor = "#fff3cd";
+    estadoDiv.style.color = "#856404";
     submitBtn.disabled = true;
     return false;
   }
@@ -73,7 +80,6 @@ function validarConcursoFechas() {
   const fechaInicioObj = new Date(fechaInicio);
   const fechaFinObj = new Date(fechaFin);
 
-  // Validar: fecha inicio <= fecha fin
   if (fechaInicioObj > fechaFinObj) {
     estadoDiv.innerHTML =
       "❌ La fecha de inicio no puede ser posterior a la fecha de fin";
@@ -83,11 +89,9 @@ function validarConcursoFechas() {
     return false;
   }
 
-  // Validar: si misma fecha, hora inicio < hora fin
   if (fechaInicio === fechaFin) {
     const horaInicioObj = new Date(`2000-01-01T${horaInicio}`);
     const horaFinObj = new Date(`2000-01-01T${horaFin}`);
-
     if (horaInicioObj >= horaFinObj) {
       estadoDiv.innerHTML =
         "❌ La hora de inicio debe ser anterior a la hora de fin";
@@ -98,7 +102,6 @@ function validarConcursoFechas() {
     }
   }
 
-  // Validación pasada
   estadoDiv.innerHTML = "✅ Ubicación y fechas válidas";
   estadoDiv.style.backgroundColor = "#d4edda";
   estadoDiv.style.color = "#155724";
@@ -132,7 +135,9 @@ async function inicializarInsertarConcurso() {
     await window.DatosAmbientales.cargar("concurso_");
   }
 
+  // ============================================
   // Añadir captura de concurso
+  // ============================================
   document
     .getElementById("addConcursoCatchBtn")
     .addEventListener("click", () => {
@@ -172,7 +177,50 @@ async function inicializarInsertarConcurso() {
       document.getElementById("concurso_pieza_mayor").value = "";
     });
 
+  // ============================================
+  // Re-validar cada vez que cambien fechas u horas
+  // ============================================
+  [
+    "concurso_fecha_inicio",
+    "concurso_fecha_fin",
+    "concurso_hora_inicio",
+    "concurso_hora_fin",
+  ].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("change", validarConcursoFechas);
+      el.addEventListener("input", validarConcursoFechas);
+    }
+  });
+
+  // ============================================
+  // Al resetear el formulario, limpiar también la coordenada
+  // ============================================
+  const concursoForm = document.getElementById("concursoForm");
+  if (concursoForm) {
+    concursoForm.addEventListener("reset", () => {
+      concursoSelectedCoordinates = null;
+      concursoCatchesArray = [];
+      updateConcursoCatchesList();
+
+      if (
+        typeof PuntosControl !== "undefined" &&
+        PuntosControl.eliminarMarcadorTemporal
+      ) {
+        PuntosControl.eliminarMarcadorTemporal();
+      }
+
+      const estadoDiv = document.getElementById("concursoEstadoCoordenada");
+      estadoDiv.innerHTML = "⚠️ Haz clic en el mapa para seleccionar ubicación";
+      estadoDiv.style.backgroundColor = "#f8d7da";
+      estadoDiv.style.color = "#721c24";
+      document.getElementById("concursoSubmitBtn").disabled = true;
+    });
+  }
+
+  // ============================================
   // Envío del formulario de concurso
+  // ============================================
   document
     .getElementById("concursoForm")
     .addEventListener("submit", async (e) => {
@@ -206,7 +254,7 @@ async function inicializarInsertarConcurso() {
         return;
       }
 
-      // OBTENER DATOS AMBIENTALES (solo los generales, sin tipo_pesca, cebo_natural, cebo_artificial, notas)
+      // OBTENER DATOS AMBIENTALES
       const ambientales = window.DatosAmbientales.obtener("concurso_");
       console.log("Datos ambientales:", ambientales);
 
@@ -289,7 +337,9 @@ async function inicializarInsertarConcurso() {
       }
     });
 
-    // Clic en el mapa para concurso
+  // ============================================
+  // Clic en el mapa para concurso
+  // ============================================
   map.on("click", (e) => {
     concursoSelectedCoordinates = e.latlng;
     if (
@@ -299,9 +349,11 @@ async function inicializarInsertarConcurso() {
       PuntosControl.crearMarcadorTemporal(map, e.latlng);
     }
 
-    // ✅ CAMBIO: llamar a validación en lugar de habilitar directamente
+    // ✅ Re-valida en cuanto se captura una ubicación
     validarConcursoFechas();
   });
 }
+
+window.inicializarInsertarConcurso = inicializarInsertarConcurso;
 
 window.inicializarInsertarConcurso = inicializarInsertarConcurso;

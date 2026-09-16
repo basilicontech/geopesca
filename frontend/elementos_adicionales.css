@@ -605,7 +605,7 @@
     transform: translateY(-7.5px) rotate(-45deg);
   }
 
-   /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
+  /* CONTROL DE ALTURAS: MAPA, FILTROS Y FORMULARIO */
   /* ============================================ */
 
   /* Contenedor principal - Ocupa todo el espacio disponible */
@@ -803,7 +803,10 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 3px 10px rgba(26, 122, 148, 0.25);
 }
 
@@ -856,7 +859,10 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 3px 10px rgba(26, 122, 148, 0.25);
 }
 
@@ -867,4 +873,56 @@
 
 .btn-insertar-ubicacion:active {
   transform: scale(0.98);
+}
+
+/* ============================================ */
+/* BOTÓN FLOTANTE "VOLVER AL FORMULARIO"        */
+/* Solo visible en móvil sobre el mapa cuando   */
+/* hay sesión y el formulario está cerrado      */
+/* ============================================ */
+
+/* Asegurar que el contenedor del mapa puede posicionar hijos absolutos */
+.columna-centro {
+  position: relative;
+}
+
+.btn-volver-formulario {
+  display: none; /* oculto por defecto */
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 500; /* por encima del mapa Leaflet (400) y sus controles */
+  padding: 10px 16px;
+  border: none;
+  border-radius: 25px;
+  background: rgba(44, 62, 80, 0.95);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-volver-formulario:hover {
+  background: rgba(26, 122, 148, 0.98);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.btn-volver-formulario:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+  .btn-volver-formulario {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    top: 10px;
+    right: 10px;
+  }
 }
