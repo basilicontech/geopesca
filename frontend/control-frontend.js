@@ -570,7 +570,7 @@ function configurarBotonesMenuDesplegable() {
   if (btnForoMobile) {
     btnForoMobile.addEventListener("click", function () {
       if (typeof window.cerrarMenus === "function") window.cerrarMenus();
-      window.open("https://foro.geopesca.com", "_blank");
+      window.open("https://foro.bitacorapesca.com", "_blank");
     });
   }
 }

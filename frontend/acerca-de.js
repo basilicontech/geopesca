@@ -2,7 +2,7 @@
 
 const contenidoAcercaDe = `
   <div class="modal-info-header">
-    <h2>ℹ️ Acerca de GeoPesca</h2>
+    <h2>ℹ️ Acerca de Bitácora Pesca</h2>
     <button class="modal-info-close" onclick="cerrarAcercaDe()">✕</button>
   </div>
   <div class="modal-info-body">
@@ -14,7 +14,7 @@ const contenidoAcercaDe = `
       </div>
       <div class="presentacion-texto">
         <div class="presentacion-nombre">Alfonso Ismael Manzano Rodríguez</div>
-        <div class="presentacion-descripcion">Pescador deportivo y creador de GeoPesca.</div>
+        <div class="presentacion-descripcion">Pescador deportivo y creador de Bitácora Pesca.</div>
       </div>
     </div>
 
@@ -23,12 +23,12 @@ const contenidoAcercaDe = `
     </p>
 
     <p>
-      Precisamente para ayudar a los pescadores a afrontar esta situación nace <strong>GeoPesca</strong>: un proyecto creado para <strong>compartir información, experiencias y capturas</strong>, y poner todo ese conocimiento al alcance de la comunidad.
+      Precisamente para ayudar a los pescadores a afrontar esta situación nace <strong>Bitácora Pesca</strong>: un proyecto creado para <strong>compartir información, experiencias y capturas</strong>, y poner todo ese conocimiento al alcance de la comunidad.
     </p>
 
     <hr class="modal-info-divider">
 
-    <h3>🎣 ¿Qué puedes encontrar en GeoPesca?</h3>
+    <h3>🎣 ¿Qué puedes encontrar en Bitácora Pesca?</h3>
 
     <h4>🗺️ Mapa interactivo</h4>
     <p>
@@ -47,33 +47,33 @@ const contenidoAcercaDe = `
 
     <hr class="modal-info-divider">
 
-    <h4>📰 GeoPescaBlog</h4>
+    <h4>📰 Bitácora Pesca Blog</h4>
     <p>
-      En <strong>GeoPescaBlog</strong> encontrarás artículos y contenidos relacionados con la pesca deportiva: <strong>especies, técnicas, legislación, consejos, noticias y mucho más</strong>.
+      En <strong>Bitácora Pesca Blog</strong> encontrarás artículos y contenidos relacionados con la pesca deportiva: <strong>especies, técnicas, legislación, consejos, noticias y mucho más</strong>.
     </p>
     <p>
       Un espacio pensado para aprender, descubrir y mantenerse informado sobre todo lo relacionado con nuestra afición.
     </p>
     <p>
-      <strong>👉 <a href="https://geopesca.basilicontech.com/blog/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a GeoPescaBlog</a></strong>
+      <strong>👉 <a href="https://bitacorapesca.basilicontech.com/blog/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a Bitácora Pesca Blog</a></strong>
     </p>
 
     <hr class="modal-info-divider">
 
-    <h4>💬 GeoPescaForo</h4>
+    <h4>💬 Bitácora Pesca Foro</h4>
     <p>
       Como buen pescador, seguro que también te gusta <strong>compartir y presumir de tus capturas</strong>.
     </p>
     <p>
-      En <strong>GeoPescaForo</strong> podrás hacerlo, además de conectar con otros pescadores, plantear dudas, compartir experiencias y participar en debates relacionados con nuestra pasión.
+      En <strong>Bitácora Pesca Foro</strong> podrás hacerlo, además de conectar con otros pescadores, plantear dudas, compartir experiencias y participar en debates relacionados con nuestra pasión.
     </p>
     <p>
-      <strong>👉 <a href="https://foro.geopesca.basilicontech.com/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a GeoPescaForo</a></strong>
+      <strong>👉 <a href="https://foro.bitacorapesca.basilicontech.com/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a Bitácora Pesca Foro</a></strong>
     </p>
 
     <hr class="modal-info-divider">
 
-    <h3>🌊 ÚNETE A GEOPESCA</h3>
+    <h3>🌊 ÚNETE A BITÁCORA PESCA</h3>
     <p>
       Tanto si eres <strong>pescador independiente</strong> como si formas parte de un <strong>club de pesca</strong>, te invitamos a formar parte de esta comunidad.
     </p>

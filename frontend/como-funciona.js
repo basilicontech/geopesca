@@ -2,12 +2,12 @@
 
 const contenidoComoFunciona = `
   <div class="modal-info-header">
-    <h2>📖 Cómo funciona GeoPesca</h2>
+    <h2>📖 Cómo funciona Bitácora Pesca</h2>
     <button class="modal-info-close" onclick="cerrarComoFunciona()">✕</button>
   </div>
   <div class="modal-info-body">
     <p class="intro-text">
-      <strong>GeoPesca se organiza en tres secciones que trabajan juntas</strong> para que puedas explorar, filtrar y registrar tus jornadas y concursos de pesca.
+      <strong>Bitácora Pesca se organiza en tres secciones que trabajan juntas</strong> para que puedas explorar, filtrar y registrar tus jornadas y concursos de pesca.
     </p>
 
     <ul>

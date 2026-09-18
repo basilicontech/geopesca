@@ -1,6 +1,6 @@
 // puntosControl.js - Módulo para controlar los puntos en el mapa
 // Responsabilidades: Gestión de capas de puntos de pescadores y concursos
-// Dependencias: Leaflet (L), API REST en https://geopesca.basilicontech.com
+// Dependencias: Leaflet (L), API REST en https://bitacorapesca.basilicontech.com
 
 // ============================================================
 // VARIABLES GLOBALES DEL MÓDULO

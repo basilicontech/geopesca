@@ -34,22 +34,22 @@ async function enviarEmail({ to, subject, html }) {
 // Para PESCADORES (registro)
 function plantillaBienvenidaPescador(nombre) {
   return {
-    subject: "🎣 ¡Bienvenido a GeoPesca!",
+    subject: "🎣 ¡Bienvenido a Bitácora Pesca!",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #2c3e50;">¡Hola ${nombre}! 🎣</h2>
-        <p>Tu cuenta de pescador en <strong>GeoPesca</strong> se ha creado correctamente.</p>
+        <p>Tu cuenta de pescador en <strong>Bitácora Pesca</strong> se ha creado correctamente.</p>
         <p>Ya puedes iniciar sesión y empezar a registrar tus jornadas de pesca con geolocalización.</p>
         <p style="margin-top: 30px;">
           <a href="${process.env.FRONTEND_URL}" 
              style="background-color: #3498db; color: white; padding: 12px 24px; 
                     text-decoration: none; border-radius: 5px;">
-            Ir a GeoPesca
+            Ir a Bitácora Pesca
           </a>
         </p>
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
         <p style="color: #7f8c8d; font-size: 12px;">
-          Si no te has registrado en GeoPesca, ignora este mensaje.
+          Si no te has registrado en Bitácora Pesca, ignora este mensaje.
         </p>
       </div>
     `,
@@ -59,18 +59,18 @@ function plantillaBienvenidaPescador(nombre) {
 // Para CLUBS (registro - solicitud recibida)
 function plantillaSolicitudClub(nombre) {
   return {
-    subject: "🏢 Solicitud de registro recibida - GeoPesca",
+    subject: "🏢 Solicitud de registro recibida - Bitácora Pesca",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #2c3e50;">Hola, ${nombre} 🏢</h2>
-        <p>Hemos recibido tu solicitud de registro como <strong>club</strong> en GeoPesca.</p>
+        <p>Hemos recibido tu solicitud de registro como <strong>club</strong> en Bitácora Pesca.</p>
         <p>Tu cuenta está actualmente <strong>pendiente de validación</strong> por parte del administrador.</p>
         <p>Te notificaremos por email en cuanto tu club sea validado y puedas empezar a organizar concursos.</p>
         <p style="margin-top: 30px;">
           <a href="${process.env.FRONTEND_URL}" 
              style="background-color: #3498db; color: white; padding: 12px 24px; 
                     text-decoration: none; border-radius: 5px;">
-            Visitar GeoPesca
+            Visitar Bitácora Pesca
           </a>
         </p>
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
@@ -85,11 +85,11 @@ function plantillaSolicitudClub(nombre) {
 // Para CLUBS (validación por el administrador)
 function plantillaClubValidado(nombre) {
   return {
-    subject: "✅ ¡Tu club ha sido validado en GeoPesca!",
+    subject: "✅ ¡Tu club ha sido validado en Bitácora Pesca!",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #27ae60;">¡Enhorabuena, ${nombre}! ✅</h2>
-        <p>Tu club ha sido <strong>validado</strong> por el administrador de GeoPesca.</p>
+        <p>Tu club ha sido <strong>validado</strong> por el administrador de Bitácora Pesca.</p>
         <p>Ya puedes iniciar sesión y empezar a organizar concursos de pesca deportiva.</p>
         <p style="margin-top: 30px;">
           <a href="${process.env.FRONTEND_URL}" 
@@ -111,16 +111,16 @@ function plantillaClubValidado(nombre) {
 
 function plantillaCuentaEliminadaPescador(nombre) {
   return {
-    subject: "👋 Tu cuenta de pescador ha sido eliminada - GeoPesca",
+    subject: "👋 Tu cuenta de pescador ha sido eliminada - Bitácora Pesca",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #2c3e50;">Hasta pronto, ${nombre} 👋</h2>
-        <p>Tu cuenta de <strong>pescador</strong> en GeoPesca ha sido eliminada correctamente.</p>
+        <p>Tu cuenta de <strong>pescador</strong> en Bitácora Pesca ha sido eliminada correctamente.</p>
         <p>Se han borrado también todas tus jornadas de pesca y capturas asociadas.</p>
         <p>Si no has sido tú, contacta con nosotros respondiendo a este correo lo antes posible.</p>
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
         <p style="color: #7f8c8d; font-size: 12px;">
-          Gracias por haber formado parte de la comunidad GeoPesca. 🎣
+          Gracias por haber formado parte de la comunidad Bitácora Pesca. 🎣
         </p>
       </div>
     `,
@@ -129,16 +129,16 @@ function plantillaCuentaEliminadaPescador(nombre) {
 
 function plantillaCuentaEliminadaClub(nombre) {
   return {
-    subject: "👋 Tu cuenta de club ha sido eliminada - GeoPesca",
+    subject: "👋 Tu cuenta de club ha sido eliminada - Bitácora Pesca",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #2c3e50;">Hasta pronto, ${nombre} 👋</h2>
-        <p>La cuenta de tu <strong>club</strong> en GeoPesca ha sido eliminada correctamente.</p>
+        <p>La cuenta de tu <strong>club</strong> en Bitácora Pesca ha sido eliminada correctamente.</p>
         <p>Se han borrado también todos los concursos que habías organizado y las capturas asociadas.</p>
         <p>Si no has sido tú, contacta con nosotros respondiendo a este correo lo antes posible.</p>
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
         <p style="color: #7f8c8d; font-size: 12px;">
-          Gracias por haber formado parte de la comunidad GeoPesca. 🎣
+          Gracias por haber formado parte de la comunidad Bitácora Pesca. 🎣
         </p>
       </div>
     `,
@@ -217,7 +217,7 @@ async function avisarAdmin(evento, datos = {}) {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         ${config.body}
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
-        <p style="color: #7f8c8d; font-size: 12px;">Aviso automático de GeoPesca.</p>
+        <p style="color: #7f8c8d; font-size: 12px;">Aviso automático de Bitácora Pesca.</p>
       </div>
     `,
   });

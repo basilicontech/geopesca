@@ -4,7 +4,7 @@
 // URL DE DESTINO
 // ============================================
 
-const URL_BLOG = "https://geopesca.basilicontech.com/blog/";
+const URL_BLOG = "https://bitacorapesca.basilicontech.com/blog/";
 
 // ============================================
 // FUNCIÓN
