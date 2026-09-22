@@ -17,20 +17,15 @@ function geopesca_child_enqueue_styles() {
 /**
  * Footer personalizado de Bitácora Pesca
  */
-add_action( 'astra_footer_content', 'gp_footer_personalizado' );
+add_filter( 'astra_footer_copyright', 'gp_footer_copyright' );
 
-function gp_footer_personalizado() {
-    ?>
-    <footer class="footer">
-      <p>
-        © 2026 - Registro de Jornadas de Pesca Recreativa |
-        <a href="/blog/aviso-legal/">Aviso legal</a> |
-        <a href="/blog/politica-de-privacidad/">Política de privacidad</a> |
-        <a href="/blog/politica-de-cookies/">Política de cookies</a> |
-        <a href="/blog/condiciones-de-uso/">Condiciones de uso</a> |
-        <a href="mailto:basilicontech@gmail.com">Contacto: basilicontech@gmail.com</a>
-      </p>
-      <p>Sistema de Información Geográfica para pescadores recreativos</p>
-    </footer>
-    <?php
+function gp_footer_copyright() {
+    $html  = '<p>© 2026 - Registro de Jornadas de Pesca Recreativa | ';
+    $html .= '<a href="/blog/aviso-legal/">Aviso legal</a> | ';
+    $html .= '<a href="/blog/politica-de-privacidad/">Política de privacidad</a> | ';
+    $html .= '<a href="/blog/politica-de-cookies/">Política de cookies</a> | ';
+    $html .= '<a href="/blog/condiciones-de-uso/">Condiciones de uso</a> | ';
+    $html .= '<a href="mailto:basilicontech@gmail.com">Contacto: basilicontech@gmail.com</a></p>';
+    $html .= '<p>Sistema de Información Geográfica para pescadores recreativos</p>';
+    return $html;
 }
