@@ -900,17 +900,17 @@ body.archive .cat-links {
 .footer p {
   margin: 0 auto 10px;
   max-width: 900px;
-  color: #e0e0e0;
+  color: #555555;
 }
 
 .footer p:last-child {
   margin-bottom: 0;
   font-size: 0.8rem;
-  color: #8fa8b0;
+  color: #888888;
 }
 
 .footer a {
-  color: #3db8cc;
+  color: #0a3d4f;
   text-decoration: none;
   transition: color 0.2s ease;
 }
