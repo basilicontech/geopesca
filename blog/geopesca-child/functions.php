@@ -14,8 +14,24 @@ function geopesca_child_enqueue_styles() {
     );
 }
 
-add_action( 'wp_footer', 'gp_test_footer' );
+/**
+ * Footer personalizado de Bitácora Pesca
+ * Se inyecta al final del <body> mediante wp_footer
+ */
+add_action( 'wp_footer', 'gp_footer_personalizado', 100 );
 
-function gp_test_footer() {
-    echo '<div style="background:#ff0000; color:#ffffff; padding:20px; text-align:center; font-size:18px; font-weight:bold;">TEST FOOTER - El functions.php funciona</div>';
+function gp_footer_personalizado() {
+    ?>
+    <footer class="footer">
+      <p>
+        © 2026 - Registro de Jornadas de Pesca Recreativa |
+        <a href="/blog/aviso-legal/">Aviso legal</a> |
+        <a href="/blog/politica-de-privacidad/">Política de privacidad</a> |
+        <a href="/blog/politica-de-cookies/">Política de cookies</a> |
+        <a href="/blog/condiciones-de-uso/">Condiciones de uso</a> |
+        <a href="mailto:basilicontech@gmail.com">Contacto: basilicontech@gmail.com</a>
+      </p>
+      <p>Sistema de Información Geográfica para pescadores recreativos</p>
+    </footer>
+    <?php
 }
