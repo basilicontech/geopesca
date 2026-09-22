@@ -884,34 +884,51 @@ body.archive .cat-links {
     grid-template-columns: 1fr;
   }
 }
-
 /* ============================================
    FOOTER PERSONALIZADO
    ============================================ */
 
 .footer {
   text-align: center;
-  font-size: 0.85rem;
-  line-height: 1.7;
-  padding: 25px 15px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  padding: 35px 20px;
   background-color: #0a3d4f;
+  margin-top: 40px;
 }
 
 .footer p {
-  margin: 0 0 8px 0;
+  margin: 0 auto 10px;
+  max-width: 900px;
   color: #e0e0e0;
 }
 
 .footer p:last-child {
   margin-bottom: 0;
+  font-size: 0.8rem;
+  color: #8fa8b0;
 }
 
 .footer a {
   color: #3db8cc;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .footer a:hover {
   color: #ff6b6b;
   text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding: 25px 15px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .footer p {
+    margin-bottom: 12px;
+  }
 }
