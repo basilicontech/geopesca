@@ -23,12 +23,14 @@ function gp_footer_personalizado() {
     ?>
     <footer class="footer">
       <p>
+        © 2026 - Registro de Jornadas de Pesca Recreativa |
         <a href="https://bitacorapesca.basilicontech.com/aviso-legal.html">Aviso legal</a> |
         <a href="/https://bitacorapesca.basilicontech.com/politica-privacidad.html">Política de privacidad</a> |
         <a href="https://bitacorapesca.basilicontech.com/politica-de-cookies.html">Política de cookies</a> |
         <a href="https://bitacorapesca.basilicontech.com/condiciones-de-uso.html">Condiciones de uso</a> |
         <a href="mailto:basilicontech@gmail.com">Contacto: basilicontech@gmail.com</a>
       </p>
+      <p>Sistema de Información Geográfica para pescadores recreativos</p>
     </footer>
     <?php
 }
