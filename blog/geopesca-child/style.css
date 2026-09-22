@@ -884,3 +884,34 @@ body.archive .cat-links {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   FOOTER PERSONALIZADO
+   ============================================ */
+
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  padding: 25px 15px;
+  background-color: #0a3d4f;
+}
+
+.footer p {
+  margin: 0 0 8px 0;
+  color: #e0e0e0;
+}
+
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+.footer a {
+  color: #3db8cc;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
