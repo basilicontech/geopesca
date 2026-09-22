@@ -24,7 +24,7 @@ function gp_footer_personalizado() {
     <footer class="footer">
       <p>
         © 2026 - Registro de Jornadas de Pesca Recreativa |
-        <a href="/blog/aviso-legal/">Aviso legal</a> |
+        <a href="https://bitacorapesca.basilicontech.com/aviso-legal.html">Aviso legal</a> |
         <a href="/blog/politica-de-privacidad/">Política de privacidad</a> |
         <a href="/blog/politica-de-cookies/">Política de cookies</a> |
         <a href="/blog/condiciones-de-uso/">Condiciones de uso</a> |
