@@ -21,7 +21,7 @@ add_action( 'wp_footer', 'gp_footer_personalizado', 100 );
 
 function gp_footer_personalizado() {
     ?>
-    <footer class="footer">
+    <footer class="gp-footer">
       <p>
         <a href="https://bitacorapesca.basilicontech.com/aviso-legal.html">Aviso legal</a> |
         <a href="https://bitacorapesca.basilicontech.com/politica-privacidad.html">Política de privacidad</a> |

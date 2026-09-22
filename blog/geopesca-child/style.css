@@ -888,47 +888,50 @@ body.archive .cat-links {
    FOOTER PERSONALIZADO
    ============================================ */
 
-.footer {
+.gp-footer {
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.8;
-  padding: 35px 20px;
+  padding: 35px 25px;
   background-color: #ffffff;
   margin-top: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.footer p {
+.gp-footer p {
   margin: 0 auto 10px;
   max-width: 900px;
   color: #555555;
 }
 
-.footer p:last-child {
-  margin-bottom: 0;
-  font-size: 0.8rem;
-  color: #888888;
-}
-
-.footer a {
+.gp-footer a {
   color: #0a3d4f;
   text-decoration: none;
   transition: color 0.2s ease;
+  display: inline-block;
+  margin: 2px 4px;
 }
 
-.footer a:hover {
+.gp-footer a:hover {
   color: #ff6b6b;
   text-decoration: underline;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .footer {
-    padding: 30px 25px;
+  .gp-footer {
+    padding: 30px 30px;
     font-size: 0.85rem;
     line-height: 1.7;
   }
 
-  .footer p {
-    margin-bottom: 12px;
+  .gp-footer p {
+    margin-bottom: 14px;
+  }
+
+  .gp-footer a {
+    display: inline-block;
+    margin: 4px 3px;
   }
 }
