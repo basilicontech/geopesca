@@ -1,6 +1,25 @@
 // modal.js - Gestión de modales para jornadas de pescadores y concursos
 
 // ============================================================
+// FUNCIONES AUXILIARES DE FORMATEO
+// ============================================================
+
+// Convierte "2026-09-22T00:00:00.000Z" en "22/09/2026"
+function formatearFecha(fecha) {
+  if (!fecha) return "";
+  const soloFecha = String(fecha).split("T")[0]; // "2026-09-22T..." → "2026-09-22"
+  const [anio, mes, dia] = soloFecha.split("-");
+  if (!anio || !mes || !dia) return fecha;
+  return `${dia}/${mes}/${anio}`;
+}
+
+// Convierte "08:00:00" en "08:00"
+function formatearHora(hora) {
+  if (!hora) return "";
+  return String(hora).slice(0, 5); // "08:00:00" → "08:00"
+}
+
+// ============================================================
 // FUNCIÓN: abrirModalJornada()
 // ============================================================
 
@@ -42,9 +61,13 @@ function abrirModalJornada(jornada) {
     notasHtml = `<div style='margin-top:10px'><em>📝 Notas: ${jornada.notas}</em></div>`;
   }
 
+  const fechaFormateada = formatearFecha(jornada.fecha_inicio);
+  const horaInicio = formatearHora(jornada.hora_inicio);
+  const horaFin = formatearHora(jornada.hora_fin);
+
   const modalBody = document.getElementById("modal-body");
   modalBody.innerHTML = `
-    <h3 style="color:#1e5799; margin-bottom:15px;">📅 ${jornada.fecha_inicio} ${jornada.hora_inicio} - ${jornada.hora_fin}</h3>
+    <h3 style="color:#1e5799; margin-bottom:15px;">📅 ${fechaFormateada} ${horaInicio} - ${horaFin}</h3>
     <div><strong>🎣 Pescador:</strong> ${jornada.pescador || "No especificado"}</div>
     ${capturasHtml}
     ${detallesHtml}
