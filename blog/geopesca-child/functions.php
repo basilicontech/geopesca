@@ -5,12 +5,14 @@
 
 add_action( 'wp_enqueue_scripts', 'geopesca_child_enqueue_styles', PHP_INT_MAX );
 
-wp_enqueue_style(
-    'geopesca-child-style',
-    get_stylesheet_uri(),
-    array(),
-    time()
-);
+function geopesca_child_enqueue_styles() {
+    wp_enqueue_style(
+        'geopesca-child-style',
+        get_stylesheet_uri(),
+        array(),
+        wp_get_theme()->get( 'Version' )
+    );
+}
 
 /**
  * Footer personalizado de Bitácora Pesca
