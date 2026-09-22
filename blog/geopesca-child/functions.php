@@ -1,6 +1,4 @@
 <?php
-die('FUNCTIONS.PHP SE CARGA');
-
 /**
  * GeoPesca Child Theme functions and definitions
  */
