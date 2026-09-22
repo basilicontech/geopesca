@@ -16,7 +16,6 @@ function geopesca_child_enqueue_styles() {
 
 /**
  * Footer personalizado de Bitácora Pesca
- * Se inyecta al final del <body> mediante wp_footer
  */
 add_action( 'wp_footer', 'gp_footer_personalizado', 100 );
 
