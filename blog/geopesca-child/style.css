@@ -923,9 +923,9 @@ body.archive .cat-links {
 /* Responsive */
 @media (max-width: 768px) {
   .footer {
-    padding: 25px 15px;
+    padding: 30px 25px;
     font-size: 0.85rem;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   .footer p {
