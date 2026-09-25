@@ -60,19 +60,6 @@ const contenidoAcercaDe = `
 
     <hr class="modal-info-divider">
 
-    <h4>💬 Bitácora Pesca Foro</h4>
-    <p>
-      Como buen pescador, seguro que también te gusta <strong>compartir y presumir de tus capturas</strong>.
-    </p>
-    <p>
-      En <strong>Bitácora Pesca Foro</strong> podrás hacerlo, además de conectar con otros pescadores, plantear dudas, compartir experiencias y participar en debates relacionados con nuestra pasión.
-    </p>
-    <p>
-      <strong>👉 <a href="https://foro.bitacorapesca.basilicontech.com/" target="_blank" class="modal-info-link">Haz clic aquí para acceder a Bitácora Pesca Foro</a></strong>
-    </p>
-
-    <hr class="modal-info-divider">
-
     <h3>🌊 ÚNETE A BITÁCORA PESCA</h3>
     <p>
       Tanto si eres <strong>pescador independiente</strong> como si formas parte de un <strong>club de pesca</strong>, te invitamos a formar parte de esta comunidad.
